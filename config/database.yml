@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: FiveDimensionPocket_production
-  username: FiveDimensionPocket
-  password: <%= ENV['FIVEDIMENSIONPOCKET_DATABASE_PASSWORD'] %>
+  username: joey
+  password: 1qazXSW@
