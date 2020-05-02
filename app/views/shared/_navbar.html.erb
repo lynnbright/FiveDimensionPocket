@@ -1,0 +1,9 @@
+<%= form_for root_path do |form| %>
+
+<div class="input-group my-2">
+  <%= form.text_field :link, placeholder: "儲存 URL https://...", class: "form-control col-3 mx-2" %>
+  <%= form.submit "儲存", class: "btn btn-info mx-2" %>
+  <%= form.submit "取消", class: "btn btn-info" %>
+</div>
+
+<% end %>
