@@ -82,4 +82,4 @@ production:
   <<: *default
   database: FiveDimensionPocket_production
   username: joey
-  password: 1qazXSW@
+  password: 1qaz2wsx
