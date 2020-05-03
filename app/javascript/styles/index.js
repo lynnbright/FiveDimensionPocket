@@ -1,6 +1,6 @@
 import './application.scss'
-import "bootstrap/dist/css/bootstrap.css"
+// import "bootstrap/dist/css/bootstrap.css"
 
-$(document).ready(function(){
+$(document).ready(function() {
   console.log('JQJQJQ')
 })
