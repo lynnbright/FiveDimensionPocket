@@ -31,5 +31,5 @@ yarn-debug.log*
 .yarn-integrity
 node_modules
 
-/config/database.yml
-/config/initializers/devise.rb
+config/database.yml
+config/initializers/devise.rb
