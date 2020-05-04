@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   }
   root "welcome#index"
 
+  #新增文章的路徑
+  resources :article
+
 end
