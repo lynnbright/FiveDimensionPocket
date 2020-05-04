@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>FiveDimensionPocket</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<html>
+
+<head>
+  <title>FiveDimensionPocket</title>
+  <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+          <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <%= render "shared/navbar" %>
+    <p class="notice"> <%= notice %> </p>
+    <p class="alert"> <%= alert %> </p>
+    <%= render "list/list" %>
+      <%= yield %>
+    <%= render "shared/footer" %>
+</body>
+
+</html>
   <body>
     <nav>
       <% unless user_signed_in? %>
