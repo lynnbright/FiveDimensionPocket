@@ -1,5 +1,14 @@
 <head>
   <style>
+    /* body { */
+    /* background-color: rgb(26, 26, 26); */
+    /* } */
+    
+    .nav-behide-space {
+      height: 60px;
+      width: 100%;
+    }
+    
     .nav {
       position: relative;
       width: 100%;
@@ -10,6 +19,8 @@
       padding: 0 20px;
       box-sizing: border-box;
       border-bottom: solid 1px rgb(0, 0, 0);
+      position: fixed;
+      top: 0;
     }
     
     .burger {
@@ -113,6 +124,7 @@
       background-color: rgb(26, 26, 26);
       overflow: scroll;
       box-sizing: border-box;
+      border-right: solid 1px rgb(242, 242, 242);
     }
     
     .aside-behide {
@@ -223,6 +235,7 @@
 </head>
 
 <body>
+  <div class="nav-behide-space"></div>
   <nav id="nav" class="nav">
     <div class="burger" @click="showAside = !showAside">
       <i class="fas fa-bars"></i>

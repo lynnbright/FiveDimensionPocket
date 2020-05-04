@@ -1,0 +1,58 @@
+<head>
+  <style>
+    .wrap {
+      width: 100%;
+      background-color: #aaa;
+    }
+    
+    .aside-list-behide {
+      width: 350px;
+      height: 900px;
+      background-color: #aaf;
+      display: none;
+    }
+    
+    .aside-list {
+      display: none;
+    }
+    
+    @media (min-width: 768px) {
+      .aside-list {
+        position: fixed;
+        top: 60px;
+        width: 320px;
+        height: calc(100vh - 60px);
+        background-color: #faa;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 50px;
+        min-width: 320px;
+        height: 100%;
+        background-color: rgb(26, 26, 26);
+        overflow: scroll;
+        box-sizing: border-box;
+        border-right: solid 1px rgb(0, 0, 0);
+      }
+      .aside-list-behide {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="aside-list-behide">
+      <div class="aside-list">
+        <a class="aside-link" href="#"><i class="fas fa-heart"></i> 我的最愛</a>
+        <a class="aside-link" href="#"><i class="fas fa-list-ul"></i> 我的清單</a>
+        <a class="aside-link" href="#"><i class="fas fa-tags"></i> 標籤</a>
+        <a class="aside-link" href="#"><i class="fas fa-book-open"></i> 已公開清單</a>
+      </div>
+      <div class="card-wrap">
+      </div>
+    </div>
+  </div>
+  <script></script>
+</body>
