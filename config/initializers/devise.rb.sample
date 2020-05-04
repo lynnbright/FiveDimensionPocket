@@ -300,6 +300,6 @@ Devise.setup do |config|
   # fb 驗證
   config.omniauth :facebook, ENV['FACEBOOK_CLIENT_ID'], ENV['FACEBOOK_CLIENT_SECRET'], scope: "public_profile,email", info_fields: "email,name"
   # google 驗證
-  config.omniauth :google_oauth2,'CLIENT_ID', 'CLIENT_SECRET', {}
+  config.omniauth :google_oauth2,'CLIENT_ID', 'CLIENT_SECRET', skip_jwt: true
 
 end
