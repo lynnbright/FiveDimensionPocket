@@ -3,17 +3,27 @@
     .wrap {
       width: 100%;
       background-color: #aaa;
+      display: flex;
     }
     
     .aside-list-behide {
-      width: 350px;
-      height: 900px;
+      width: 320px;
+      height: calc(100vh - 60px);
       background-color: #aaf;
       display: none;
     }
     
     .aside-list {
       display: none;
+    }
+    
+    .list-title-wrap {
+      display: flex;
+      align-items: center;
+    }
+    
+    .content-wrap {
+      padding: 10px;
     }
     
     @media (min-width: 768px) {
@@ -50,7 +60,15 @@
         <a class="aside-link" href="#"><i class="fas fa-tags"></i> 標籤</a>
         <a class="aside-link" href="#"><i class="fas fa-book-open"></i> 已公開清單</a>
       </div>
-      <div class="card-wrap">
+    </div>
+    <div class="content-wrap">
+      <div class="list-title-wrap">
+        <p class="list-title">我的清單</p>
+        <div class="list-switch-btn">
+          <button>全部</button>
+          <button>已讀</button>
+          <button>未讀</button>
+        </div>
       </div>
     </div>
   </div>
