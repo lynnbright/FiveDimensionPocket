@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :article_new
   layout :layout_by_resource
   before_action :article_new, :article_all
 
