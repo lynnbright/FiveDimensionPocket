@@ -255,15 +255,9 @@
     <div class="spacer"></div>
     <button class="nav-btn" @click="showAddBar = true"><i class="fas fa-plus"></i></button>
     <div v-if="showAddBar" class="nav-add">
-<<<<<<< HEAD
       <%= form_for @article, url: article_index_path, method:'post' do |f| %>
         <%= f.text_field :link, placeholder: '新增連結 url https://...', class: 'link_input' %>
         <%= f.submit "儲存", class: 'submit_btn nav-btn submit-btn' %>
-=======
-      <%= form_for @article, url: article_index_path do |f| %>
-        <%= f.text_field :link, placeholder: '新增連結 url https://...' %>
-        <%= f.submit "儲存", class: 'nav-btn submit-btn' %>
->>>>>>> issue #34 HTTParty install + 打 API + 將取回的資料存入資料庫 WIP
       <% end %>
       <button class="nav-btn close-btn" @click="showAddBar = false"><i class="fas fa-times"></i></button>
     </div>
@@ -271,11 +265,6 @@
     <div v-if="showSearchBar" class="nav-search">
        <input type="text" placeholder="請輸入搜尋文字">
        <button class="nav-btn submit-btn">送出</button>       
-<<<<<<< HEAD
-=======
-
-
->>>>>>> issue #34 HTTParty install + 打 API + 將取回的資料存入資料庫 WIP
       <button class="nav-btn close-btn" @click="showSearchBar = false"><i class="fas fa-times"></i></button>
     </div>
     <a class="nav-link" href="/">探索</a>
@@ -300,7 +289,12 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   </nav>
+=======
+
+  </nav> 
+>>>>>>> issue #34 將資料渲染上以卡片方式渲染上畫面
   <script>
     var navbar = new Vue({
       el: '#nav',
