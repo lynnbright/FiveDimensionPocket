@@ -23,7 +23,7 @@
     <%= render "shared/footer" %>
 </body>
 
-</html>
+
   <body>
     <nav>
       <% unless user_signed_in? %>
@@ -38,6 +38,6 @@
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%# yield %>
   </body>
 </html>
