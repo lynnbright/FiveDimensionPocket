@@ -7,9 +7,6 @@
     }
     
     .aside-list-behide {
-      width: 320px;
-      height: calc(100vh - 60px);
-      background-color: #aaf;
       display: none;
     }
     
@@ -23,7 +20,126 @@
     }
     
     .content-wrap {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      box-sizing: border-box;
       padding: 10px;
+    }
+    
+    .card-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      background-color: #666;
+    }
+    
+    .card-grid {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .card {
+      /* min-width: 270divpx; */
+      width: 270px;
+      margin: 8px;
+      box-sizing: border-box;
+      border: solid 1px rgb(0, 0, 0);
+      border-radius: 8px;
+    }
+    
+    .card-title {
+      margin: 8px 0;
+    }
+    
+    .card-img {
+      width: 100%;
+      display: block;
+    }
+    
+    .card-img-wrap {
+      max-width: 300px;
+      max-height: 200px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .card-btn {
+      background-color: rgba(0, 0, 0, 0);
+      color: rgb(189, 189, 189);
+      border: 0;
+      cursor: pointer;
+    }
+    
+    .card-btn:hover {
+      color: rgb(224, 224, 224);
+    }
+    
+    .icon-bar {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .shared-btn-wrap {
+      position: relative;
+    }
+    
+    .shared-bar {
+      position: absolute;
+      bottom: 100%;
+      right: 100%;
+    }
+    
+    .col-md-1 {
+      width: 8.333333%;
+    }
+    
+    .col-md-2 {
+      width: 16.666666%;
+    }
+    
+    .col-md-3 {
+      width: 25%;
+    }
+    
+    .col-md-4 {
+      width: 33.333333%;
+    }
+    
+    .col-md-5 {
+      width: 41.666666%;
+    }
+    
+    .col-md-6 {
+      width: 50%;
+    }
+    
+    .col-md-7 {
+      width: 58.333333%;
+    }
+    
+    .col-md-8 {
+      width: 66.666666%;
+    }
+    
+    .col-md-9 {
+      width: 75%;
+    }
+    
+    .col-md-10 {
+      width: 83.333333%;
+    }
+    
+    .col-md-11 {
+      width: 91.666666%;
+    }
+    
+    .col-md-12 {
+      width: 100%;
     }
     
     @media (min-width: 768px) {
@@ -37,7 +153,6 @@
         flex-direction: column;
         align-items: flex-start;
         padding: 0 50px;
-        min-width: 320px;
         height: 100%;
         background-color: rgb(26, 26, 26);
         overflow: scroll;
@@ -45,7 +160,51 @@
         border-right: solid 1px rgb(0, 0, 0);
       }
       .aside-list-behide {
+        min-width: 320px;
+        height: calc(100vh - 60px);
+        background-color: #aaf;
+        box-sizing: border-box;
         display: block;
+      }
+      .card-wrap {
+        flex-direction: row;
+        justify-content: center;
+      }
+      .col-1 {
+        width: 8.333333%;
+      }
+      .col-2 {
+        width: 16.666666%;
+      }
+      .col-3 {
+        width: 25%;
+      }
+      .col-4 {
+        width: 33.333333%;
+      }
+      .col-5 {
+        width: 41.666666%;
+      }
+      .col-6 {
+        width: 50%;
+      }
+      .col-7 {
+        width: 58.333333%;
+      }
+      .col-8 {
+        width: 66.666666%;
+      }
+      .col-9 {
+        width: 75%;
+      }
+      .col-10 {
+        width: 83.333333%;
+      }
+      .col-11 {
+        width: 91.666666%;
+      }
+      .col-12 {
+        width: 100%;
       }
     }
   </style>
@@ -70,7 +229,104 @@
           <button>未讀</button>
         </div>
       </div>
+      <div id="card-wrap" class="card-wrap">
+        <div class="card-grid col-4 col-md-12">
+          <div class="card">
+            <div class="card-img-wrap">
+              <a class="card-img-link" href="#"><img class="card-img" src="https://picsum.photos/id/684/300/200" alt=""></a>
+            </div>
+            <a href="#">
+              <h3 class="card-title">title</h3>
+            </a>
+            <a href="#">原始連結</a>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati</p>
+            <div class="icon-bar">
+              <button class="card-btn"><i class="fas fa-heart"></i></button>
+              <button class="card-btn"><i class="fas fa-tag"></i></button>
+              <button class="card-btn"><i class="fas fa-check-double"></i></button>
+              <button class="card-btn"><i class="fas fa-save"></i></button>
+              <div class="shared-btn-wrap">
+                <button class="card-btn shared-btn" @click="showSharedBar = !showSharedBar"><i class="fas fa-share-alt"></i></button>
+                <div v-if="showSharedBar" class="shared-bar">
+                  <button>複製連結</button>
+                  <button>分享到twitter</button>
+                  <button>分享到facebook</button>
+                  <button>分享到line</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-grid col-4 col-md-12">
+          <div class="card">
+            <div class="card-img-wrap">
+              <a class="card-img-link" href="#"><img class="card-img" src="https://picsum.photos/id/684/300/200" alt=""></a>
+            </div>
+            <a href="#">
+              <h3 class="card-title">title</h3>
+            </a>
+            <a href="#">原始連結</a>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati</p>
+            <div class="icon-bar">
+              <button class="card-btn"><i class="fas fa-heart"></i></button>
+              <button class="card-btn"><i class="fas fa-tag"></i></button>
+              <button class="card-btn"><i class="fas fa-check-double"></i></button>
+              <button class="card-btn"><i class="fas fa-save"></i></button>
+              <div class="shared-btn-wrap">
+                <button class="card-btn shared-btn" @click="showSharedBar = !showSharedBar"><i class="fas fa-share-alt"></i></button>
+                <div v-if="showSharedBar" class="shared-bar">
+                  <button>複製連結</button>
+                  <button>分享到twitter</button>
+                  <button>分享到facebook</button>
+                  <button>分享到line</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-grid col-4 col-md-12">
+          <div class="card">
+            <div class="card-img-wrap">
+              <a class="card-img-link" href="#"><img class="card-img" src="https://picsum.photos/id/684/300/200" alt=""></a>
+            </div>
+            <a href="#">
+              <h3 class="card-title">title</h3>
+            </a>
+            <a href="#">原始連結</a>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati</p>
+            <div class="icon-bar">
+              <button class="card-btn"><i class="fas fa-heart"></i></button>
+              <button class="card-btn"><i class="fas fa-tag"></i></button>
+              <button class="card-btn"><i class="fas fa-check-double"></i></button>
+              <button class="card-btn"><i class="fas fa-save"></i></button>
+              <div class="shared-btn-wrap">
+                <button class="card-btn shared-btn" @click="showSharedBar1"><i class="fas fa-share-alt"></i></button>
+                <div v-if="showSharedBar" class="shared-bar">
+                  <button>複製連結</button>
+                  <button>分享到twitter</button>
+                  <button>分享到facebook</button>
+                  <button>分享到line</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div> 
-  <script></script>
+  </div>
+
+  <script>
+    var cardWrap = new Vue({
+      el: '#card-wrap',
+
+      data: {
+        showSharedBar: false
+      },
+      methods: {
+        showSharedBar1: function() {
+          this.showSharedBar = !this.showSharedBar
+        }
+      }
+    })
+  </script>
 </body>
