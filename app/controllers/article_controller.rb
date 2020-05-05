@@ -1,4 +1,9 @@
 class ArticleController < ApplicationController 
+
+  def index
+    @articles = Article.all 
+  end
+
   def create
     response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=e3e6d4d35cbf7ecc564ed3d42fca87a75cc242dc&url=#{url_params[:link]}")
     response_hash = JSON.parse(response.body)
@@ -11,15 +16,13 @@ class ArticleController < ApplicationController
 
     if response.code == 200
       @article.assign_attributes({
-        user_id: 1,   #改 current_user 
+        user_id: current_user 
         link: url_params[:link],
         title: response_hash['title'],
-        content: response_hash['text']
+        content: response_hash['text'],
       })
       @article.save
-      @article.errors.full_messages
-      render json: @article.to_json
-      #render something 到 mylist 頁面
+      render :index
     else
       # alert: '請輸入正確網址'
     end
