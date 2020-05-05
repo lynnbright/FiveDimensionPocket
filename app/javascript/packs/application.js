@@ -8,7 +8,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("styles")
-import 'bootstrap/'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 $(document).on('turbolinks:load', function(){
   $("#show_modal_btn").click(function(){
     console.log("I will open modal");
