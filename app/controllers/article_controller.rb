@@ -20,6 +20,7 @@ class ArticleController < ApplicationController
         link: url_params[:link],
         title: response_hash['title'],
         content: response_hash['text'],
+        domain: response_hash['domain']
       })
       @article.save
       render :index
