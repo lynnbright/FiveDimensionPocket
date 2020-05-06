@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    passwords: 'users/passwords',
     registrations: 'users/registrations',
     omniauth_callbacks: "users/omniauth_callbacks"
-  }
-  root "welcome#index"
 
+  }
+  devise_scope :user do
+    get 'users/sign_out' => "devise/sessions#destroy"
+
+    authenticated  do
+      root to: 'welcome#index'
+    end
+
+    unauthenticated do
+      root to: 'devise/sessions#new', as: 'unauthenticated_root'
+    end
+  end
+ 
 end
