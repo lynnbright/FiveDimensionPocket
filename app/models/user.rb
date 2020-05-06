@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, 
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   has_one_attached :avatar
+  has_many :articles
   # after_commit :add_default_avatar, on: %i[create update]
 
   def avatar_thumbnail

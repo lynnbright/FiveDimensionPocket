@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :article_new, :article_all
-
   private
 
   def article_new

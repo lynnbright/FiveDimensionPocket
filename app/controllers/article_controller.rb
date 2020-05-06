@@ -1,4 +1,4 @@
-class ArticleController < ApplicationController 
+class ArticleController < ApplicationController
 
   def index
     @articles = Article.all 
@@ -16,7 +16,7 @@ class ArticleController < ApplicationController
 
     if response.code == 200
       @article.assign_attributes({
-        user_id: current_user 
+        user_id: current_user.id,
         link: url_params[:link],
         title: response_hash['title'],
         content: response_hash['text'],
@@ -24,7 +24,7 @@ class ArticleController < ApplicationController
       @article.save
       render :index
     else
-      # alert: '請輸入正確網址'
+      flash[:notice] = '請輸入正確網址'
     end
 
   end
