@@ -31,6 +31,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      flex-wrap: wrap;
       align-items: center;
       width: 100%;
       padding: 8px;
@@ -230,82 +231,28 @@
         </div>
       </div>
       <div id="card-wrap" class="card-wrap">
-        <div class="card-grid col-4 col-md-12">
+        <div v-for="item in list" :key="item.id" class="card-grid col-4 col-md-12">
           <div class="card">
             <div class="card-img-wrap">
-              <a class="card-img-link" href="#"><img class="card-img" src="https://picsum.photos/id/684/300/200" alt=""></a>
+              <a class="card-img-link" href="#"><img class="card-img" :src="item.cardImg" alt=""></a>
             </div>
             <a href="#">
-              <h3 class="card-title">title</h3>
+              <h3 class="card-title">{{ item.title }}</h3>
             </a>
-            <a href="#">原始連結</a>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati</p>
+            <a :href="item.link">原始連結</a>
+            <p>{{ item.description }}</p>
             <div class="icon-bar">
               <button class="card-btn"><i class="fas fa-heart"></i></button>
               <button class="card-btn"><i class="fas fa-tag"></i></button>
               <button class="card-btn"><i class="fas fa-check-double"></i></button>
               <button class="card-btn"><i class="fas fa-save"></i></button>
               <div class="shared-btn-wrap">
-                <button class="card-btn shared-btn" @click="showSharedBar = !showSharedBar"><i class="fas fa-share-alt"></i></button>
-                <div v-if="showSharedBar" class="shared-bar">
-                  <button>複製連結</button>
-                  <button>分享到twitter</button>
-                  <button>分享到facebook</button>
-                  <button>分享到line</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-grid col-4 col-md-12">
-          <div class="card">
-            <div class="card-img-wrap">
-              <a class="card-img-link" href="#"><img class="card-img" src="https://picsum.photos/id/684/300/200" alt=""></a>
-            </div>
-            <a href="#">
-              <h3 class="card-title">title</h3>
-            </a>
-            <a href="#">原始連結</a>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati</p>
-            <div class="icon-bar">
-              <button class="card-btn"><i class="fas fa-heart"></i></button>
-              <button class="card-btn"><i class="fas fa-tag"></i></button>
-              <button class="card-btn"><i class="fas fa-check-double"></i></button>
-              <button class="card-btn"><i class="fas fa-save"></i></button>
-              <div class="shared-btn-wrap">
-                <button class="card-btn shared-btn" @click="showSharedBar = !showSharedBar"><i class="fas fa-share-alt"></i></button>
-                <div v-if="showSharedBar" class="shared-bar">
-                  <button>複製連結</button>
-                  <button>分享到twitter</button>
-                  <button>分享到facebook</button>
-                  <button>分享到line</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-grid col-4 col-md-12">
-          <div class="card">
-            <div class="card-img-wrap">
-              <a class="card-img-link" href="#"><img class="card-img" src="https://picsum.photos/id/684/300/200" alt=""></a>
-            </div>
-            <a href="#">
-              <h3 class="card-title">title</h3>
-            </a>
-            <a href="#">原始連結</a>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati</p>
-            <div class="icon-bar">
-              <button class="card-btn"><i class="fas fa-heart"></i></button>
-              <button class="card-btn"><i class="fas fa-tag"></i></button>
-              <button class="card-btn"><i class="fas fa-check-double"></i></button>
-              <button class="card-btn"><i class="fas fa-save"></i></button>
-              <div class="shared-btn-wrap">
-                <button class="card-btn shared-btn" @click="showSharedBar1"><i class="fas fa-share-alt"></i></button>
-                <div v-if="showSharedBar" class="shared-bar">
-                  <button>複製連結</button>
-                  <button>分享到twitter</button>
-                  <button>分享到facebook</button>
-                  <button>分享到line</button>
+                <button class="card-btn shared-btn" @click="item.showSharedBar = !item.showSharedBar"><i class="fas fa-share-alt"></i></button>
+                <div v-if="item.showSharedBar" class="shared-bar">
+                  <button class="shared-conect-btn">複製連結</button>
+                  <button class="shared-conect-btn">分享到twitter</button>
+                  <button class="shared-conect-btn">分享到facebook</button>
+                  <button class="shared-conect-btn">分享到line</button>
                 </div>
               </div>
             </div>
@@ -316,15 +263,39 @@
   </div>
 
   <script>
-    var cardWrap = new Vue({
+    new Vue({
       el: '#card-wrap',
 
       data: {
-        showSharedBar: false
+        list: []
+      },
+      created() {
+        this.list = this.getList().map(item => ({
+          ...item,
+          showSharedBar: false
+        }))
       },
       methods: {
-        showSharedBar1: function() {
-          this.showSharedBar = !this.showSharedBar
+        getList() {
+          return [{
+            id: '1',
+            cardImg: 'https://picsum.photos/id/684/300/200',
+            title: 'title1',
+            link: 'https://google.com',
+            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati'
+          }, {
+            id: '2',
+            cardImg: 'https://picsum.photos/id/684/300/200',
+            title: 'title2',
+            link: 'https://google.com',
+            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati'
+          }, {
+            id: '2',
+            cardImg: 'https://picsum.photos/id/684/300/200',
+            title: 'title3',
+            link: 'https://google.com',
+            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati'
+          }]
         }
       }
     })

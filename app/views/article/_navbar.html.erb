@@ -1,0 +1,114 @@
+<head>
+  <style>
+    .nav-behide-space {
+      height: 60px;
+      width: 100%;
+    }
+
+    .article-nav {
+      position: relative;
+      width: 100%;
+      height: 60px;
+      background-color: rgb(26, 26, 26);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+      border-bottom: solid 1px rgb(0, 0, 0);
+      position: fixed;
+      top: 0;
+
+    }
+
+    .article-icon-bar {
+      display: flex;
+    }
+
+    .article-shared-btn-wrap {
+      position: relative;
+    }
+
+    .article-shared-bar {
+      position: absolute;
+      right: 100%;
+      top: 100%;
+    }
+
+    .nav-btn {
+      border-radius: 4px;
+      padding: 1px;
+      box-sizing: border-box;
+      margin-right: 8px;
+      white-space: nowrap;
+      background-color: rgba(0, 0, 0, 0);
+      color: rgb(189, 189, 189);
+      border: 0;
+      font-size: 24px;
+      outline: none;
+    }
+
+    .nav-btn:hover {
+      color: rgb(224, 224, 224);
+      cursor: pointer;
+    }
+
+    .article-style-wrap {
+      position: relative;
+    }
+
+    .article-style-bar {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100px;
+      height: 200px;
+      background-color: rgba(200, 200, 200, .5);
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav-behide-space"></div>
+  <nav id="article-nav" class="article-nav">
+    <button class=" nav-btn previous-page-btn"><i class="fas fa-arrow-left"></i></button>
+    <div class="article-icon-bar">
+      <button class=" nav-btn article-btn"><i class="fas fa-heart"></i></button>
+      <button class=" nav-btn article-btn"><i class="fas fa-tag"></i></button>
+      <button class=" nav-btn article-btn"><i class="fas fa-check-double"></i></button>
+
+      <div class="article-shared-btn-wrap">
+        <button class=" nav-btn article-btn article-shared-btn" @click="showArticleSharedBar = !showArticleSharedBar"><i
+            class="fas fa-share-alt"></i></button>
+        <div v-if="showArticleSharedBar" class="article-shared-bar">
+          <button class="article-shared-conect-btn"><i class="fas fa-link"></i>複製連結</button>
+          <button class="article-shared-conect-btn"><i class="fab fa-facebook"></i>分享到facebook</button>
+          <button class="article-shared-conect-btn"><i class="fab fa-twitter"></i>分享到twitter</button>
+          <button class="article-shared-conect-btn"><i class="fab fa-line"></i>分享到line</button>
+        </div>
+      </div>
+    </div>
+    <div class="article-style-wrap">
+      <button class=" nav-btn article-style-btn" @click="showArticleStyleBar = !showArticleStyleBar"><i class="fas fa-font"></i><i class="fas fa-angle-down"></i></button>
+      <div v-if="showArticleStyleBar" class="article-style-bar">
+        <div>theme</div>
+        <hr>
+        <div>color</div>
+        <hr>
+      </div>
+    </div>
+  </nav>
+  <script>
+    var shareBar = new Vue({
+      el: '#article-nav',
+      data: {
+        showArticleSharedBar: false,
+        showArticleStyleBar: false
+      },
+      method: {
+
+      }
+    })
+  </script>
+</body>
