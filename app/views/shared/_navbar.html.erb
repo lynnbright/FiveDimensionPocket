@@ -256,8 +256,8 @@
     <button class="nav-btn" @click="showAddBar = true"><i class="fas fa-plus"></i></button>
     <div v-if="showAddBar" class="nav-add">
       <%= form_for @article, url: article_index_path, method:'post' do |f| %>
-        <%= f.text_field :link, placeholder: '新增連結 url https://...' %>
-        <%= f.submit "儲存", class: 'nav-btn submit-btn' %>
+        <%= f.text_field :link, placeholder: '新增連結 url https://...', class: 'link_input' %>
+        <%= f.submit "儲存", class: 'submit_btn nav-btn submit-btn' %>
       <% end %>
       <button class="nav-btn close-btn" @click="showAddBar = false"><i class="fas fa-times"></i></button>
     </div>
