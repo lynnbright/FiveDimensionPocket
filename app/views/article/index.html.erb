@@ -3,7 +3,10 @@
 <div class="row">
   <% @articles.each do |article| %>
   <div class="card col-3">
-    <a href="<%= article.link %>" target="_blank"><img src="https://picsum.photos/300/200/?random=1" width="100%"></a>
+    <a href="<%= article.link %>" target="_blank"> </a>
+    
+       <!-- <img src="<%= article.article_cover.attached? %>" width="100%"></a> -->
+       <%= image_tag(article.article_cover) if article.article_cover.attached? %>
     <div class="card-body">
       <a href="<%= article.link %>" target="_blank" class="card-text"><%= article.domain %></a>
       <a href="<%= article.link %>" target="_blank"><h5 class="card-title"><%= article.title %></h5></a>
@@ -13,3 +16,7 @@
   <% end %>
 
 </div>
+
+ <!-- <div id="car-wrap">
+  <at="<%= @articles_json %>rticle-list :lis"></article-list>
+</div>  -->
