@@ -2,7 +2,7 @@ class ArticleController < ApplicationController
 
   def index
     # @articles_json = current_user.articles.to_json
-    @articles = Article.with_attached_article_cover   #解決 N+1 問題
+    @articles = Article.with_attached_article_images   #解決 N+1 問題
   end
 
   def create
@@ -16,7 +16,9 @@ class ArticleController < ApplicationController
         title: response_hash['title'],
         content: response_hash['text'],
         domain: response_hash['domain'],
+        images: response_hash['images']
       })
+      # @article.images = response_hash['images']
       @article.save
       #render 之前要先把 input value 清空
       render :index
@@ -29,6 +31,6 @@ class ArticleController < ApplicationController
 
   private
   def url_params
-    params.require(:article).permit(:link, :article_cover) 
+    params.require(:article).permit(:link, article_images: []) 
   end
 end
