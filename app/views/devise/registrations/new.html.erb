@@ -5,7 +5,7 @@
 
   <div class="field">
     <% if resource.avatar.attached? %>
-      <%= img_tag(resource.avatar) %>
+      <%= image_tag(resource.avatar) %>
     <% else %>
       <%= image_tag('/default_profile.jpg') %>
     <% end %>

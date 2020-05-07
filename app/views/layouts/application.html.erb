@@ -4,40 +4,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <html>
+  <head>
+    <title>FiveDimensionPocket</title>
+    <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+          <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
 
-<head>
-  <title>FiveDimensionPocket</title>
-  <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-          <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-
-<body>
-  <%= render "shared/navbar" %>
-    <p class="notice"> <%= notice %> </p>
-    <p class="alert"> <%= alert %> </p>
-    <%= render "list/list" %>
-      <%= yield %>
-    <%= render "shared/footer" %>
-</body>
-
-</html>
   <body>
-    <nav>
-      <% unless user_signed_in? %>
-      <%= link_to "註冊", new_user_registration_path %>
-      <%= link_to "登入", new_user_session_path %>  
-      <% end %> 
-      <% if user_signed_in? %>
-        <%= image_tag(current_user.avatar_thumbnail) %>
-        <%= current_user.name %>
-        <%= link_to "登出", destroy_user_session_path, method: :delete %>
-      <% end %>
-    </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= render "shared/navbar" %>
+      <p class="notice"> <%= notice %> </p>
+      <p class="alert"> <%= alert %> </p>
+      <%= render "list/list" %>
+        <%= yield %>
+      <%= render "shared/footer" %>
   </body>
 </html>

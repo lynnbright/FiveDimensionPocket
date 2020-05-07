@@ -248,7 +248,7 @@
         <a class="aside-link" href="#"><i class="fas fa-book-open"></i> 已公開清單</a>
       </div>
     </div>
-
+  
     <div class="nav-logo">
       <a class="nav-logo-icon" href="#"><i class="fas fa-envelope-open"></i></a>
     </div>
@@ -269,23 +269,24 @@
     <a class="nav-link" href="/">成就</a>
     <div class="user" @click="showUserBar = !showUserBar">
       <a class="user-link" href="/" @click.prevent>
-        <img class="user-link-img" src="https://scontent.ftpe8-2.fna.fbcdn.net/v/t1.0-1/p100x100/89671147_3206839525997500_2975540509306519552_n.jpg?_nc_cat=103&_nc_sid=7206a8&_nc_ohc=mU5GWcqYW7MAX8y9hzg&_nc_ht=scontent.ftpe8-2.fna&_nc_tp=6&oh=e28ba48c1e244d50c86e711a742ec20e&oe=5ED2F505"
-          alt="">
+        <%= image_tag((current_user.avatar_thumbnail), class: 'user-link-img')%>
       </a>
       <div v-if="showUserBar" class="user-bar" @click.stop>
         <div class="user-info">
-          <div class="user-img-wrap"><img class="user-img" src="https://scontent.ftpe8-2.fna.fbcdn.net/v/t1.0-1/p100x100/89671147_3206839525997500_2975540509306519552_n.jpg?_nc_cat=103&_nc_sid=7206a8&_nc_ohc=mU5GWcqYW7MAX8y9hzg&_nc_ht=scontent.ftpe8-2.fna&_nc_tp=6&oh=e28ba48c1e244d50c86e711a742ec20e&oe=5ED2F505"
-              alt=""></div>
+          <div class="user-img-wrap">
+            <%= image_tag((current_user.avatar_thumbnail), class: 'user-img')%>
+          </div>
           <div class="user-name">
-            <span>Name</span>
-            <a class="user-profile-link" href="/">Profile</a>
+        
+            <a class="user-profile-link" href="#">Profile</a>
           </div>
         </div>
         <hr>
-        <div class="user-bar-bottom"><a class="sign-out" href="/">登出</a></div>
+        <div class="user-bar-bottom"> 
+          <%= link_to "登出", destroy_user_session_path, method: :delete, class: 'sign-out' %>
+        </div>
       </div>
     </div>
-
   </nav>
   <script>
     var navbar = new Vue({
