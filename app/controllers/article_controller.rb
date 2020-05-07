@@ -31,6 +31,10 @@ class ArticleController < ApplicationController
 
   private
   def url_params
+<<<<<<< HEAD
     params.require(:article).permit(:link, article_images: []) 
+=======
+    params.require(:article).permit(:link, :article_cover) 
+>>>>>>> issue #34 可上傳單張圖片至 active_storage
   end
 end
