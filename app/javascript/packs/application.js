@@ -8,11 +8,19 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("styles")
-import 'bootstrap/'
+
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import 'select2'
+import 'select2/dist/css/select2.css'
+
 $(document).on('turbolinks:load', function(){
   $("#show_modal_btn").click(function(){
     console.log("I will open modal");
     $("#myModal").modal("show");
+  });
+  $("#tagTest").select2({
   });
 });
 // Uncomment to copy all static images under ../images to the output folder and reference
