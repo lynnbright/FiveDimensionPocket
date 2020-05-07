@@ -5,14 +5,24 @@ class Article < ApplicationRecord
   has_many :tags, through :article_tags
   default_scope { where.not(created_at: nil).order(id: :desc)}
   belongs_to :user
+  has_many_attached :article_images
 
-  #圖片儲存
-  has_one_attached :article_cover
-  before_save :grab_cover
+  #拿到存到本地端後的圖片位址
+  def images
+    article_images.map do |image|
+      Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true) 
+    end  
+  end
 
-  private
-  def grab_cover
-    file = open("https://womany.net/cdn-cgi/image/w=800,fit=scale-down,f=auto/https://castle.womany.net/images/content/pictures/62832/womany_161114_4496_6_EhMdP_1503483761-16149-5365.jpg") 
-    self.article_cover.attach(io: file, filename: 'cover.jpg', content_type: 'image/jpg')
+  #把網路上拿到的圖片網址，存到 active_storage 
+  def images=(images = []) 
+    files = images.map do |url|   
+      { io: open(url), filename: 'image.jpg' }
+      rescue OpenURI::HTTPError => e
+        if e.message == '404 Not Found'
+          { io: open("https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg"), filename: 'image.jpg' }
+        end
+      end  
+    self.article_images.attach(files)
   end
 end
