@@ -4,8 +4,13 @@ a {
   color: inherit;
   outline: 0;
 }
-
+@import './articles/articles-nav.css';
+@import './articles/articles-content.css';
+@import './shared/navbar.css';
+@import './shared/footer.css';
+@import './lists/list-index.css';
 // @import "~bootstrap/scss/bootstrap";
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/solid';
+
