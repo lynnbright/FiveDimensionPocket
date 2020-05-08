@@ -17,7 +17,7 @@
   align-items: center;
 }
 
-.content-wrap {
+.list-content-wrap {
   display: flex;
   flex-direction: column;
   width: 100%;

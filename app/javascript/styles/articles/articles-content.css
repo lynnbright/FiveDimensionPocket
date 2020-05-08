@@ -1,10 +1,10 @@
-.wrap {
+.article-content-wrap {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.content {
+.article-content {
   width: 100%;
   max-width: 798px;
   height: 900px;
