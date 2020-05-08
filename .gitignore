@@ -33,3 +33,6 @@ node_modules
 
 config/database.yml
 config/initializers/devise.rb
+
+# Ignore application configuration
+/config/application.yml
