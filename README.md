@@ -1,24 +1,11 @@
-# README
+# Five Dimension Pocket
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+向知名網路文章管理工具 Pocket 致敬！
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version：2.6.5
+* Language: Ruby
+* Framework: Ruby On Rails
+* Front-End: HTML/CSS/Javascript/jQuery, Webpack, Vue.js, Bootstrap, axios
+* Third-Party Serivce: Google API, Facebook API, Extractor API
+* Database: Postgresql
+* Gem: Devise, HTTParty, figaro
