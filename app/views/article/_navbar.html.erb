@@ -1,0 +1,43 @@
+<body>
+  <div class="nav-behide-space"></div>
+  <nav id="article-nav" class="article-nav">
+    <button class=" nav-btn previous-page-btn"><i class="fas fa-arrow-left"></i></button>
+    <div class="article-icon-bar">
+      <button class=" nav-btn article-btn"><i class="fas fa-heart"></i></button>
+      <button class=" nav-btn article-btn"><i class="fas fa-tag"></i></button>
+      <button class=" nav-btn article-btn"><i class="fas fa-check-double"></i></button>
+
+      <div class="article-shared-btn-wrap">
+        <button class=" nav-btn article-btn article-shared-btn" @click="showArticleSharedBar = !showArticleSharedBar"><i
+            class="fas fa-share-alt"></i></button>
+        <div v-if="showArticleSharedBar" class="article-shared-bar">
+          <button class="article-shared-conect-btn"><i class="fas fa-link"></i>複製連結</button>
+          <button class="article-shared-conect-btn"><i class="fab fa-facebook"></i>分享到facebook</button>
+          <button class="article-shared-conect-btn"><i class="fab fa-twitter"></i>分享到twitter</button>
+          <button class="article-shared-conect-btn"><i class="fab fa-line"></i>分享到line</button>
+        </div>
+      </div>
+    </div>
+    <div class="article-style-wrap">
+      <button class=" nav-btn article-style-btn" @click="showArticleStyleBar = !showArticleStyleBar"><i class="fas fa-font"></i><i class="fas fa-angle-down"></i></button>
+      <div v-if="showArticleStyleBar" class="article-style-bar">
+        <div>theme</div>
+        <hr>
+        <div>color</div>
+        <hr>
+      </div>
+    </div>
+  </nav>
+  <script>
+    var shareBar = new Vue({
+      el: '#article-nav',
+      data: {
+        showArticleSharedBar: false,
+        showArticleStyleBar: false
+      },
+      method: {
+
+      }
+    })
+  </script>
+</body>

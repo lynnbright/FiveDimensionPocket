@@ -1,0 +1,90 @@
+<body>
+  <div class="wrap">
+    <div class="aside-list-behide">
+      <div class="aside-list">
+        <a class="aside-link" href="#"><i class="fas fa-heart"></i> 我的最愛</a>
+        <a class="aside-link" href="#"><i class="fas fa-list-ul"></i> 我的清單</a>
+        <a class="aside-link" href="#"><i class="fas fa-tags"></i> 標籤</a>
+        <a class="aside-link" href="#"><i class="fas fa-book-open"></i> 已公開清單</a>
+      </div>
+    </div>
+    <div class="list-content-wrap">
+      <div class="list-title-wrap">
+        <p class="list-title">我的清單</p>
+        <div class="list-switch-btn">
+          <button>全部</button>
+          <button>已讀</button>
+          <button>未讀</button>
+        </div>
+      </div>
+      <div id="card-wrap" class="card-wrap">
+        <div v-for="item in list" :key="item.id" class="card-grid col-4 col-md-12">
+          <div class="card">
+            <div class="card-img-wrap">
+              <a class="card-img-link" href="#"><img class="card-img" :src="item.cardImg" alt=""></a>
+            </div>
+            <a href="#">
+              <h3 class="card-title">{{ item.title }}</h3>
+            </a>
+            <a :href="item.link">原始連結</a>
+            <p>{{ item.description }}</p>
+            <div class="icon-bar">
+              <button class="card-btn"><i class="fas fa-heart"></i></button>
+              <button class="card-btn"><i class="fas fa-tag"></i></button>
+              <button class="card-btn"><i class="fas fa-check-double"></i></button>
+              <button class="card-btn"><i class="fas fa-save"></i></button>
+              <div class="shared-btn-wrap">
+                <button class="card-btn shared-btn" @click="item.showSharedBar = !item.showSharedBar"><i class="fas fa-share-alt"></i></button>
+                <div v-if="item.showSharedBar" class="shared-bar">
+                  <button class="shared-conect-btn">複製連結</button>
+                  <button class="shared-conect-btn">分享到twitter</button>
+                  <button class="shared-conect-btn">分享到facebook</button>
+                  <button class="shared-conect-btn">分享到line</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#card-wrap',
+
+      data: {
+        list: []
+      },
+      created() {
+        this.list = this.getList().map(item => ({
+          ...item,
+          showSharedBar: false
+        }))
+      },
+      methods: {
+        getList() {
+          return [{
+            id: '1',
+            cardImg: 'https://picsum.photos/id/684/300/200',
+            title: 'title1',
+            link: 'https://google.com',
+            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati'
+          }, {
+            id: '2',
+            cardImg: 'https://picsum.photos/id/684/300/200',
+            title: 'title2',
+            link: 'https://google.com',
+            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati'
+          }, {
+            id: '2',
+            cardImg: 'https://picsum.photos/id/684/300/200',
+            title: 'title3',
+            link: 'https://google.com',
+            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa illum, sunt ipsa consequatur tenetur voluptati'
+          }]
+        }
+      }
+    })
+  </script>
+</body>
