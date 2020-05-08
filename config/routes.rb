@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'users/sign_out' => "devise/sessions#destroy"
 
     authenticated  do
-      root to: 'welcome#index'
+      root to: 'article#index'
     end
 
     unauthenticated do
@@ -17,4 +17,12 @@ Rails.application.routes.draw do
     end
   end
  
+  #新增文章的路徑
+  resources :article
+  # get 'api/:user_id/articles', to: 'api/articles#index', as: :api_articles_index, defaults: { s: :json}
+  # # namespace :api do
+  # #   resources :users, only: [:show] do
+  # #     resources :articles, only: [:index, :show]
+  # #   end
+  # # end
 end
