@@ -2,7 +2,8 @@ class ArticleController < ApplicationController
 
   def index
     # @articles_json = current_user.articles.to_json
-    @articles = Article.with_attached_article_images   #解決 N+1 問題
+    @articles_solve_nplus1 = Article.with_attached_article_images   #解決 N+1 問題
+    @articles = Article.order(id: :desc)
   end
 
   def create
@@ -21,7 +22,7 @@ class ArticleController < ApplicationController
       # @article.images = response_hash['images']
       @article.save
       #render 之前要先把 input value 清空
-      render :index
+      redirect_to article_index_path
     else
       flash[:notice] = '請輸入正確網址'
     end
