@@ -6,6 +6,6 @@
 * Language: Ruby
 * Framework: Ruby On Rails
 * Front-End: HTML/CSS/Javascript/jQuery, Webpack, Vue.js, Bootstrap, axios
-* Third-Party Serivce: Google API, Facebook API, Extractor API
+* Third-Party Serivce: Google API, Facebook API, EXTRACTOR API
 * Database: Postgresql
 * Gem: Devise, HTTParty, figaro
