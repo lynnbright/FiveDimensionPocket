@@ -1,4 +1,4 @@
-class ArticleController < ApplicationController
+class ArticlesController < ApplicationController
 
   def index
     # @articles_json = current_user.articles.to_json

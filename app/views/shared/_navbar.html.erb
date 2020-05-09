@@ -19,7 +19,7 @@
     <div class="spacer"></div>
     <button class="nav-btn" @click="showAddBar = true"><i class="fas fa-plus"></i></button>
     <div v-if="showAddBar" class="nav-add">
-      <%= form_for @article, url: article_index_path, method:'post' do |f| %>
+      <%= form_for @article, url: articles_path, method:'post' do |f| %>
         <%= f.text_field :link, placeholder: '新增連結 url https://...' %>
         <%= f.submit "儲存", class: 'nav-btn submit-btn' %>
       <% end %>
