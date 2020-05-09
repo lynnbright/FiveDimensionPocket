@@ -4,12 +4,12 @@
   <% @articles.each do |article| %>
   <div class="card col-3">
     <a href="<%= article.link %>" target="_blank">
-       <%= image_tag(article.images.first) if article.article_images.attached? %>
+       <%= image_tag(article.images.first, size:'300x200') if article.article_images.attached? %>
     </a>
     <div class="card-body">
       <a href="<%= article.link %>" target="_blank" class="card-text"><%= article.domain %></a>
       <a href="<%= article.link %>" target="_blank"><h5 class="card-title"><%= article.title %></h5></a>
-      <p class="card-text"><%#= article.content.split('').first(60).join('') %></p>   
+      <p class="card-text"><%= article.title %></p>   
     </div>
   </div>
   <% end %>

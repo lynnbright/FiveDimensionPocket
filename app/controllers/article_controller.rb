@@ -4,7 +4,7 @@ class ArticleController < ApplicationController
   def index
     # @articles_json = current_user.articles.to_json
     @articles_solve_nplus1 = Article.with_attached_article_images   #解決 N+1 問題
-    @articles = Article.order(id: :desc)
+    @articles = current_user.articles.order(id: :desc)
   end
 
   def create
