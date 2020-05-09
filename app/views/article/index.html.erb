@@ -4,7 +4,7 @@
   <% @articles.each do |article| %>
   <div class="card col-3">
     <a href="<%= article.link %>" target="_blank">
-       <%= image_tag(article.images.first, size:'300x200') if article.article_images.attached? %>
+       <%= image_tag(article.images[2], size:'300x200') if article.article_images.attached? %>
     </a>
     <div class="card-body">
       <a href="<%= article.link %>" target="_blank" class="card-text"><%= article.domain %></a>
