@@ -1,4 +1,5 @@
 class ArticleController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     # @articles_json = current_user.articles.to_json
