@@ -10,6 +10,7 @@ class ArticleController < ApplicationController
   def create
     response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=#{ENV['extractor_key']}&url=#{url_params[:link]}")
     response_hash = JSON.parse(response.body)
+    clean_html = response_hash['clean_html'].gsub!(/\"/, '\'')
 
     if response.code == 200
       @article.assign_attributes({
@@ -18,7 +19,8 @@ class ArticleController < ApplicationController
         title: response_hash['title'],
         content: response_hash['text'],
         domain: response_hash['domain'],
-        images: response_hash['images']
+        images: response_hash['images'],
+        clean_html: clean_html
       })
       # @article.images = response_hash['images']
       @article.save
