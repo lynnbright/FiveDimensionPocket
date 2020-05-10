@@ -10,12 +10,24 @@ require("channels")
 require("styles")
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+import $ from 'jquery'
+window.$ = $
+
+import 'select2'
+import 'select2/dist/css/select2.css'
+
+import 'sweetalert2'
+import Swal from 'sweetalert2'
+window.Swal = Swal
+
 $(document).on('turbolinks:load', function(){
   $("#show_modal_btn").click(function(){
     console.log("I will open modal");
     $("#myModal").modal("show");
   });
 });
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
