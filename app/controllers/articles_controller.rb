@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
       # @article.images = response_hash['images']
       @article.save
       #render 之前要先把 input value 清空
-      redirect_to article_index_path
+      redirect_to articles_path
     else
       flash[:notice] = '請輸入正確網址'
     end
