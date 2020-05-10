@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   private
   def article_new
-    @article = current_user ? current_user.articles.new(favorite: false) : Article.new(favorite: false)
+    @article = current_user ? current_user.articles.new(favorite: false, readed: false) : Article.new(favorite: false, readed: false)
   end
 
   def article_all
