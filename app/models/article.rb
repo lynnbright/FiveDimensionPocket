@@ -24,4 +24,8 @@ class Article < ApplicationRecord
       end  
     self.article_images.attach(files)
   end
+
+  def favorited_by(user)
+    user.articles.include?(self) 
+  end
 end
