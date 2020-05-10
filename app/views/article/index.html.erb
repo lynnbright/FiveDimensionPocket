@@ -6,11 +6,12 @@
     <a href="<%= article.link %>" target="_blank">
        <%= image_tag(article.images.first) if article.article_images.attached? %>
     </a>
-    <div class="card-body">
+    <div class="card-body" data-controller="tag">
       <a href="<%= article.link %>" target="_blank" class="card-text"><%= article.domain %></a>
       <a href="<%= article.link %>" target="_blank"><h5 class="card-title"><%= article.title %></h5></a>
-      <p class="card-text"><%#= article.content.split('').first(60).join('') %></p>   
-
+      <p class="card-text"><%= article.title %></p>   
+      <select name="select2-multiple" multiple="multiple" class="form-control"></select>
+      <button class="btn btn-warning" data-action="tag#editTag">Tag</button>
     </div>
   </div>
   <% end %>
@@ -19,3 +20,7 @@
  <!-- <div id="car-wrap">
   <at="<%= @articles_json %>rticle-list :lis"></article-list>
 </div>  -->
+
+<script>
+
+</script>
