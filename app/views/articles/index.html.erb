@@ -15,8 +15,11 @@
               <a class="card-btn" data-action="favorite#heart"><i class="far fa-heart" data-target="favorite.icon"></i></a>
               <input type="hidden" name="" data-target="favorite.article_id" value="<%= article.id %>">
             </div>
+            <div data-controller="read">
+              <a class="card-btn" data-action="read#check"><i class="far fa-book-open" data-target="read.icon"></i></a>
+              <input type="hidden" name="" data-target="read.article_id" value="<%= article.id %>">
+            </div>
               <a class="card-btn"><i class="fas fa-tag"></i></a>
-              <a class="card-btn"><i class="fas fa-check-double"></i></a>
               <a class="card-btn"><i class="fas fa-save"></i></a>
               <!-- <div class="shared-btn-wrap">
                 <button class="card-btn shared-btn" @click="item.showSharedBar = !item.showSharedBar"><i class="fas fa-share-alt"></i></button>
