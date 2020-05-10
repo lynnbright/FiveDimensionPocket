@@ -1,16 +1,15 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  // static targets = [ "id" ]
-  static html='<select name="select2-multiple" multiple="multiple" class="form-control"></select>'
-
+  // static targets = [ "tagSelect" ]
+ 
   connect(){    
-    
+
   }
   editTag(e) {
     Swal.fire({
       title: "title",
-      html: html,
+      html: document.querySelector('#tagSelect').innerHTML,
       showCancelButton: true,
       showConfirmButton: true,
       onOpen: function (dObj) {
@@ -22,7 +21,6 @@ export default class extends Controller {
         });
       }
     });     
-   
   }
 
 }

@@ -10,7 +10,6 @@
       <a href="<%= article.link %>" target="_blank" class="card-text"><%= article.domain %></a>
       <a href="<%= article.link %>" target="_blank"><h5 class="card-title"><%= article.title %></h5></a>
       <p class="card-text"><%= article.title %></p>   
-      <select name="select2-multiple" multiple="multiple" class="form-control"></select>
       <button class="btn btn-warning" data-action="tag#editTag">Tag</button>
     </div>
   </div>
@@ -21,6 +20,6 @@
   <at="<%= @articles_json %>rticle-list :lis"></article-list>
 </div>  -->
 
-<script>
-
-</script>
+<template id="tagSelect">
+  <select name="select2-multiple" multiple="multiple" class="form-control"></select>
+</template> 
