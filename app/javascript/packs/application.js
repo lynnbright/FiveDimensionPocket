@@ -3,6 +3,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("styles")
+require("articles_sharebtn")
 
 import $ from 'jquery'
 window.$ = $
@@ -25,3 +26,5 @@ import Chart from 'chart.js'
 window.Chart = Chart
 
 import "controllers"
+
+
