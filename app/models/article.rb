@@ -5,6 +5,7 @@ class Article < ApplicationRecord
   has_many :tags, through: :article_tags
   belongs_to :user
   has_many_attached :article_images
+  
   validates :content, presence: true
   validates :link, presence: true
 

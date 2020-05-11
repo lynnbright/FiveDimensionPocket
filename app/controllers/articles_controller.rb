@@ -4,7 +4,6 @@ class ArticlesController < ApplicationController
   def index
     # @articles_json = current_user.articles.to_json
     @articles_solve_nplus1 = Article.with_attached_article_images   #解決 N+1 問題
-    #@articles = current_user.articles.where.not(content: nil, title: nil, link: nil).order(id: :desc)
     @articles = current_user.articles.order(id: :desc)
   end
 
