@@ -1,3 +1,5 @@
+require 'json'
+
 class Api::V1::ArticlesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:favorite, :readed]
 
@@ -30,4 +32,16 @@ class Api::V1::ArticlesController < ApplicationController
       render json: { status: 'unread'}
     end
   end
+
+  def tags
+    @tags = JSON.parse(tags_params[:list_tag])
+    render json: {tag: @tags}
+  end
+
+
+  private
+  def tags_params
+    params.permit(:id, :list_tag )
+  end
+  
 end

@@ -1,5 +1,5 @@
 import { Controller } from "stimulus"
-import axios from 'axios'
+import Rails from "@rails/ujs"
 
 
 export default class extends Controller {
@@ -10,24 +10,35 @@ export default class extends Controller {
   }
   editTag(e) {
     let id = this.articleIdTarget.value
+    let optionData = {}
     Swal.fire({
       title: "新增標籤",
-      html: document.querySelector('#tagSelect').innerHTML,
+      html: $(document).find('#tagSelect').html(),
       showCancelButton: true,
       showConfirmButton: true,
-      onOpen: function () {
-        $('[name="select2-multiple"]').select2({
+      onOpen: () => {
+        console.log()
+        $('[name="article[tag_list][]"]').select2({
             tags: true,
-            tokenSeparators: [',', ' '],
-            width: '100%',
-            dropdownParent: $(".swal2-modal")
+            tokenSeparators: [',', ' ']
         });        
       },
     }).then((result) => {
-      if(result.value) {
-        axios.post(`api/article/#{id}/tags`)
-             .then((res) => { console.table(res.data) })
-             .catch((error) => { console.error(error) })
+      if(result.value) {   
+        let optionData = $('[name="article[tag_list][]"] option:selected').toArray().map(item => item.text)
+        let data = new URLSearchParams({list_tag: JSON.stringify(optionData)})
+        console.log('optionData', data);
+        Rails.ajax({
+        url: `/api/v1/articles/${id}/tags`, 
+        type: 'POST', 
+        data: data,
+        success: resp => {
+          console.log(resp);
+        }, 
+        error: err => {
+          console.log(err);
+        } 
+        })
       }
     })    
   }
