@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=#{ENV['extractor_key']}&url=#{url_params[:link]}")
+    response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=#{ENV['extractor_key']}&url=#{url_params[:link]}&fields=domain,title,author,date_published,images,videos,clean_html")
     response_hash = JSON.parse(response.body)
     clean_html = response_hash['clean_html'].gsub!(/\"/, '\'')
 
