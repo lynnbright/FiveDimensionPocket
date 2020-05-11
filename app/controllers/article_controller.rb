@@ -1,4 +1,5 @@
 class ArticleController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     # @articles_json = current_user.articles.to_json
@@ -7,7 +8,7 @@ class ArticleController < ApplicationController
   end
 
   def create
-    response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=e3e6d4d35cbf7ecc564ed3d42fca87a75cc242dc&url=#{url_params[:link]}")
+    response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=#{ENV['extractor_key']}&url=#{url_params[:link]}")
     response_hash = JSON.parse(response.body)
 
     if response.code == 200
