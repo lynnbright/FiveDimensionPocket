@@ -21,13 +21,24 @@ export default class extends Controller {
         $('[name="article[tag_list][]"]').select2({
             tags: true,
             tokenSeparators: [',', ' ']
-        });        
+        });   
+        // 打api抓tag回來
+        // Rails.ajax({
+        //   url: `/api/v1/articles/${id}/gettags`, 
+        //   type: 'POST', 
+        //   data: data,
+        //   success: resp => {
+        //     resp.each
+        //   }, 
+        //   error: err => {
+        //     console.log(err);
+        //   } 
+        //   })     
       },
     }).then((result) => {
       if(result.value) {   
         let optionData = $('[name="article[tag_list][]"] option:selected').toArray().map(item => item.text)
         let data = new URLSearchParams({list_tag: JSON.stringify(optionData)})
-        console.log('optionData', data);
         Rails.ajax({
         url: `/api/v1/articles/${id}/tags`, 
         type: 'POST', 

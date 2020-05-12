@@ -51,6 +51,12 @@ class Api::V1::ArticlesController < ApplicationController
     render json: {tag: @article.tags}
   end
 
+  def gettags
+    @article = Article.find(tags_params[:id])  
+
+
+    render json: {tag: @article.tags}
+  end
 
   private
   def tags_params
