@@ -7,6 +7,11 @@ class ArticlesController < ApplicationController
     @articles = current_user.articles.order(id: :desc)
   end
 
+  def show
+    @article = Article.find(params[:id])
+  end
+
+
   def create
     response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=#{ENV['extractor_key']}&url=#{url_params[:link]}&fields=domain,title,author,date_published,images,videos,clean_html")
     response_hash = JSON.parse(response.body)
