@@ -2,8 +2,10 @@
 
 <div class="row" id="card-wrap">
   <% @articles.each do |article| %>
-  <div class="card col-3">
-    <%= link_to (image_tag(article.images[2], size:'300x200') if article.article_images.attached?), article_path(article.id) %>
+  <div class="card col-3" style="width:100%">
+    <div>
+      <%= link_to (image_tag(article.images[2], style:'width:100%', class:"card-img-top") if article.article_images.attached?), article_path(article.id) %>
+    </div>
     
     <div class="card-body">
       <h5><%= link_to article.title, article_path(article.id), class:"card-title"  %></h5>
@@ -27,6 +29,11 @@
               <button class="shared-conect-btn">分享到twitter</button>
               <button class="shared-conect-btn">分享到facebook</button>
               <button class="shared-conect-btn">分享到line</button>
+      <p class="card-text"><%= article.short_description %></p>  
+      <div class="icon-bar">
+            <div data-controller="favorite">
+              <a class="card-btn" data-action="favorite#heart"><i class="far fa-heart" data-target="favorite.icon"></i></a>
+              <input type="hidden" name="" data-target="favorite.article_id" value="<%= article.id %>">
             </div>
           </div> -->
       </div> 

@@ -1,6 +1,5 @@
 <a href="#"><h2 class="ml-5"><i class="fas fa-arrow-left" onclick="history.back()"></i></h2></a>  
 <div class="container">
-  
     <div class="row">
       <h1><%= @article.title %></h1>
       <div>
@@ -8,7 +7,13 @@
       </div>
         <a href="<%= @article.link %>" target="_blank" style="color: blue;">查看原始檔</a>
       <hr>
-      <%= @article.content %>
+      <div>
+        <img src="<%= @article.images[2] %>" alt="" width="80%">
+      </div>
+      <article>
+        <!-- <%= @article.content %> -->
+        <%= @article.clean_content %>
+      </article>
     </div>
 </div>
 
