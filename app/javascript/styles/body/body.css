@@ -6,7 +6,7 @@ html,body {
   height: 100%;  
 }
 .navbar-bg-color {
-  background-color: #0b032d;
+  background-color:  rgba(11,3,45,0.8);
 }
 
 .container {
@@ -14,20 +14,25 @@ html,body {
   align-content: center;
 }
 
-.text-astro {
-  color: white;
+.text-astro  {
+  color: #bdbec0;
   font-weight:bold;
 }
 
 .login-card {
-  width: 600px;
+  width: 500px;
   background-color: rgba(132,59,98,0.5);
   /* background-color: rgba(0,0,0,0.5) !important; */
 
 }
 .btn-astro {
-  border: solid 1px white;
-  color: white;
+  border: solid 1px #bdbec0;
+  color: #bdbec0;
+  font-weight:bold;
+}
+.btn-astro:hover{
+  color: rgb(11,3,45);
+  background-color: white;
 }
 
 .footer {
@@ -35,8 +40,8 @@ html,body {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #0b032d;
-  color: white;
+  background-color: rgba(11,3,45,0.8);
+  color: #bdbec0;
   text-align: center;
   padding: 10px;
 }
