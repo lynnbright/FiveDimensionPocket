@@ -43,10 +43,10 @@
                 <div class="shared-bar share-btn-collapse" style="background-color: pink;">
                  
                  <!-- 複製連結 -->
-                  <div data-controller="copylink">
-                    <button class="shared-conect-btn" data-action="copylink#copy">複製連結</button>
-                    <input type="text" class="copylink" data-target="copylink.url" value="<%= article.title %>">
-                  </div>
+                  
+                    <button class="shared-conect-btn">複製連結</button>
+                    <input type="hidden" class="copylink" value="<%= article.link %>">
+                  
                    
                   <!-- Load Facebook SDK for JavaScript -->
                     <div id="fb-root"></div>

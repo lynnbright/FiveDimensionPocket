@@ -9,9 +9,16 @@ $(document).on('turbolinks:load', function() {
 
   $('.shared-conect-btn').on('click', function(e){
     e.preventDefault();
-      let url = document.querySelector('.copylink').value;
+    let url = $(this).parent().find('.copylink:eq(0)').val()
+
+    // let $copylink = this.parentNode.querySelector('.copylink')
+    // if ($copylink && $copylink.value) {
+    //   let url = $copylink.value
+    // let url = $(this).parent().find('.copylink:eq(0)').val()
+      // let url = document.querySelector('.copylink').value;
       console.log(url)
       copyToClip(url)
+    // }
   })
 })
 
