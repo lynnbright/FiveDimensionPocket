@@ -34,8 +34,21 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def tags
-    @tags = JSON.parse(tags_params[:list_tag])
-    render json: {tag: @tags}
+    user_id = current_user.id
+    selected_tag = JSON.parse(tags_params[:list_tag])
+    @article = Article.find(tags_params[:id])  
+
+
+    # 用文章角度來存tag
+    selected_tag.each do |selected_tag|
+      # 判斷標籤是否已存在，不存在就新增
+      # 已存在就累積使用次數
+
+      selected_tag = Tag.new(user_id: user_id,name: selected_tag)
+      @article.tags << selected_tag
+    end  
+    
+    render json: {tag: @article.tags}
   end
 
 
