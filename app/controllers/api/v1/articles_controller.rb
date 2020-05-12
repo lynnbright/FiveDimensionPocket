@@ -37,7 +37,7 @@ class Api::V1::ArticlesController < ApplicationController
     user_id = current_user.id
     selected_tag = JSON.parse(tags_params[:list_tag])
     @article = Article.find(tags_params[:id])  
-
+    
 
     # 用文章角度來存tag
     selected_tag.each do |selected_tag|
@@ -48,14 +48,15 @@ class Api::V1::ArticlesController < ApplicationController
       @article.tags << selected_tag
     end  
     
-    render json: {tag: @article.tags}
+    render json: {tags: @article.tags}
+    # 錯誤訊息
   end
 
-  def gettags
+  def get_tags
     @article = Article.find(tags_params[:id])  
+    @tags =  @article.tags.map {|tag| tag[:name] }
 
-
-    render json: {tag: @article.tags}
+    render json: {tags: @tags}
   end
 
   private

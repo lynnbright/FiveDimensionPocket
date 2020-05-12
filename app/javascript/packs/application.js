@@ -8,11 +8,14 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("styles")
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 import $ from 'jquery'
 window.$ = $
+
+
+import 'bootstrap/dist/js/bootstrap.js'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import 'select2'
 import 'select2/dist/css/select2.css'

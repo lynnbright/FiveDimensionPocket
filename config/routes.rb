@@ -27,7 +27,8 @@ Rails.application.routes.draw do
           post :favorite
           post :readed 
           post :public
-          post :tags
+          post :tags, to: 'articles#tags'
+          get  :tags, to: 'articles#get_tags'
         end   
       end
     end
