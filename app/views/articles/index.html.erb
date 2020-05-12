@@ -41,8 +41,14 @@
               <div class="shared-btn-wrap">
                 <button class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></button>
                 <div class="shared-bar share-btn-collapse" style="background-color: pink;">
-                  <button class="shared-conect-btn">複製連結</button>
-                    <!-- Load Facebook SDK for JavaScript -->
+                 
+                 <!-- 複製連結 -->
+                  <div data-controller="copylink">
+                    <button class="shared-conect-btn" data-action="copylink#copy">複製連結</button>
+                    <input type="text" class="copylink" data-target="copylink.url" value="<%= article.title %>">
+                  </div>
+                   
+                  <!-- Load Facebook SDK for JavaScript -->
                     <div id="fb-root"></div>
                     <script>(function(d, s, id) {
                       var js, fjs = d.getElementsByTagName(s)[0];
