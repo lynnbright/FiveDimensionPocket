@@ -42,10 +42,11 @@ class Api::V1::ArticlesController < ApplicationController
     # 用文章角度來存tag
     selected_tag.each do |selected_tag|
       # 判斷標籤是否已存在，不存在就新增
-      # 已存在就累積使用次數
-
       selected_tag = Tag.new(user_id: user_id,name: selected_tag)
       @article.tags << selected_tag
+      # 已存在tag list就累積使用次數
+
+      
     end  
     
     render json: {tags: @article.tags}

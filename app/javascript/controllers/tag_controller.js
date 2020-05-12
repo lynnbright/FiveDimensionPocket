@@ -48,15 +48,10 @@ export default class extends Controller {
             tags: true,
             tokenSeparators: [',', ' ']
         });   
-      //打api抓tag回來
-      
-        //把option塞回去
-           
       },
     }).then((result) => {
       if(result.value) {   
-        let optionData = $('[name="article[tag_list][]"] option:selected').toArray().map(item => item.text)
-  
+        let optionData = $('[name="article[tag_list][]"] option:selected').toArray().map(item => item.text)  
         let data = toFormData({list_tag: optionData})
         Rails.ajax({
         url: `/api/v1/articles/${id}/tags`, 

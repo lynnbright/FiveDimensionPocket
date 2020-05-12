@@ -1,39 +1,39 @@
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-    <h2>登入</h2>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-      
-        <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
-      
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="card login-card">
+			<div class="card-header">
+				<h2 class="text-astro">登入</h2>
+				<div class="d-flex justify-content-end social_icon">
+			
+				</div>
+			</div>
+			<div class="card-body">
+        
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+          <div class="from-group">
+            <%= f.label :email, class: "text-astro" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control" %>
           </div>
-        <% end %>
-      
+        
+          <div class="from-group">
+            <%= f.label :password , class: "text-astro" %><br />
+            <%= f.password_field :password, autocomplete: "current-password" , class: "form-control" %>
+          </div>
+          <div class="from-group mt-3">
+            <%= f.submit "登入", class: "btn btn-astro" %>
+          </div>
+        <% end %>        
+			</div>
+			<div class="card-footer">
         <div class="actions">
-          <%= f.submit "Log in" %>
+          <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
         </div>
-      <% end %>
-      <div class="actions">
-        <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
-      </div>
-      <div class="actions">
-        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-      </div>
-    </div>
+        <div class="actions">
+          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+        </div>
+			</div>
+		</div>
   </div>
 </div>
