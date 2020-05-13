@@ -5,14 +5,15 @@
       <div>
         <p>文章來源：<%= @article.domain %></p>
       </div>
+      <div>
         <a href="<%= @article.link %>" target="_blank" style="color: blue;">查看原始檔</a>
+      </div>
       <hr>
       <div>
         <img src="<%= @article.images[2] %>" alt="" width="80%">
       </div>
       <article>
-        <!-- <%= @article.content %> -->
-        <%= @article.clean_content %>
+        <%= @article.clean_content.html_safe %>
       </article>
     </div>
 </div>
