@@ -23,6 +23,15 @@ Rails.application.routes.draw do
 
   # 圖表
   get "/charts", to: "charts#index"
+  # get 'api/:user_id/articles', to: 'api/articles#index', as: :api_articles_index, defaults: { s: :json}
+  # # namespace :api do
+  # #   resources :users, only: [:show] do
+  # #     resources :articles, only: [:index, :show]
+  # #   end
+  # # end
+  
+  #探索頁面路徑
+  resources :explores, only: [:index]
 
   # APIs
   #內部 api 路徑
