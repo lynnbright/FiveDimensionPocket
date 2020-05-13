@@ -19,6 +19,10 @@ html,body {
   font-weight:bold;
 }
 
+.astro-white  {
+  color: #bdbec0;
+}
+
 .login-card {
   width: 500px;
   background-color: rgba(132,59,98,0.5);
