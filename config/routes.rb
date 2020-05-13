@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   # APIs
   #內部 api 路徑
+  #api
   namespace :api do
     namespace :v1 do
       resources :articles, only: [] do
@@ -60,4 +61,11 @@ Rails.application.routes.draw do
     end
   end
 
+  #api2
+  namespace :api do
+    namespace :v2 do
+      post 'login' => 'authentication#login'
+      post 'logout' => 'authentication#logout'
+    end
+  end
 end
