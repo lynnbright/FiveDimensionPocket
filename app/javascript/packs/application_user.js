@@ -4,10 +4,10 @@ require("@rails/activestorage").start()
 require("channels")
 require("styles/index_new")
 
-
 import $ from 'jquery'
 window.$ = $
 
-
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+import "@fortawesome/fontawesome-free/js/all"
