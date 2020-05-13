@@ -32,6 +32,10 @@ Rails.application.routes.draw do
   
   #探索頁面路徑
   resources :explores, only: [:index]
+  #追蹤頁面路徑
+  resources :followers, only: [:index]
+  #各使用者的頁面
+
 
   # APIs
   #內部 api 路徑
