@@ -54,4 +54,30 @@ class Api::V1::ArticlesController < ApplicationController
     params.permit(:id, :list_tag )
   end
   
+
+  def create_speech
+    @article = Article.find(params[:id])
+    result = HTTParty.post("https://texttospeech.googleapis.com/v1/text:synthesize",
+        :headers => {
+          "x-goog-api-key" => "AIzaSyBZhcuNoTSKq2Pmp8G-Mt50f92ga1nPuXo",
+          "content-type" => "application/json; charset=utf-8",
+        },
+        :body => {
+          "input" => {
+            "text" => "#{@article.content}"
+          },
+          "voice" => {
+            "languageCode" => "cmn-TW",
+            "name" => "cmn-TW-Wavenet-A-Alpha",
+            "ssmlGender" => "FEMALE"
+          },
+          "audioConfig" => {
+            "audioEncoding" => "MP3"
+          }
+        }.to_json
+    )
+    render json: {status: "#{result.body}"}
+
+  end
+
 end

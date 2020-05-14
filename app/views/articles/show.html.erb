@@ -2,11 +2,12 @@
 <div class="container">
     <div class="row">
       <h1><%= @article.title %></h1>
-      <div data-controller="msgoogle">
-        <a href="#" data-action="msgoogle#play"><i class="fas fa-volume-down" style="font-size: 60px;" data-target="MsGoogle.icon"></i></a>
-        <input type="hidden" data-target="msgoogle.content" value="<%= @article.content %>">
-      </div>
+        <!-- <div data-controller="msgoogle">
+          <a href="#" data-action="msgoogle#play"><i class="fas fa-volume-down" style="font-size: 60px;" data-target="MsGoogle.icon"></i></a>
+          <input type="hidden" data-target="msgoogle.content" value="<%= @article.content %>">
+        </div> -->
       <div>
+      <%= link_to 'speech', create_speech_api_v1_article_path(@article.id), method: 'post'  %>
         <p>文章來源：<%= @article.domain %></p>
       </div>
       <div>
