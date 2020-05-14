@@ -1,12 +1,8 @@
-
 <div class="container">
   <div class="d-flex justify-content-center">
     <div class="card login-card">
 			<div class="card-header">
 				<h2 class="text-astro">登入</h2>
-				<div class="d-flex justify-content-end social_icon">
-			
-				</div>
 			</div>
 			<div class="card-body">        
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -20,18 +16,23 @@
             <%= f.label :password , class: "text-astro" %><br />
             <%= f.password_field :password, autocomplete: "current-password" , class: "form-control" %>
           </div>
+
           <div class="from-group mt-3">
             <%= f.submit "登入", class: "btn float-right btn-astro" %>
           </div>
+
         <% end %>        
 			</div>
-			<div class="card-footer">
+      <div class="card-footer">
+      
         <div class="actions">
           <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
         </div>
+
         <div class="actions">
           <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
         </div>
+        
 			</div>
 		</div>
   </div>
