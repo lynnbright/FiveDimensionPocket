@@ -63,7 +63,7 @@ Rails.application.routes.draw do
 
   #api2
   namespace :api do
-    namespace :v2 do
+    namespace :v1 do
       post 'login' => 'authentication#login'
       post 'logout' => 'authentication#logout'
     end

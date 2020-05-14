@@ -1,13 +1,15 @@
 class Api::V1::AuthenticationController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def login
-    if email == '123' && password == '123'
-      render json: { message: 'ok', auth_token: @user.auth_token }, status: 200
+    if params[:email] == '123' && params[:password] == '123'
+      @user = User.first
+      render json: { message: 'ok', user_id: @user.id }, status: 200
     else
       render json: { message: 'invalid user email or password'}, status: 401
     end
   end
   def logout
-    current_user.regenerate_auth_token
     render json: { message: 'you have been logged out'}, status: 200
   end
 
