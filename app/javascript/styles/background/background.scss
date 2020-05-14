@@ -1,0 +1,34 @@
+*{
+  background-repeat: no-repeat;
+}
+
+body{
+  color: white;
+  background-color: #0B032D;
+  display: block;
+  margin: 0;
+}
+.card{
+  background-color: transparent;
+  padding: 20px;
+  border: 0px;
+}
+.username{
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+a{
+  color: white;
+}
+.BottomLine{
+  padding-top: 14px;
+  display: block;
+  border-bottom: 1px solid rgb(0, 0, 0)
+}
+.card-title:hover{
+  color:white;
+}
+a:hover{
+  text-decoration:none
+}
