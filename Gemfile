@@ -31,6 +31,9 @@ gem 'omniauth-google-oauth2', '~> 0.8.0'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
+#Google Cloud Storage
+gem "google-cloud-storage", "~> 1.8", require: false
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'foreman', '~> 0.87.1'
