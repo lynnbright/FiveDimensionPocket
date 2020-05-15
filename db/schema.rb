@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_163022) do
     t.string "fb_token"
     t.string "google_uid"
     t.string "google_token"
+    t.string "auth_token"
+    t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
