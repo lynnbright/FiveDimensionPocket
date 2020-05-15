@@ -1,0 +1,4 @@
+$('#js-create-speech').siblings('.loading').removeClass('d-inline-block').addClass('d-none')
+var $player = $('#js-speech-player')
+$player.attr('src', '<%= url_for @article.record %>')
+$player.removeClass('d-none');

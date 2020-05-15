@@ -1,5 +1,68 @@
+<style>
+  body{
+    background-color: #f5eddd;
+  }
+  .msgoogle p{
+    margin: 0;
+    color: #0B032D
+  }
+  .msgoogle a:hover{
+    text-decoration: none;
+  }
+  .single_article_website a{
+    color:#1eabf9;
+  }
+</style>
+
 <a href="#"><h2 class="ml-5"><i class="fas fa-arrow-left" onclick="history.back()"></i></h2></a>  
+
 <div class="container">
+    <div class="row col-12 justify-content-center mx-auto">
+      <div class="single_article_info">
+        <div class="single_article_title">
+          <h1><%= @article.title %></h1>
+        </div>
+        <div class="single_article_detail">
+          <div class="msgoogle row mt-5 mb-3 justify-content-center align-items-center">
+              <div class="loading d-none">讀取中</div>
+              <% if @article.record_file.attached? %>
+                <audio id="js-speech-player" src="<%= url_for @article.record %>" controls></audio>
+              <% else %>
+                <%= link_to create_speech_api_v1_article_path(@article.id), method: 'post', remote: true, class:'px-2 d-flex justify-content-center align-content-center', id: 'js-create-speech' do %>
+                  <i class="fas fa-volume-down"></i>speech_to_me
+                <% end %>
+                <audio id="js-speech-player" class="d-none" src="###" controls></audio>
+              <% end %>
+              
+              <p class="px-3">唸給你聽</p>
+          </div>
+          <div class="single_article_website row justify-content-center">
+            <p class="px-3">文章來源：<%= @article.domain %> </p>
+            <a href="<%= @article.link %>" target="_blank">查看原始文章</a>
+          </div>
+          <div class="single_article_tags">
+          </div>
+        </div>
+      </div>
+      <div class="single_article_cover">
+        <img src="<%= @article.images[2] %>" alt="" width="100%">
+      </div>
+      <article class="my-5">
+        <%= @article.clean_content.html_safe %>
+      </article>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
     <div class="row">
       <h1><%= @article.title %></h1>
         <div data-controller="msgoogle">
@@ -7,8 +70,8 @@
           <input type="hidden" data-target="msgoogle.content" value="<%= @article.content %>">
         </div>
       <div>
-      <%= link_to 'say it', @article.record %>
-      <!-- <audio src="<%= @article.record %>" controls></audio> -->
+      <%= link_to 'say it' %> 
+      <audio src="<%=  %>" controls></audio>
       <%= link_to 'speech', create_speech_api_v1_article_path(@article.id), method: 'post'  %>
         <p>文章來源：<%= @article.domain %></p>
       </div>
@@ -23,7 +86,7 @@
         <%= @article.clean_content.html_safe %>
       </article>
     </div>
-</div>
+</div> -->
 
 
 

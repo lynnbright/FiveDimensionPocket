@@ -26,5 +26,11 @@ import Chart from 'chart.js'
 window.Chart = Chart
 
 import "controllers"
+$(document).on('turbolinks:load', function(){
 
-
+  $('#js-create-speech').click(function() {
+    let $this = $(this);
+    $this.removeClass('d-flex').addClass('d-none');
+    $this.siblings('.loading').removeClass('d-none').addClass('d-inline-block')
+  });
+});
