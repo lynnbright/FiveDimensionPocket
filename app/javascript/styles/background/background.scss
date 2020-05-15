@@ -1,19 +1,20 @@
-*{
+* {
   background-repeat: no-repeat;
 }
-
-body{
+body {
+  font-family: Arial, sans-serif;
   color: white;
   background-color: #0B032D;
   display: block;
   margin: 0;
 }
-.card{
+.card {
   background-color: transparent;
   padding: 20px;
-  border: 0px;
+  border-left: 0.5px solid rgb(0, 0, 0);
+  border-right: 0.5px solid rgb(0, 0, 0);
 }
-.username{
+.username {
   display: flex;
   align-items: center;
   margin: 0 10px;
@@ -21,14 +22,14 @@ body{
 a{
   color: white;
 }
-.BottomLine{
+.BottomLine {
   padding-top: 14px;
   display: block;
   border-bottom: 1px solid rgb(0, 0, 0)
 }
-.card-title:hover{
+.card-title:hover {
   color:white;
 }
-a:hover{
-  text-decoration:none
+a:hover {
+  text-decoration:none;
 }
