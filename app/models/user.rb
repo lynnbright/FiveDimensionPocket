@@ -22,6 +22,16 @@ class User < ApplicationRecord
     end
   end
 
+  # 照counter順序抓前5個
+  def tag_chart
+    all_tag = self.tags.select("name","counter")
+  end
+
+  def readed_chart
+    
+
+  end
+
   private
 
   def self.from_omniauth(access_token)    

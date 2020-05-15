@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     end
   end
  
+ 
+
   #新增文章的路徑
   resources :articles
   # APIs
@@ -33,4 +35,21 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get "/charts", to: "charts#index"
+  get "/charts/tagchart", to: "charts#tagchart"
+  # 圖表
+  # namespace :api do
+  #   namespace :v1 do
+  #     resources :articles, only: [] do
+  #       member do         
+  #         post :charts, to: 'charts#tagchart'
+  #         get  :charts, to: 'charts#readedchart'
+  #       end   
+  #     end
+  #   end
+  # end
+# end
+
+
 end
