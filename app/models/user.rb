@@ -24,7 +24,6 @@ class User < ApplicationRecord
     end
   end
 
-
   def tag_chart
     all_tag = self.tags.select("name","counter")
   end
