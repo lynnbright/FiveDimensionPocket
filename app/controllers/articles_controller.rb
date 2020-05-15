@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 
   private
   def url_params
-    params.require(:article).permit(:link, :record_file, article_images: []) 
+    params.require(:article).permit(:link, article_images: []) 
   end
 
 

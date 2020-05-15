@@ -1,4 +1,5 @@
 $('#js-create-speech').siblings('.loading').removeClass('d-inline-block').addClass('d-none')
 var $player = $('#js-speech-player')
-$player.attr('src', '<%= url_for @article.record %>')
+
+$player.attr('src', "data:audio/mpeg;base64,<%= @response_encode %>")
 $player.removeClass('d-none');
