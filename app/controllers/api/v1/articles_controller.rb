@@ -57,7 +57,7 @@ class Api::V1::ArticlesController < ApplicationController
 
   def create_speech
     @article = Article.find(params[:id])
-    result = HTTParty.post("https://texttospeech.googleapis.com/v1/text:synthesize",
+    response = HTTParty.post("https://texttospeech.googleapis.com/v1/text:synthesize",
         :headers => {
           "x-goog-api-key" => "AIzaSyBZhcuNoTSKq2Pmp8G-Mt50f92ga1nPuXo",
           "content-type" => "application/json; charset=utf-8",
@@ -76,7 +76,13 @@ class Api::V1::ArticlesController < ApplicationController
           }
         }.to_json
     )
-    render json: {status: "#{result.body}"}
+
+    if response.code == 200
+      response_hash = JSON.parse(response.body)   #{ "audioContent": "....}
+      response_encode = response_hash["audioContent"]
+      @article.record_save = response_encode
+      @article.save
+    end
 
   end
 

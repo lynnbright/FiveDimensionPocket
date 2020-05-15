@@ -11,6 +11,35 @@ class Article < ApplicationRecord
   validates :content, presence: true
   validates :link, presence: true
 
+
+  #拿到存到本地端後的音檔網址
+  def record
+    Rails.application.routes.url_helpers.rails_blob_path(record_file, only_path: true) 
+  end
+  
+  #把音檔存到 active_storage
+  def record_save=(response_encode)
+    response_decode = Base64.decode64(response_encode)
+    #check force_encoding 的用途
+    decode_convert = response_decode.force_encoding('ASCII-8BIT').encode('UTF-8', :invalid => :replace, :undef => :replace, :replace => '?')
+    # byebug
+    file = File.new( 'player.mp3', 'w')
+    file_wrote = file.write(decode_convert)
+    file_open = open('player.mp3')
+    self.record_file.attach({io: file_open, filename:'player.mp3'})
+    file.close
+  end
+
+  # def record_save=(response_encode)
+  #   encode_convert = response_encode.force_encoding('ASCII-8BIT').encode('UTF-8', :invalid => :replace, :undef => :replace, :replace => '?')
+  #   response_decode = Base64.decode64(encode_convert)
+  #   file = File.new( 'player.mp3', 'w')
+  #   file_wrote = file.write(response_decode)
+  #   file_open = open('player.mp3')
+  #   self.record_file.attach({io: file_open, filename:'player.mp3'})
+  #   file.close
+  # end
+
   #拿到存到本地端後的圖片位址
   def images
     article_images.map do |image|
