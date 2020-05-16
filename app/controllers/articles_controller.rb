@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
   def create_article
     response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=#{ENV['extractor_key']}&url=#{url_params[:link]}&fields=domain,title,author,date_published,images,videos,clean_html")
     response_hash = JSON.parse(response.body)
-    clean_html = response_hash['clean_html'].gsub!(/\"/, '\'')
+    clean_html = 'null' || response_hash['clean_html'].gsub!(/\"/, '\'') 
     clean_content = clean_html.match(/<p[^>]*>[\w|\W]*<\/i>/).to_s
     short_description = response_hash['text'].split('').first(50).join('')
 
