@@ -1,0 +1,52 @@
+html,body {
+  font-family:'Microsoft JhengHei', '微軟正黑體', 'Microsoft YaHei', sans-serif;
+  background-image: url("../../packs/media/kv.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;  
+}
+.navbar-bg-color {
+  background-color:  rgba(11,3,45,0.8);
+}
+
+.container {
+  height: 100%;
+  align-content: center;
+}
+
+.text-astro  {
+  color: #bdbec0;
+  font-weight:bold;
+}
+
+.astro-white  {
+  color: #bdbec0;
+}
+
+.login-card {
+  width: 500px;
+  background-color: rgba(132,59,98,0.5);
+  /* background-color: rgba(0,0,0,0.5) !important; */
+
+}
+.btn-astro {
+  border: solid 1px #bdbec0;
+  color: #bdbec0;
+  font-weight:bold;
+}
+.btn-astro:hover{
+  color: rgb(11,3,45);
+  background-color: white;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(11,3,45,0.8);
+  color: #bdbec0;
+  text-align: center;
+  padding: 10px;
+}
+

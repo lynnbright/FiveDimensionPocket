@@ -10,27 +10,28 @@
       <a href="<%= article.link %>" target="_blank" class="card-text"><%= article.domain %></a>
       <a href="<%= article.link %>" target="_blank"><h5 class="card-title"><%= article.title %></h5></a>
       <p class="card-text"><%= article.title %></p>  
-      <div class="icon-bar">
-            <div data-controller="favorite">
-              <a class="card-btn" data-action="favorite#heart"><i class="far fa-heart" data-target="favorite.icon"></i></a>
-              <input type="hidden" name="" data-target="favorite.article_id" value="<%= article.id %>">
+      <div class="icon-bar" data-controller="tag">
+        <div data-controller="favorite">
+          <a class="card-btn" data-action="favorite#heart"><i class="far fa-heart" data-target="favorite.icon"></i></a>
+          <input type="hidden" name="" data-target="favorite.article_id" value="<%= article.id %>">
+        </div>
+        <div data-controller="read">
+          <a class="card-btn" data-action="read#check"><i class="far fa-book-open" data-target="read.icon"></i></a>
+          <input type="hidden" name="" data-target="read.article_id" value="<%= article.id %>">
+        </div>
+        <input type="hidden" data-target="tag.articleId" value="<%= article.id %>"> 
+        <a class="card-btn" data-action="tag#editTag"><i class="fas fa-tag"></i></a>
+          <a class="card-btn"><i class="fas fa-save"></i></a>
+          <!-- <div class="shared-btn-wrap">
+            <button class="card-btn shared-btn" @click="item.showSharedBar = !item.showSharedBar"><i class="fas fa-share-alt"></i></button>
+            <div v-if="item.showSharedBar" class="shared-bar">
+              <button class="shared-conect-btn">複製連結</button>
+              <button class="shared-conect-btn">分享到twitter</button>
+              <button class="shared-conect-btn">分享到facebook</button>
+              <button class="shared-conect-btn">分享到line</button>
             </div>
-            <div data-controller="read">
-              <a class="card-btn" data-action="read#check"><i class="far fa-book-open" data-target="read.icon"></i></a>
-              <input type="hidden" name="" data-target="read.article_id" value="<%= article.id %>">
-            </div>
-              <a class="card-btn"><i class="fas fa-tag"></i></a>
-              <a class="card-btn"><i class="fas fa-save"></i></a>
-              <!-- <div class="shared-btn-wrap">
-                <button class="card-btn shared-btn" @click="item.showSharedBar = !item.showSharedBar"><i class="fas fa-share-alt"></i></button>
-                <div v-if="item.showSharedBar" class="shared-bar">
-                  <button class="shared-conect-btn">複製連結</button>
-                  <button class="shared-conect-btn">分享到twitter</button>
-                  <button class="shared-conect-btn">分享到facebook</button>
-                  <button class="shared-conect-btn">分享到line</button>
-                </div>
-              </div> -->
-            </div> 
+          </div> -->
+      </div> 
     </div>
   </div>
   <% end %>
@@ -39,3 +40,8 @@
  <!-- <div id="car-wrap">
   <at="<%= @articles_json %>rticle-list :lis"></article-list>
 </div>  -->
+
+<template id="tagSelect">
+    <select name="article[tag_list][]" multiple="multiple" class="form-control">
+    </select>
+</template>  
