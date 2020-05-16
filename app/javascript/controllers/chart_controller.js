@@ -1,12 +1,10 @@
 import { Controller } from "stimulus"
 import Rails from "@rails/ujs"
 
-export default class extends Controller {
-  // static targets = [ "articleId" ]
-  
+export default class extends Controller {  
   connect(){
     Rails.ajax({
-      url: `/charts/tagchart`, 
+      url: `api/v1/charts/tag`, 
       type: 'GET', 
       success: resp => {
         let tagLabels =  resp.tags.map(item => item["name"]);
