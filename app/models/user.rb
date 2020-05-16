@@ -22,14 +22,19 @@ class User < ApplicationRecord
     end
   end
 
-  # 照counter順序抓前5個
+
   def tag_chart
     all_tag = self.tags.select("name","counter")
   end
 
   def readed_chart
-    
-
+    read_record = self.articles
+                      .where(readed: true)
+                      .where("readed_at >= :beginning_of_week and 
+                              readed_at <= :end_of_week ",
+                              beginning_of_week: Time.current.beginning_of_week, 
+                              end_of_week: Time.current.end_of_week)
+                      .group("DATE(readed_at)").count            
   end
 
   private
