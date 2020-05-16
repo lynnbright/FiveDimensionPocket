@@ -1,106 +1,89 @@
 <h1>我的清單</h1>
-
-<div class="row" id="card-wrap">
-  <% @articles.each do |article| %>
-  <div class="card col-3" style="width:100%">
-    <div>
-      <%= link_to (image_tag(article.images[2], style:'width:100%', class:"card-img-top") if article.article_images.attached?), article_path(article.id) %>
-    </div>
-  
-    <div class="card-body">
-      <h5><%= link_to article.title, article_path(article.id), class:"card-title"  %></h5>
-      <p class="card-text"><%= article.title %></p>  
-      <div class="icon-bar" data-controller="tag">
-        <div data-controller="favorite">
-          <a class="card-btn" data-action="favorite#heart"><i class="far fa-heart" data-target="favorite.icon"></i></a>
-          <input type="hidden" name="" data-target="favorite.article_id" value="<%= article.id %>">
-        </div>
-        <div data-controller="read">
-          <a class="card-btn" data-action="read#check"><i class="far fa-book-open" data-target="read.icon"></i></a>
-          <input type="hidden" name="" data-target="read.article_id" value="<%= article.id %>">
-        </div>
-        <input type="hidden" data-target="tag.articleId" value="<%= article.id %>"> 
-        <a class="card-btn" data-action="tag#editTag"><i class="fas fa-tag"></i></a>
-          <a class="card-btn"><i class="fas fa-save"></i></a>
-          <!-- <div class="shared-btn-wrap">
-            <button class="card-btn shared-btn" @click="item.showSharedBar = !item.showSharedBar"><i class="fas fa-share-alt"></i></button>
-            <div v-if="item.showSharedBar" class="shared-bar">
-              <button class="shared-conect-btn">複製連結</button>
-              <button class="shared-conect-btn">分享到twitter</button>
-              <button class="shared-conect-btn">分享到facebook</button>
-              <button class="shared-conect-btn">分享到line</button>
-      <p class="card-text"><%= article.short_description %></p>  
-      <div class="icon-bar">
-            <div data-controller="favorite">
-              <a class="card-btn" data-action="favorite#heart"><i class="far fa-heart" data-target="favorite.icon"></i></a>
-              <input type="hidden" name="" data-target="favorite.article_id" value="<%= article.id %>">
-            </div>
-          </div> -->
-      </div> 
-            <div data-controller="read">
-              <a class="card-btn" data-action="read#check"><i class="far fa-check-square" data-target="read.icon"></i></a>
-              <input type="hidden" name="" data-target="read.article_id" value="<%= article.id %>">
-            </div>
-              <a class="card-btn"><i class="fas fa-tag"></i></a>
-              <a class="card-btn"><i class="fas fa-save"></i></a>
-              <div class="shared-btn-wrap">
-                <button class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></button>
-                <div class="shared-bar share-btn-collapse" style="background-color: pink;">
-                 
-                 <!-- 複製連結 -->
-                  
-                    <button class="shared-conect-btn">複製連結</button>
-                    <input type="hidden" class="copylink" value="<%= article.link %>">
-                  
-                   
-                  <!-- Load Facebook SDK for JavaScript -->
-                    <div id="fb-root"></div>
-                    <script>(function(d, s, id) {
-                      var js, fjs = d.getElementsByTagName(s)[0];
-                      if (d.getElementById(id)) return;
-                      js = d.createElement(s); js.id = id;
-                      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-                      fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));</script>
-
-                    <!-- Facebook share button code -->
-                    <div class="fb-share-button" 
-                      data-href="<%= article.link %>" 
-                      data-layout="button">
-                    </div>
-
-                    <!-- Load Twitter SDK for JavaScript -->
-                    <script>window.twttr = (function(d, s, id) {
-                      var js, fjs = d.getElementsByTagName(s)[0],
-                        t = window.twttr || {};
-                      if (d.getElementById(id)) return t;
-                      js = d.createElement(s);
-                      js.id = id;
-                      js.src = "https://platform.twitter.com/widgets.js";
-                      fjs.parentNode.insertBefore(js, fjs);
-                    
-                      t._e = [];
-                      t.ready = function(f) {
-                        t._e.push(f);
-                      };
-                    
-                      return t;
-                    }(document, "script", "twitter-wjs"));</script>
-
-                    <!-- Your share button code -->
-                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?url=<%= article.link %>">
-                      Tweet</a>
-
-                    <!-- Load LINE SDK for JavaScript -->
-                    <div class="line-it-button" data-lang="zh_Hant" data-type="share-a" data-ver="3" data-url="<%= article.link %>" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
-                    <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-                </div>
+<label for="test-input" class="mx-3"> 標題搜尋</label>
+<input id="test-input" type="text" placeholder="test test">
+<div class="container">
+  <div class="row cards-area" id="card-wrap">
+    <% @articles.each do |article| %>
+    <div class="card col-3 card-title-search" style="width:100%" data-title="<%= article.title %>">
+      <div>
+        <%= link_to (image_tag(article.images[2], style:'width:100%', class:"card-img-top") if article.article_images.attached?), article_path(article.id) %>
+      </div>
+    
+      <div class="card-body">
+        <h5>
+          <%= link_to article.title, article_path(article.id), class:"card-title card-title-search", data:{title: article.title} %>
+        </h5>
+        <p class="card-text"><%= article.short_description %></p>  
+        <div class="icon-bar" data-controller="tag">
+              <div data-controller="favorite">
+                <a class="card-btn" data-action="favorite#heart"><i class="far fa-heart" data-target="favorite.icon"></i></a>
+                <input type="hidden" name="" data-target="favorite.article_id" value="<%= article.id %>">
               </div>
-            </div> 
+              <div data-controller="read">
+                <a class="card-btn" data-action="read#check"><i class="far fa-check-square" data-target="read.icon"></i></a>
+                <input type="hidden" name="" data-target="read.article_id" value="<%= article.id %>">
+              </div>
+              <input type="hidden" data-target="tag.articleId" value="<%= article.id %>"> 
+              <a class="card-btn" data-action="tag#editTag"><i class="fas fa-tag"></i></a>
+                <a class="card-btn"><i class="fas fa-save"></i></a>
+                <div class="shared-btn-wrap">
+                  <button class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></button>
+                  <div class="shared-bar share-btn-collapse" style="background-color: pink;">
+                  
+                  <!-- 複製連結 -->
+                    
+                      <button class="shared-conect-btn">複製連結</button>
+                      <input type="hidden" class="copylink" value="<%= article.link %>">
+                    
+                    
+                    <!-- Load Facebook SDK for JavaScript -->
+                      <div id="fb-root"></div>
+                      <script>(function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+                        fjs.parentNode.insertBefore(js, fjs);
+                      }(document, 'script', 'facebook-jssdk'));</script>
+
+                      <!-- Facebook share button code -->
+                      <div class="fb-share-button" 
+                        data-href="<%= article.link %>" 
+                        data-layout="button">
+                      </div>
+
+                      <!-- Load Twitter SDK for JavaScript -->
+                      <script>window.twttr = (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0],
+                          t = window.twttr || {};
+                        if (d.getElementById(id)) return t;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "https://platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                      
+                        t._e = [];
+                        t.ready = function(f) {
+                          t._e.push(f);
+                        };
+                      
+                        return t;
+                      }(document, "script", "twitter-wjs"));</script>
+
+                      <!-- Your share button code -->
+                      <a class="twitter-share-button" href="https://twitter.com/intent/tweet?url=<%= article.link %>">
+                        Tweet</a>
+
+                      <!-- Load LINE SDK for JavaScript -->
+                      <div class="line-it-button" data-lang="zh_Hant" data-type="share-a" data-ver="3" data-url="<%= article.link %>" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
+                      <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+                  </div>
+                </div>
+              </div> 
+      </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
 
 
 <template id="tagSelect">
