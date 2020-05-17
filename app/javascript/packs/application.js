@@ -35,21 +35,4 @@ $(document).on('turbolinks:load', function(){
     $this.removeClass('d-flex').addClass('d-none');
     $this.siblings('.loading').removeClass('d-none').addClass('d-inline-block')
   });
-
-
-  //標題搜尋
-  $('#test-input').on('change paste keyup', function(){
-      let value = $(this).val();
-      if(!value){
-        // $('.title-search-style').html('');
-        $('.title-search-style').html('');
-      }
-      else{
-        searchCandidate(value); 
-      }
-      
-      function searchCandidate(value){
-        $('.title-search-style').html('.container .cards-area .card-title-search:not([data-title *="' + value + '"]) { display: none }');
-      }
-    })
 });
