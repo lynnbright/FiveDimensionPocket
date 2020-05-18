@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   # 圖表
   get "/charts", to: "charts#index"
 
+  # 搜尋
+  get "/search", to: "searches#search_articles"
+
   # APIs
   #內部 api 路徑
   namespace :api do

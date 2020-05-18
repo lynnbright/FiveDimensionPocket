@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :tags
   has_many :articles
   has_many :follow_lists
+  has_many :searches
   has_one_attached :avatar
 
 

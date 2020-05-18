@@ -26,11 +26,15 @@
       <button class="nav-btn close-btn" @click="showAddBar = false"><i class="fas fa-times"></i></button>
     </div>
     <button class="nav-btn" @click="showSearchBar = true"><i class="fas fa-search"></i></button>
-    <div v-if="showSearchBar" class="nav-search">
-      <input id="search-input" type="text" placeholder="請輸入搜尋文字">
-      <button class="nav-btn submit-btn">送出</button>       
+    <!-- <div v-if="showSearchBar" class="nav-search"> -->
+      <%= form_for :search, url: search_path, method: 'get' do |f| %>
+        <%= f.text_field :search_input, placeholder: '搜尋文章' %>
+        <%= f.submit "搜尋", class: 'nav-btn submit-btn' %>
+      <% end %>
+      <!-- <input id="search-input" type="text" placeholder="本頁文章搜尋">
+      <button class="nav-btn submit-btn">送出</button>        -->
       <button class="nav-btn close-btn" @click="showSearchBar = false"><i class="fas fa-times"></i></button>
-    </div>
+    <!-- </div> -->
     <a class="nav-link" href="/">探索</a>
     <a class="nav-link" href="/">成就</a>
     <div class="user" @click="showUserBar = !showUserBar">
