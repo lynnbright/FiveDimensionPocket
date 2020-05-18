@@ -35,7 +35,7 @@ class Article < ApplicationRecord
       user_tag = user.tags.find_by(name: selected_tag)
       if user_tag
         article_tag = self.tags.find_by(id: user_tag.id)
-        # 如果選項在article.tag沒有，新增關聯counter++
+        # 如果選項在article.tag沒有，新增關聯，counter++
         if article_tag.nil?
           self.tags << user_tag
           user_tag.increment!(:counter)

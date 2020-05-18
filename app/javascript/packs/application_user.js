@@ -10,4 +10,11 @@ window.$ = $
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+import 'chart.js'
+import 'chart.js/dist/Chart.css'
+
+import Chart from 'chart.js'
+window.Chart = Chart
+
 import "@fortawesome/fontawesome-free/js/all"
+

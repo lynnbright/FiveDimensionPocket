@@ -15,10 +15,15 @@ Rails.application.routes.draw do
     unauthenticated do
       root to: 'devise/sessions#new', as: 'unauthenticated_root'
     end
-  end
+  end 
  
+
   #新增文章的路徑
   resources :articles
+
+  # 圖表
+  get "/charts", to: "charts#index"
+
   # APIs
   namespace :api do
     namespace :v1 do
@@ -31,6 +36,13 @@ Rails.application.routes.draw do
           get  :tags, to: 'articles#get_tags'
         end   
       end
+      resource :charts, only: [] do
+        member do                  
+          get :tag
+          get :readed
+        end  
+      end     
     end
   end
+
 end
