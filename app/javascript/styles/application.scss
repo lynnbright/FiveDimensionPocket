@@ -17,6 +17,7 @@ a {
 }
 
 //single_page_article CSS
+//msgoogle player
 .msgoogle p{
   margin: 0;
   color: #0B032D
@@ -24,6 +25,17 @@ a {
 .msgoogle a:hover{
   text-decoration: none;
 }
+
+//查看原始文章
 .single_article_website a{
   color:#1eabf9;
+}
+
+//標籤
+.badge{
+  font-size: 90%;
+}
+
+.badge-secondary{
+  opacity: 0.5;
 }
