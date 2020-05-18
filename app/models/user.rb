@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :articles
   has_many :follow_lists
   has_many :user_last_articles
+  has_many :searches
   has_one_attached :avatar
   # 產生亂數的token
   has_secure_token :auth_token

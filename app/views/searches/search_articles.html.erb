@@ -1,0 +1,9 @@
+<h1>搜尋結果</h1>
+
+
+<%= form_for :search do |s| %>
+  <% @search_results.each do |result| %>
+    <div><h3><%= result.title %></h3></div>
+    <%= result.short_description %>
+  <% end %> 
+<% end %>

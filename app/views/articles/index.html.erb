@@ -6,7 +6,7 @@
       <div class="col-12 col-md-4 mt-2 mb-2">
         <div class="card for-article h-100 " data-title="<%= article.title %>">
           <div>
-            <%= link_to (image_tag(article.images[2],  size:'300x200', class:"card-img-top") if article.article_images.attached?), article_path(article.id) %>
+            <%= link_to (image_tag(article.last,  size:'300x200', class:"card-img-top") if article.article_images.attached?), article_path(article.id) %>
           </div>
           <div class="card-body">
             <h5>
