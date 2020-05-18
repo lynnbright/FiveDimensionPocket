@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get "/search", to: "searches#search_articles"
 
 
+  # APIs
   #內部 api 路徑
   namespace :api do
     namespace :v1 do
