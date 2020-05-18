@@ -19,10 +19,11 @@
 * Ruby version：2.6.5
 * Language: Ruby
 * Framework: Ruby On Rails
-* Front-End: HTML/CSS/Javascript/jQuery, Webpack, Vue.js, Bootstrap, axios
-* Third-Party Serivce: Google API, Facebook API, EXTRACTOR API
+* Front-End: HTML/CSS/Javascript/jQuery, Webpack, Bootstrap, axios
+* Third-Party Serivce: Google API, Facebook API, EXTRACTOR API, Google Text-to-Speech API
 * Database: Postgresql
-* Gem: Devise, HTTParty, figaro
+* Gem: Devise, HTTParty, figaro, foreman
+* Package: Chart.js, Select2, Sweetalert
 
 ## 安裝注意事項
 ### 須將sample副檔名拿掉，並填入對應金鑰及資料庫設定
