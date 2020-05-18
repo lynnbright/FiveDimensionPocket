@@ -50,6 +50,9 @@ Rails.application.routes.draw do
   # 搜尋
   get "/search", to: "searches#search_articles"
 
+  # 搜尋
+  get "/search", to: "searches#search_articles"
+
   # APIs
   #內部 api 路徑
   #api
