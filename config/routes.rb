@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get "/charts", to: "charts#index"
 
   # APIs
+  #內部 api 路徑
   namespace :api do
     namespace :v1 do
       resources :articles, only: [] do
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
           post :public
           post :tags, to: 'articles#tags'
           get  :tags, to: 'articles#get_tags'
+          post :create_speech
         end   
       end
       resource :charts, only: [] do

@@ -3,12 +3,14 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("styles")
+require("articles_sharebtn")
 
 import $ from 'jquery'
-window.$ = $
+window.$ = window.jquery = $
 
 import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 import "@fortawesome/fontawesome-free/js/all"
 
@@ -25,3 +27,12 @@ import Chart from 'chart.js'
 window.Chart = Chart
 
 import "controllers"
+$(document).on('turbolinks:load', function(){
+
+  //text-to-speech player 顯示
+  $('#js-create-speech').click(function() {
+    let $this = $(this);
+    $this.removeClass('d-flex').addClass('d-none');
+    $this.siblings('.loading').removeClass('d-none').addClass('d-inline-block')
+  });
+});

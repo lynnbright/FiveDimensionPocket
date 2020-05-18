@@ -1,10 +1,14 @@
 require 'open-uri'
+require 'base64'
 
 class Article < ApplicationRecord
   has_many :article_tags
   has_many :tags, through: :article_tags
   belongs_to :user
   has_many_attached :article_images
+  
+  validates :content, presence: true
+  validates :link, presence: true
 
   #拿到存到本地端後的圖片位址
   def images

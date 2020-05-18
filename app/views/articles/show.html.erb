@@ -1,0 +1,37 @@
+<a href="#"><h2 class="ml-5"><i class="fas fa-arrow-left" onclick="history.back()"></i></h2></a>  
+
+<div class="container">
+    <div class="row col-12 justify-content-center mx-auto">
+      <div class="single_article_info">
+        <div class="single_article_title">
+          <h1><%= @article.title %></h1>
+        </div>
+        <div class="single_article_detail">
+          <div class="msgoogle row mt-5 mb-3 justify-content-center align-items-center">
+              <div class="loading d-none">讀取中...</div>
+              
+              <% if @article.encode_string != nil %>
+                <audio id="js-speech-player" src="data:audio/mpeg;base64,<%= @article.encode_string %>" controls></audio>
+              <% else %>
+                <%= link_to create_speech_api_v1_article_path(@article.id), method: 'post', remote: true, class:'px-2 d-flex justify-content-center align-content-center', id: 'js-create-speech' do %>
+                  <i class="fas fa-volume-down" style="font-size: 60px;"></i>唸給你聽
+                <% end %>
+                <audio id="js-speech-player" class="d-none" src="###" controls></audio>
+              <% end %>
+          </div>
+          <div class="single_article_website row justify-content-center">
+            <p class="px-3">文章來源：<%= @article.domain %> </p>
+            <a href="<%= @article.link %>" target="_blank">查看原始文章</a>
+          </div>
+          <div class="single_article_tags">
+          </div>
+        </div>
+      </div>
+      <div class="single_article_cover w-100">
+        <img src="<%= @article.images[2] %>" alt="" width="100%">
+      </div>
+      <article class="my-5">
+        <%= @article.clean_content.html_safe %>
+      </article>
+    </div>
+</div>

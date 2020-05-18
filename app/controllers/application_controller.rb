@@ -18,5 +18,4 @@ class ApplicationController < ActionController::Base
     @articles = Article.all
   end
 
-  #補登入 check 
 end

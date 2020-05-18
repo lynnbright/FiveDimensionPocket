@@ -91,6 +91,7 @@
   position: absolute;
   bottom: 100%;
   right: 100%;
+  padding: 10px;
 }
 
 .col-md-1 {
