@@ -6,7 +6,7 @@
   transition: opacity 0.2s;
 
   &.show {
-    left: unset;
+    right: unset;
     opacity: 1;
   }
 }
