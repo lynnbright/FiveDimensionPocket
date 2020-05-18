@@ -15,12 +15,10 @@ class ArticlesController < ApplicationController
     create_article()
   end
 
-
   private
   def url_params
     params.require(:article).permit(:link, article_images: []) 
   end
-
 
   def create_article
     response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=e3e6d4d35cbf7ecc564ed3d42fca87a75cc242dc&url=#{url_params[:link]}&fields=domain,title,author,date_published,images,videos,clean_html")

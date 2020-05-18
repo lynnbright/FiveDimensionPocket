@@ -43,6 +43,9 @@ Rails.application.routes.draw do
   # 探索
   get "/explores", to: "explores#index"
 
+  # 搜尋
+  get "/search", to: "searches#search_articles"
+
   # APIs
   #內部 api 路徑
   #api
