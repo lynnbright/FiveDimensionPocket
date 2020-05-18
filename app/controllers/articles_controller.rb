@@ -12,7 +12,6 @@ class ArticlesController < ApplicationController
 
 
   def create
-    response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=#{ENV['extractor_key']}&url=#{url_params[:link]}&fields=domain,title,author,date_published,images,videos,clean_html")
     create_article()
   end
 

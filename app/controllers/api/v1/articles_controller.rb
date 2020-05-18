@@ -59,7 +59,7 @@ class Api::V1::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     response = HTTParty.post("https://texttospeech.googleapis.com/v1/text:synthesize",
         :headers => {
-          "x-goog-api-key" => "AIzaSyBZhcuNoTSKq2Pmp8G-Mt50f92ga1nPuXo",
+          "x-goog-api-key" => "#{ENV['x-goog-api-key']}",
           "content-type" => "application/json; charset=utf-8",
         },
         :body => {
