@@ -26,7 +26,12 @@
 
 ## 安裝注意事項
 ### 須將sample副檔名拿掉，並填入對應金鑰及資料庫設定
-* FiveDimensionPocket/config/database.yml.sample
-* FiveDimensionPocket/config/application.yml.sample
-* FiveDimensionPocket/config/initializers/devise.rb.sample
+* FiveDimensionPocket/config/database.yml.sample (資料庫連線設定)
+* FiveDimensionPocket/config/application.yml.sample 
+  * google_client_id: [第三方登入 Google 金鑰]
+  * google_client_secret: [第三方登入 Google 金鑰]
+  * facebook_client_id: [第三方登入 Fb 金鑰]
+  * facebook_client_secret: [第三方登入 Fb 金鑰]
+  * extractor_key: [Extractor 文章擷取 API 金鑰]
+  * x-goog-api-key: [Google Cloud Plateform 金鑰]
   
