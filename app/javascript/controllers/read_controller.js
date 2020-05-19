@@ -14,7 +14,6 @@ export default class extends Controller {
     axios.post(`/api/v1/articles/${article_id}/readed`)
          .then((response) => {
           let result = response.data.status
-          console.log(result)
             if (result === 'readed'){
               this.iconTarget.classList.remove('far');
               this.iconTarget.classList.add('fas');

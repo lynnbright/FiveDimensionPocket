@@ -1,5 +1,4 @@
 require 'open-uri'
-require 'base64'
 
 class Article < ApplicationRecord
   has_many :article_tags
