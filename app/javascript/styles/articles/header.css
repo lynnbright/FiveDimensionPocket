@@ -1,0 +1,99 @@
+.displaynone {
+  display: none;
+}
+.NavBar {
+  position: fixed;
+  z-index: 1;
+  background-color: #0B032D;
+  width: 100%;
+}
+.Block {
+  width: auto;
+  height: 63px;
+  padding: 0px 20px 0px 30px;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+button {
+  background-color: #0B032D;
+  color: white;
+  border-color: #0B032D;
+}
+.User {
+  display: inline;
+}
+.LogoAndBurger {
+  display: flex;
+  align-items: center;
+}
+.Burger {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+.BurgerBar {
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  border-radius: 5px;
+  transition: all .5s ease-in-out;
+}
+.BurgerBar::before,
+.BurgerBar::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background: white;
+  border-radius: 5px;
+  transition: all .5x ease-in-out;
+}
+.BurgerBar::before {
+  transform: translateY(-10px);
+}
+.BurgerBar::after {
+  transform: translateY(10px);
+}
+.Search {
+  display: inline-block;
+}
+.Plus {
+  display: inline-block;
+}
+.PlusBlock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0B032D;
+  width: 100%;
+  height: 63px;
+  text-align: center;
+  align-items: center;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+.SearchBlock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0B032D;
+  width: 100%;
+  height: 63px;
+  text-align: center;
+  align-items: center;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+form {
+  display: inline;
+}
+

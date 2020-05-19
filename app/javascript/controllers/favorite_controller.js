@@ -3,7 +3,6 @@ import Rails from "@rails/ujs"
 import axios from "axios"
 
 
-
 export default class extends Controller {
   static targets = [ "icon", "article_id" ]
 
