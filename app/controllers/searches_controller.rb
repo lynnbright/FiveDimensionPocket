@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
   def search_articles
     @search = Search.new
-    @search_results = current_user.articles.where("title LIKE '%#{params[:search][:search_input]}%'")
+    @search_results = current_user.articles.where("title ILIKE ?", "%#{params[:search][:search_input]}%").with_attached_article_images
   end
 
   private

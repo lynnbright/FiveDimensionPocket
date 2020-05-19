@@ -2,8 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @articles_solve_nplus1 = Article.with_attached_article_images   #解決 N+1 問題
-    @articles = current_user.articles.order(id: :desc)
+    @articles = current_user.articles.order(id: :desc).with_attached_article_images
   end
 
   def show
