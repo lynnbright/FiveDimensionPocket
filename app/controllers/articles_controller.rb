@@ -15,7 +15,9 @@ class ArticlesController < ApplicationController
     short_description = response_hash['text'].split('').first(50).join('')
     
     #萃取出 og:image 圖片位址
-    meta_ogimage = response_hash['html'].gsub!(/\"/, '\'').match(/<meta.*property='og:image'.*content='(.*)'.*\/>/).to_s
+    # byebug
+    # meta_ogimage = response_hash['html'].gsub(/\"/, '\'').match(/<meta.*property='og:image'.*content='(.*)'.*/).to_s
+    meta_ogimage = response_hash['html'].gsub(/\"/, '\'').match(/<meta(?: [^>]+)? property='og:image'[^>]*>/).to_s
     ogimage_address = meta_ogimage.match(/(?<=content=').*(\.png|\.jpg)/).to_s  #"https://xxxx... .jpg"
    
     #萃取出 clean_html 的 <p>內文</p> 區塊
@@ -29,7 +31,7 @@ class ArticlesController < ApplicationController
         title: response_hash['title'],
         content: response_hash['text'],
         domain: response_hash['domain'],
-        images: response_hash['images'] << ogimage_address ,
+        images: response_hash['images'] << ogimage_address,
         # og_image: "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg",
         clean_html: clean_html,
         clean_content: clean_content,
