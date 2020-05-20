@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_05_15_163022) do
-=======
-ActiveRecord::Schema.define(version: 2020_05_19_044957) do
->>>>>>> #133 新增探索用的使用者最新三篇公開文章關聯表，及在文章資料表新增公開時間欄位
-=======
 ActiveRecord::Schema.define(version: 2020_05_20_090425) do
->>>>>>> #135 文章的已讀最愛公開欄位預設為false，公開跟已讀的欄位名稱修改
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
