@@ -26,7 +26,8 @@ class Article < ApplicationRecord
         if e.message == '404 Not Found'
           { io: open("https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg"), filename: 'image.jpg' }
         end
-      rescue Errno::ENOENT  #找到真正原因前，暫時用 rescue
+      rescue Errno::ENOENT
+        puts '此文無 og:image meta tag'
         { io: open("https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg"), filename: 'image.jpg' }
       rescue URI::InvalidURIError  #找到真正原因前，暫時用 rescue
         { io: open("https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg"), filename: 'image.jpg' }
