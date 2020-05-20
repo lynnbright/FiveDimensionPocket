@@ -8,6 +8,7 @@ class Api::V1::AuthenticationController < ApiController
       render json: { message: 'invalid user email or password'}, status: 401
     end
   end
+  
   def logout
     current_user.regenerate_auth_token
     render json: { message: 'you have been logged out'}, status: 200

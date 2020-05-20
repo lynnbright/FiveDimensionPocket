@@ -19,11 +19,11 @@ $('document').ready( () => {
   $('.User').click( () => {
     $('.UserList').toggleClass('displaynone')
   })
-  $('.RootSideBarClose').click( () => {
-    $('.RootSideBar').addClass('displaynone')
-  })
   $('.UserListBlock').click( e => {
     e.stopPropagation();
+  })
+  $('.RootSideBarClose').click( () => {
+    $('.RootSideBar').addClass('displaynone')
   })
 })
 
