@@ -4,7 +4,7 @@
     <% @favorite_articles.each do |article| %>
     <div class="card col-3" style="width:100%">
       <div class="card-img">
-        <%= link_to (image_tag(article.images[2], style:'width:100%', class:"card-img-top") if article.article_images.attached?), article_path(article.id) %>
+        <%= link_to (image_tag(article.images.last, style:'width:100%', class:"card-img-top") if article.article_images.attached?), article_path(article.id) %>
       </div>
     
       <div class="card-body">
