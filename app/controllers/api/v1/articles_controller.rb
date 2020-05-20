@@ -33,6 +33,36 @@ class Api::V1::ArticlesController < ApplicationController
     end
   end
 
+  def published
+    article = Article.find(params[:id])
+    
+    if article.published == false
+      article.published = true
+      article.published_at = Time.now
+      article.save
+      if current_user.user_last_articles.count >= 3       
+        current_user.user_last_articles.order(:created_at).first.destroy      
+      end
+      UserLastArticle.create(user_id: article.user_id, article_id: article.id)
+      render json: { status: 'published'}
+
+    else
+      article.published = false
+      article.published_at = nil
+      article.save
+      in_last_articles = current_user.user_last_articles.find_by(article_id: article.id)
+      if in_last_articles 
+        current_user.user_last_articles.destroy_all
+        last_articles = current_user.articles.where(published: true).order(published_at: :desc).limit(3)
+        last_articles.each do | last_article |
+          UserLastArticle.create(user_id: current_user.id, article_id: last_article.id)
+        end
+      end
+      
+      render json: { status: 'private'}
+    end
+  end
+
   def tags
     user_id = current_user.id
     selected_tags = JSON.parse(tags_params[:list_tag])
