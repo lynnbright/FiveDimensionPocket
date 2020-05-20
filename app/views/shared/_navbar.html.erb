@@ -30,15 +30,9 @@
       <input id="search-input" type="text" placeholder="請輸入搜尋文字">
       <button class="nav-btn submit-btn">送出</button>       
       <button class="nav-btn close-btn" @click="showSearchBar = false"><i class="fas fa-times"></i></button>
-    <!-- </div> -->
-    <a class="nav-link" href="/">探索</a>
-    <a class="nav-link" href="/">成就</a>
-    <div class="user" @click="showUserBar = !showUserBar">
-      <a class="user-link" href="/" @click.prevent>
         <%= image_tag((current_user.avatar_thumbnail), class: 'user-link-img')%>
       </a>
       <div v-if="showUserBar" class="user-bar" @click.stop>
-        <div class="user-info">
           <div class="user-img-wrap">
             <%= image_tag((current_user.avatar_thumbnail), class: 'user-img')%>
           </div>

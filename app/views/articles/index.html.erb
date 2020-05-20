@@ -44,41 +44,45 @@
                         fjs.parentNode.insertBefore(js, fjs);
                       }(document, 'script', 'facebook-jssdk'));</script>
 
-                      <!-- Facebook share button code -->
-                      <div class="fb-share-button" 
-                        data-href="<%= article.link %>" 
-                        data-layout="button">
-                      </div>
-
-                      <!-- Load Twitter SDK for JavaScript -->
-                      <script>window.twttr = (function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0],
-                          t = window.twttr || {};
-                        if (d.getElementById(id)) return t;
-                        js = d.createElement(s);
-                        js.id = id;
-                        js.src = "https://platform.twitter.com/widgets.js";
-                        fjs.parentNode.insertBefore(js, fjs);
-                      
-                        t._e = [];
-                        t.ready = function(f) {
-                          t._e.push(f);
-                        };
-                      
-                        return t;
-                      }(document, "script", "twitter-wjs"));</script>
-
-                      <!-- Your share button code -->
-                      <a class="twitter-share-button" href="https://twitter.com/intent/tweet?url=<%= article.link %>">
-                        Tweet</a>
-
-                      <!-- Load LINE SDK for JavaScript -->
-                      <div class="line-it-button" data-lang="zh_Hant" data-type="share-a" data-ver="3" data-url="<%= article.link %>" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
-                      <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-                  </div>
-                </div>
-              </div> 
-      </div>
+<div class="row">
+  <% @articles.each do |article| %>
+  <div class="card col-3">
+    <a href="<%= article.link %>" target="_blank">
+       <%= image_tag(article.images[2], size:'300x200') if article.article_images.attached? %>
+    </a>
+    <div class="card-body">
+      <a href="<%= article.link %>" target="_blank" class="card-text"><%= article.domain %></a>
+      <a href="<%= article.link %>" target="_blank"><h5 class="card-title"><%= article.title %></h5></a>
+      <p class="card-text"><%= article.title %></p>  
+      <div class="icon-bar" data-controller="tag publish">
+        <span data-controller="favorite">
+          <a class="card-btn" data-action="favorite#heart"><i class="far fa-heart" data-target="favorite.icon"></i></a>
+          <input type="hidden" name="" data-target="favorite.article_id" value="<%= article.id %>">
+        </span>
+        <span data-controller="read">
+          <a class="card-btn" data-action="read#check"><i class="far fa-book-open" data-target="read.icon"></i></a>
+          <input type="hidden" name="" data-target="read.article_id" value="<%= article.id %>">
+        </span>
+        <input type="hidden" data-target="tag.articleId publish.articleId" value="<%= article.id %>"> 
+        <a class="card-btn" data-action="tag#editTag"><i class="fas fa-tag"></i></a>
+        <a class="card-btn" data-action="publish#check">
+          <% if article.published == true %>
+            <i class="fas fa-unlock-alt" data-target="publish.icon"></i>
+          <% else %>
+            <i class="fas fa-lock" data-target="publish.icon"></i>
+          <% end %>
+        </a>
+        
+          <!-- <div class="shared-btn-wrap">
+            <button class="card-btn shared-btn" @click="item.showSharedBar = !item.showSharedBar"><i class="fas fa-share-alt"></i></button>
+            <div v-if="item.showSharedBar" class="shared-bar">
+              <button class="shared-conect-btn">複製連結</button>
+              <button class="shared-conect-btn">分享到twitter</button>
+              <button class="shared-conect-btn">分享到facebook</button>
+              <button class="shared-conect-btn">分享到line</button>
+            </div>
+          </div> -->
+      </div> 
     </div>
     <% end %>
   </div>

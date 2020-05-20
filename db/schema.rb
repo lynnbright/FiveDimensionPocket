@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_05_15_163022) do
+=======
+ActiveRecord::Schema.define(version: 2020_05_19_044957) do
+>>>>>>> #133 新增探索用的使用者最新三篇公開文章關聯表，及在文章資料表新增公開時間欄位
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_163022) do
     t.string "clean_content"
     t.string "short_description"
     t.string "encode_string"
+    t.boolean "published"
+    t.boolean "published_at"
     t.index ["deleted_at"], name: "index_articles_on_deleted_at"
   end
 
@@ -93,6 +99,15 @@ ActiveRecord::Schema.define(version: 2020_05_15_163022) do
     t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
+  create_table "user_last_articles", force: :cascade do |t|
+    t.bigint "article_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_user_last_articles_on_article_id"
+    t.index ["user_id"], name: "index_user_last_articles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -118,4 +133,6 @@ ActiveRecord::Schema.define(version: 2020_05_15_163022) do
   add_foreign_key "follow_lists", "users"
   add_foreign_key "follow_lists", "users", column: "followed_user_id"
   add_foreign_key "tags", "users"
+  add_foreign_key "user_last_articles", "articles"
+  add_foreign_key "user_last_articles", "users"
 end
