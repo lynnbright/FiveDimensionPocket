@@ -43,7 +43,6 @@ class ArticlesController < ApplicationController
     @favorite_articles = current_user.articles.where(favorite: true)
   end
 
-
   private
   def url_params
     params.require(:article).permit(:link, article_images: []) 
