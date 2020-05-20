@@ -18,8 +18,13 @@ Rails.application.routes.draw do
   end 
  
 
-  #新增文章的路徑
-  resources :articles
+   #新增文章、我的最愛頁面路徑
+   resources :articles do
+    collection do 
+      get :favorites
+      get :readed
+    end
+  end
 
   # 圖表
   get "/charts", to: "charts#index"
