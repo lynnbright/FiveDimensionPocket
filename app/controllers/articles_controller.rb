@@ -50,9 +50,4 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:link, :og_image, article_images: []) 
   end
 
-  private
-  def url_params
-    params.require(:article).permit(:link, article_images: []) 
-  end
-
 end
