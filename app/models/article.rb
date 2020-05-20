@@ -6,6 +6,7 @@ class Article < ApplicationRecord
   belongs_to :user
   belongs_to :search, optional: true
   has_many_attached :article_images
+  has_one_attached :og_image
   
   validates :content, presence: true
   validates :link, presence: true
