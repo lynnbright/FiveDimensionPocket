@@ -9,7 +9,7 @@ export default class extends Controller {
     e.preventDefault();    
     let articleId = this.articleIdTarget.value 
     Rails.ajax({
-      url: `/api/v1/articles/${articleId}/published`, 
+      url: `/api/v1/articles/${articleId}/publish`, 
       type: 'POST', 
       success: resp => { 
         let status = resp.status;

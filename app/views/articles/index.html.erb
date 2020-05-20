@@ -65,7 +65,7 @@
         </a>
 
         <a class="card-btn" data-action="read#check">
-          <% if article.readed == true %>
+          <% if article.read == true %>
             <i class="fas fa-book-open" data-target="read.icon"></i>
           <% else %>
             <i class="far fa-book-open" data-target="read.icon"></i>
@@ -74,7 +74,7 @@
         
         <a class="card-btn" data-action="tag#editTag"><i class="fas fa-tag"></i></a>
         <a class="card-btn" data-action="publish#check">
-          <% if article.published == true %>
+          <% if article.publish == true %>
             <i class="fas fa-unlock-alt" data-target="publish.icon"></i>
           <% else %>
             <i class="fas fa-lock" data-target="publish.icon"></i>

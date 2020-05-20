@@ -11,10 +11,10 @@ export default class extends Controller {
     e.preventDefault();
     
     let articleId = this.articleIdTarget.value 
-    axios.post(`/api/v1/articles/${articleId}/readed`)
+    axios.post(`/api/v1/articles/${articleId}/read`)
          .then((response) => {
           let result = response.data.status
-            if (result === 'readed'){
+            if (result === 'read'){
               this.iconTarget.classList.remove('far');
               this.iconTarget.classList.add('fas');
             } else{
