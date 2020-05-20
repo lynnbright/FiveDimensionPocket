@@ -10,13 +10,10 @@ class ArticlesController < ApplicationController
   end
 
   def create
-<<<<<<< HEAD
     service = ArticleSendApiService.new(url_params[:link])
     result = service.perform
 
   def create_article
-=======
->>>>>>> 刪除不必要的 code
     response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=e3e6d4d35cbf7ecc564ed3d42fca87a75cc242dc&url=#{url_params[:link]}&fields=domain,title,author,date_published,images,videos,clean_html")
     response_hash = JSON.parse(response.body)
     clean_html = response_hash['clean_html'].gsub!(/\"/, '\'') || 'null'
