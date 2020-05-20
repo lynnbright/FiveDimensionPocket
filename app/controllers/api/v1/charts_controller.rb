@@ -7,10 +7,10 @@ class Api::V1::ChartsController < ApplicationController
     render json: {tags: tags}
   end
 
-  def readed
+  def read
     user = User.find_by(id: current_user.id)
-    readed = user.readed_chart
-    render json: {readed: readed}
+    read = user.read_chart
+    render json: {read: read}
   end
 
 end

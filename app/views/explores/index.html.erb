@@ -12,44 +12,47 @@
       </div>
     </div>
     <div class="explore-block">
-      <% @Userlast.each do |last| %>
+      <% @Users.each do |user| %>
       <div class="container">
         <div class="row">
-            <img src="https://picsum.photos/id/25/50" alt="" class="rounded-circle">
+          <%= image_tag((user.avatar_thumbnail), class: 'rounded-circle')%>
           <div class="user-name">
-            <a href="#"><%= last.article.user.name %></a>
+            <a href="#"><%= user.name %></a>
           </div>
-            <button class="btn btn-outline-primary">follow</button>
+          <button class="btn btn-outline-primary">follow</button>
         </div>
       </div>
+      <% user.user_last_articles.each do |record| %>
       <div class="container">
         <div class="row">
           <div class="card col-12 col-md-4">
             <a href="#">
-              <%= image_tag(last.article.images[2], size:'300x200',class: "card-img-top") if last.article.article_images.attached?  %>
+              <%= image_tag(record.article.images[2], size:'300x200',class: "card-img-top") if record.article.article_images.attached?  %>
             </a>
             <div class="card-body">
+              <p class="card-text"><%= record.article.title %></p>
               <a href="#">
-                <div>                  
-                  <a href="<%= last.article.link %>" target="_blank"><h5 class="card-title"><%= last.article.title %></h5></a> 
+                <div>
+                  <a href="<%= last.article.link %>" target="_blank">
+                    <h5 class="card-title"><%= record.article.title %></h5>
+                  </a>
                 </div>
               </a>
-              <a href="<%= last.article.link %>" target="_blank" class="card-text"><%= last.article.domain %></a>
-              <p class="card-text"><%= last.article.title %></p> 
+              <a href="<%= record.article.link %>" target="_blank" class="card-text"><%= last.article.domain %></a>
+              <p class="card-text"><%= last.article.title %></p>
               <a href="#" class="btn btn-primary"><i class="fas fa-save"></i></a>
             </div>
-
-            <div data-controller="explore">
-              <input type="hidden" data-target="explore.articleId" value="<%= last.article.id %>"> 
-              <a><i class="fas fa-save" data-action="explore#saveArticle"></i></a>
-              <a data-action="explore#saveArticle">分享文章</a>              
-            </div> 
-
+            <div class="card-footer">
+              <div class="icon-bar" data-controller="explore">
+                <input type="hidden" data-target="explore.articleId" value="<%= record.article.id %>">
+                <a class="card-btn"><i class="fas fa-save" data-action="explore#saveArticle"></i></a>
+                <a class="card-btn" data-action="explore#saveArticle">分享文章</a>
+              </div>
+            </div>
             <div class="bottom-line"></div>
-          </div>  
+          </div>
         </div>
       </div>
       <% end %>
+      <% end %>
     </div>
-  </div>
-</body>

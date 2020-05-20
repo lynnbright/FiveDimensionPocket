@@ -11,10 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_05_15_163022) do
 =======
 ActiveRecord::Schema.define(version: 2020_05_19_044957) do
 >>>>>>> #133 新增探索用的使用者最新三篇公開文章關聯表，及在文章資料表新增公開時間欄位
+=======
+ActiveRecord::Schema.define(version: 2020_05_20_090425) do
+>>>>>>> #135 文章的已讀最愛公開欄位預設為false，公開跟已讀的欄位名稱修改
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,9 +57,9 @@ ActiveRecord::Schema.define(version: 2020_05_19_044957) do
     t.text "content"
     t.string "title"
     t.string "link"
-    t.boolean "favorite"
-    t.boolean "readed"
-    t.datetime "readed_at"
+    t.boolean "favorite", default: false
+    t.boolean "read", default: false
+    t.datetime "read_at"
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -65,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_05_19_044957) do
     t.string "clean_content"
     t.string "short_description"
     t.string "encode_string"
-    t.boolean "published"
+    t.boolean "publish", default: false
     t.boolean "published_at"
     t.index ["deleted_at"], name: "index_articles_on_deleted_at"
   end
