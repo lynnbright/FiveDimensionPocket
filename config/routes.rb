@@ -19,10 +19,9 @@ Rails.application.routes.draw do
  
 
    #新增文章、我的最愛頁面路徑
-   resources :articles do
+  resources :articles do
     collection do 
       get :favorites
-      get :readed
     end
   end
 
