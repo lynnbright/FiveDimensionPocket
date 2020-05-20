@@ -1,6 +1,6 @@
 <body>
   <div class="nav-behide-space"></div>
-  <nav id="nav" class="nav"> 
+  <nav id="nav" class="nav">
     <div class="burger" @click="showAside = !showAside">
       <i class="fas fa-bars"></i>
     </div>
@@ -12,7 +12,7 @@
         <a class="aside-link" href="#"><i class="fas fa-book-open"></i> 已公開清單</a>
       </div>
     </div>
-  
+
     <div class="nav-logo">
       <a class="nav-logo-icon" href="#"><i class="fas fa-envelope-open"></i></a>
     </div>
@@ -20,32 +20,37 @@
     <button class="nav-btn" @click="showAddBar = true"><i class="fas fa-plus"></i></button>
     <div v-if="showAddBar" class="nav-add">
       <%= form_for @article, url: articles_path, method:'post' do |f| %>
-        <%= f.text_field :link, placeholder: '新增連結 url https://...' %>
-        <%= f.submit "儲存", class: 'nav-btn submit-btn' %>
+      <%= f.text_field :link, placeholder: '新增連結 url https://...' %>
+      <%= f.submit "儲存", class: 'nav-btn submit-btn' %>
       <% end %>
       <button class="nav-btn close-btn" @click="showAddBar = false"><i class="fas fa-times"></i></button>
     </div>
     <button class="nav-btn" @click="showSearchBar = true"><i class="fas fa-search"></i></button>
     <!-- <div v-if="showSearchBar" class="nav-search"> -->
-      <input id="search-input" type="text" placeholder="請輸入搜尋文字">
-      <button class="nav-btn submit-btn">送出</button>       
-      <button class="nav-btn close-btn" @click="showSearchBar = false"><i class="fas fa-times"></i></button>
+    <input id="search-input" type="text" placeholder="請輸入搜尋文字">
+    <button class="nav-btn submit-btn">送出</button>
+    <button class="nav-btn close-btn" @click="showSearchBar = false"><i class="fas fa-times"></i></button>
+    </div>
+    <%= link_to "探索", explores_path, class: "nav-link" %>
+    <%= link_to "成就", charts_path, class: "nav-link" %>
+    <div class="user" @click="showUserBar = !showUserBar">
+      <a class="user-link" href="/" @click.prevent>
         <%= image_tag((current_user.avatar_thumbnail), class: 'user-link-img')%>
       </a>
       <div v-if="showUserBar" class="user-bar" @click.stop>
-          <div class="user-img-wrap">
-            <%= image_tag((current_user.avatar_thumbnail), class: 'user-img')%>
-          </div>
-          <div class="user-name">
-        
-            <a class="user-profile-link" href="#"><%= current_user.name %></a>
-          </div>
+        <div class="user-img-wrap">
+          <%= image_tag((current_user.avatar_thumbnail), class: 'user-img')%>
         </div>
-        <hr>
-        <div class="user-bar-bottom"> 
-          <%= link_to "登出", destroy_user_session_path, method: :delete, class: 'sign-out' %>
+        <div class="user-name">
+
+          <a class="user-profile-link" href="#"><%= current_user.name %></a>
         </div>
       </div>
+      <hr>
+      <div class="user-bar-bottom">
+        <%= link_to "登出", destroy_user_session_path, method: :delete, class: 'sign-out' %>
+      </div>
+    </div>
     </div>
   </nav>
   <script>
