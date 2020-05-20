@@ -29,52 +29,22 @@
                   <div class="shared-bar share-btn-collapse" style="background-color: pink;">
                   
                   <!-- 複製連結 -->
-                    
-                      <button class="shared-conect-btn">複製連結</button>
-                      <input type="hidden" class="copylink" value="<%= article.link %>">
-                    
-                    
-                    <!-- Load Facebook SDK for JavaScript -->
-                      <div id="fb-root"></div>
-                      <script>(function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (d.getElementById(id)) return;
-                        js = d.createElement(s); js.id = id;
-                        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-                        fjs.parentNode.insertBefore(js, fjs);
-                      }(document, 'script', 'facebook-jssdk'));</script>
+                    <button class="shared-conect-btn">複製連結</button>
+                    <input type="hidden" class="copylink" value="<%= article.link %>">
 
-                      <!-- Facebook share button code -->
-                      <div class="fb-share-button" 
+                  <!-- Facebook share button code -->
+                    <div class="fb-share-button" 
                         data-href="<%= article.link %>" 
                         data-layout="button">
-                      </div>
+                    </div>
 
-                      <!-- Load Twitter SDK for JavaScript -->
-                      <script>window.twttr = (function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0],
-                          t = window.twttr || {};
-                        if (d.getElementById(id)) return t;
-                        js = d.createElement(s);
-                        js.id = id;
-                        js.src = "https://platform.twitter.com/widgets.js";
-                        fjs.parentNode.insertBefore(js, fjs);
-                      
-                        t._e = [];
-                        t.ready = function(f) {
-                          t._e.push(f);
-                        };
-                      
-                        return t;
-                      }(document, "script", "twitter-wjs"));</script>
-
-                      <!-- Your share button code -->
-                      <a class="twitter-share-button" href="https://twitter.com/intent/tweet?url=<%= article.link %>">
+                  <!-- Twitter share button code -->
+                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?url=<%= article.link %>">
                         Tweet</a>
 
-                      <!-- Load LINE SDK for JavaScript -->
-                      <div class="line-it-button" data-lang="zh_Hant" data-type="share-a" data-ver="3" data-url="<%= article.link %>" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
-                      <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+                  <!-- Line share button code -->
+                    <div class="line-it-button" data-lang="zh_Hant" data-type="share-a" data-ver="3" data-url="<%= article.link %>" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
+                      
                   </div>
                 </div>
               </div> 
