@@ -68,8 +68,6 @@ class Api::V1::ArticlesController < ApplicationController
     selected_tags = JSON.parse(tags_params[:list_tag])
     article = Article.find(tags_params[:id])     
     article.tag_list= selected_tags
-    
-    render json: {msg: msg}
   end
 
   def get_tags
