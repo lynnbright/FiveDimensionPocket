@@ -5,7 +5,7 @@ $('document').ready( () => {
   $('.Search').click( () => {
     $('.SearchBlock').removeClass('displaynone')
   })
-  $('.PlusClose').click( (e) => {
+  $('.PlusClose').click( e => {
     e.stopPropagation();
     $('.PlusBlock').addClass('displaynone')
   })
@@ -13,8 +13,17 @@ $('document').ready( () => {
     e.stopPropagation();
     $('.SearchBlock').addClass('displaynone')
   })
-  $('.burger').click( () => {
-    $('.SideBar').removeClass('displaynone')
+  $('.Burger').click( () => {
+    $('.RootSideBar').removeClass('displaynone')
+  })
+  $('.User').click( () => {
+    $('.UserList').toggleClass('displaynone')
+  })
+  $('.RootSideBarClose').click( () => {
+    $('.RootSideBar').addClass('displaynone')
+  })
+  $('.UserListBlock').click( e => {
+    e.stopPropagation();
   })
 })
 

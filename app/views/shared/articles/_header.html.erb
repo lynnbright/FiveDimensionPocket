@@ -16,7 +16,7 @@
               <input type="text" placeholder="搜尋關鍵字" class="TextSearch">
               <input type="submit" value="搜尋" class="SubmitSearch">
             </form>
-              <button class="SearchClose"><i class="fas fa-times"></i></button>
+            <button class="SearchClose"><i class="fas fa-times"></i></button>
           </div>
         </div>
       </div>
@@ -27,15 +27,39 @@
               <input type="text" placeholder="輸入網址" class="TextPlus">
               <input type="submit" value="儲存" class="SubmitPlus">
             </form>
-              <button class="PlusClose"><i class="fas fa-times"></i></button>
+            <button class="PlusClose"><i class="fas fa-times"></i></button>
           </div>
         </div>
       </div>
       <button class="Explore"><a href="#">探索</a></button>
       <button class="Success"><a href="#">成就</a></button>
       <div class="User">
-        <img src="https://picsum.photos/id/50/24" alt="" style="border-radius: 50%;">
+          <img src="https://picsum.photos/id/50/24" alt="" class="Avatar">
+        <div class="UserList displaynone">
+          <div class="UserListBlock">
+              <img src="https://picsum.photos/id/50/40" class="AvatarList">
+            <div class="LogOut">
+              <a href="#">登出</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </nav>
+<div class="RootSideBar displaynone">
+  <div class="RootNavBar">
+    <svg class="RootSideBarClose fas fa-arrow-left"></svg>
+  </div>
+  <div class="RootBody">
+    <div class="Home">
+        <i class="fas fa-home"></i>我的清單
+    </div>
+    <div class="Favorite">
+        <i class="fas fa-star"></i>我的最愛
+    </div>
+    <div class="Tags">
+        <i class="fas fa-tag"></i>標籤
+    </div>
+  </div>
+</div>
