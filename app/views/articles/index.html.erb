@@ -54,16 +54,24 @@
       <a href="<%= article.link %>" target="_blank" class="card-text"><%= article.domain %></a>
       <a href="<%= article.link %>" target="_blank"><h5 class="card-title"><%= article.title %></h5></a>
       <p class="card-text"><%= article.title %></p>  
-      <div class="icon-bar" data-controller="tag publish">
-        <span data-controller="favorite">
-          <a class="card-btn" data-action="favorite#heart"><i class="far fa-heart" data-target="favorite.icon"></i></a>
-          <input type="hidden" name="" data-target="favorite.article_id" value="<%= article.id %>">
-        </span>
-        <span data-controller="read">
-          <a class="card-btn" data-action="read#check"><i class="far fa-book-open" data-target="read.icon"></i></a>
-          <input type="hidden" name="" data-target="read.article_id" value="<%= article.id %>">
-        </span>
-        <input type="hidden" data-target="tag.articleId publish.articleId" value="<%= article.id %>"> 
+      <div class="icon-bar" data-controller="tag publish read favorite">
+        <input type="hidden" data-target="tag.articleId publish.articleId read.articleId favorite.articleId" value="<%= article.id %>"> 
+        <a class="card-btn" data-action="favorite#heart">
+          <% if article.favorite == true %>
+            <i class="fas fa-heart" data-target="favorite.icon"></i>
+          <% else %>
+            <i class="far fa-heart" data-target="favorite.icon"></i>
+          <% end %>
+        </a>
+
+        <a class="card-btn" data-action="read#check">
+          <% if article.readed == true %>
+            <i class="fas fa-book-open" data-target="read.icon"></i>
+          <% else %>
+            <i class="far fa-book-open" data-target="read.icon"></i>
+          <% end %>
+        </a>
+        
         <a class="card-btn" data-action="tag#editTag"><i class="fas fa-tag"></i></a>
         <a class="card-btn" data-action="publish#check">
           <% if article.published == true %>

@@ -5,16 +5,15 @@ import axios from "axios"
 
 
 export default class extends Controller {
-  static targets = [ "icon", "article_id" ]
+  static targets = [ "icon", "articleId" ]
 
   check(e){
     e.preventDefault();
     
-    let article_id = this.article_idTarget.value 
-    axios.post(`/api/v1/articles/${article_id}/readed`)
+    let articleId = this.articleIdTarget.value 
+    axios.post(`/api/v1/articles/${articleId}/readed`)
          .then((response) => {
           let result = response.data.status
-          console.log(result)
             if (result === 'readed'){
               this.iconTarget.classList.remove('far');
               this.iconTarget.classList.add('fas');
