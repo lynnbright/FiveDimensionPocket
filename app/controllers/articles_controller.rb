@@ -23,7 +23,9 @@ class ArticlesController < ApplicationController
     short_description = response_hash['text'].split('').first(50).join('')
     
     #萃取出 og:image 圖片位址
-    meta_ogimage = response_hash['html'].gsub!(/\"/, '\'').match(/<meta.*property='og:image'.*content='(.*)'.*\/>/).to_s
+    # byebug
+    # meta_ogimage = response_hash['html'].gsub(/\"/, '\'').match(/<meta.*property='og:image'.*content='(.*)'.*/).to_s
+    meta_ogimage = response_hash['html'].gsub(/\"/, '\'').match(/<meta(?: [^>]+)? property='og:image'[^>]*>/).to_s
     ogimage_address = meta_ogimage.match(/(?<=content=').*(\.png|\.jpg)/).to_s  #"https://xxxx... .jpg"
    
     #萃取出 clean_html 的 <p>內文</p> 區塊
