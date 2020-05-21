@@ -6,7 +6,6 @@ class Article < ApplicationRecord
   belongs_to :user
   belongs_to :search, optional: true
   has_many_attached :article_images
-  has_one_attached :og_image
   
   validates :content, presence: true
   validates :link, presence: true
@@ -34,21 +33,6 @@ class Article < ApplicationRecord
       end  
     self.article_images.attach(files)
   end
-
-
-  #拿到存到本地端後的 og:image 圖片位址
-  # def og_image
-  #   Rails.application.routes.url_helpers.rails_blob_path(og_image, only_path: true)
-  # end
-
-  # #把萃取出的 og:image 位址，存到 active_storage
-  # def og_image=(ogimage_address)
-  #   # byebug
-  #   file = open(ogimage_address)
-  #   self.og_image.attach(io: file, filename: 'og_image.jpg')
-  #   # self.og_image.attach(ogimage_address)    #直接寫 hash 在裡面會噴 SystemStackError (stack level too deep)
-
-  # end
 
   def changed_by(user)
     user.articles.include?(self) 
