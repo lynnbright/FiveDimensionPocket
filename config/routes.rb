@@ -40,6 +40,9 @@ Rails.application.routes.draw do
   # 探索
   get "/explores", to: "explores#index"
 
+  # 探索
+  get "/explores", to: "explores#index"
+
   # APIs
   #內部 api 路徑
   #api
