@@ -17,9 +17,10 @@
   </head>
 
   <body>
-    <%#= render "shared/navbar" %>
-      <%# span class="notice"> <%= notice </span>%>
-      <%# span class="alert"> <%= alert </span> %>
+  <%= render "shared/articles/header"%>
+  <%= render "shared/articles/sidebar"%>
+      <span class="notice"> <%= notice %> </span>
+      <span class="alert"> <%= alert %> </span>
         <%= yield %>
       <%= render "shared/footer" %>
   </body>
