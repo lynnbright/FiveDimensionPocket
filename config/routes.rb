@@ -46,6 +46,11 @@ Rails.application.routes.draw do
           get :tag
           get :read
         end  
+      end 
+      resources :users, only: [] do
+        member do                  
+          post :follow
+        end  
       end     
     end
   end

@@ -1,9 +1,28 @@
+<style>
+  .btn-pink{
+    background-color: pink;
+    color: black;
+  }
+  .btn-black{
+    background-color: black;
+    color: white;
+  }
+</style>
 <div class="container">
   <div class="row justify-content-center">
     <% @Users.each do |user| %>   
-      <div class="col-md-12 pt-2"> 
+      <div class="col-md-12 pt-2" data-controller="follow"> 
         <%= image_tag((user.avatar_thumbnail), class: 'user-img')%>
         <span><%= user.name %></>  
+        <input type="hidden" data-target="follow.userId"
+        value="<%= user.id %>">
+        <% if current_user.follow_lists.find_by(following_id: user.id) %> 
+          <button class="btn-black" data-target="follow.followBtn" data-action="follow#check">追蹤中</button>
+        <% elsif current_user.id == user.id %>
+          <i class="fas fa-crown"></i>
+        <% else %>
+          <button class="btn-pink" data-target="follow.followBtn" data-action="follow#check">追蹤</button>
+        <% end %>   
       </div>
       <% user.user_last_articles.each do |record| %>
         <div class="col-md-4 pt-2">  
