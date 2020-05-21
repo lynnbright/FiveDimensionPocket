@@ -1,0 +1,27 @@
+class ArticleSendApiService
+
+  def initialize(article_url)
+    @article_url = article_url
+  end
+
+  def perform
+    response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=e3e6d4d35cbf7ecc564ed3d42fca87a75cc242dc&url=#{@article_url}&fields=domain,title,author,date_published,images,videos,clean_html,html")
+    response_hash = JSON.parse(response.body)
+    @short_description = response_hash['text'].split('').first(50).join('')
+    
+    #萃取出 og:image 圖片位址
+    meta_ogimage = response_hash['html'].gsub(/\"/, '\'').match(/<meta(?: [^>]+)? property='og:image'[^>]*>/).to_s
+    @ogimage_address = meta_ogimage.match(/(?<=content=').*(\.png|\.jpg)/).to_s  #"https://xxxx... .jpg"
+   
+    #萃取出 clean_html 的 <p>內文</p> 區塊
+    @clean_html = response_hash['clean_html'].gsub!(/\"/, '\'') || 'null'
+    @clean_content = @clean_html.match(/<p[^>]*>[\w|\W]*<\/i>/).to_s
+    
+    return {
+            success: response.code == 200, 
+            data: response_hash,
+            extract_data: 
+            { clean_html: @clean_html, clean_content: @clean_content, ogimage_address: @ogimage_address, short_description: @short_description }
+           }
+  end
+end
