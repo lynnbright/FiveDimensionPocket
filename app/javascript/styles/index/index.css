@@ -14,7 +14,7 @@ body {
   border-left: 0.5px solid rgb(0, 0, 0);
   border-right: 0.5px solid rgb(0, 0, 0);
 }
-.UserName {
+.user-name {
   display: flex;
   align-items: center;
   margin: 0 10px;
@@ -22,7 +22,7 @@ body {
 a{
   color: white;
 }
-.BottomLine {
+.bottom-line {
   padding-top: 14px;
   display: block;
   border-bottom: 1px solid rgb(0, 0, 0)
@@ -33,6 +33,6 @@ a{
 a:hover {
   text-decoration:none;
 }
-.Content{
+.content{
   padding: 63px 0px 0px;
 }
