@@ -157,4 +157,20 @@ form {
   padding: 0px 20px;
   align-items: center;
 }
-
+.title {
+  display: inline;
+  color: gray
+}
+.logo {
+  display: flex;
+}
+@media (min-width: 768px) {
+  .burger {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .title {
+    display: none;
+  }
+}
