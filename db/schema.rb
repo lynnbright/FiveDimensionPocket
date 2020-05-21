@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_090425) do
+ActiveRecord::Schema.define(version: 2020_05_21_050327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,16 +62,16 @@ ActiveRecord::Schema.define(version: 2020_05_20_090425) do
     t.string "short_description"
     t.string "encode_string"
     t.boolean "publish", default: false
-    t.boolean "published_at"
+    t.datetime "published_at"
     t.index ["deleted_at"], name: "index_articles_on_deleted_at"
   end
 
   create_table "follow_lists", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "followed_user_id", null: false
+    t.bigint "following_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["followed_user_id"], name: "index_follow_lists_on_followed_user_id"
+    t.index ["following_id"], name: "index_follow_lists_on_following_id"
     t.index ["user_id"], name: "index_follow_lists_on_user_id"
   end
 
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_090425) do
   add_foreign_key "article_tags", "articles"
   add_foreign_key "article_tags", "tags"
   add_foreign_key "follow_lists", "users"
-  add_foreign_key "follow_lists", "users", column: "followed_user_id"
+  add_foreign_key "follow_lists", "users", column: "following_id"
   add_foreign_key "tags", "users"
   add_foreign_key "user_last_articles", "articles"
   add_foreign_key "user_last_articles", "users"
