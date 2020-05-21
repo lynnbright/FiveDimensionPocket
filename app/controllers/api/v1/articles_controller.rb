@@ -57,16 +57,16 @@ class Api::V1::ArticlesController < ApplicationController
           "content-type" => "application/json; charset=utf-8",
         },
         :body => {
-          "input" => {
-            "text" => "#{@article.content}"
+          "input":{
+            "text": "#{@article.content}"
           },
-          "voice" => {
-            "languageCode" => "cmn-TW",
-            "name" => "cmn-TW-Wavenet-A-Alpha",
-            "ssmlGender" => "FEMALE"
+          "voice":{
+            "languageCode":"cmn-CN",
+            "name":"cmn-CN-Wavenet-A",
+            "ssmlGender":"FEMALE"
           },
-          "audioConfig" => {
-            "audioEncoding" => "MP3"
+          "audioConfig":{
+            "audioEncoding":"MP3"
           }
         }.to_json
     )
