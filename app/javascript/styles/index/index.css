@@ -1,0 +1,38 @@
+*, ::after, ::before {
+  background-repeat: no-repeat;
+}
+body {
+  font-family: Arial, sans-serif;
+  color: white;
+  background-color: #0B032D;
+  display: block;
+  margin: 0;
+}
+.card {
+  background-color: transparent;
+  padding: 20px;
+  border-left: 0.5px solid rgb(0, 0, 0);
+  border-right: 0.5px solid rgb(0, 0, 0);
+}
+.user-name {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+a{
+  color: white;
+}
+.bottom-line {
+  padding-top: 14px;
+  display: block;
+  border-bottom: 1px solid rgb(0, 0, 0)
+}
+.card-title:hover {
+  color:white;
+}
+a:hover {
+  text-decoration:none;
+}
+.content{
+  padding: 63px 0px 0px;
+}

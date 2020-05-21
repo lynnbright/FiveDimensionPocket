@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :articles
   has_many :follow_lists
   has_one_attached :avatar
+  # 產生亂數的token
+  has_secure_token :auth_token
 
 
   after_commit :add_default_avatar, on: [:create, :update]

@@ -36,3 +36,5 @@ $(document).on('turbolinks:load', function(){
     $this.siblings('.loading').removeClass('d-none').addClass('d-inline-block')
   });
 });
+
+import "script/navbar.js"

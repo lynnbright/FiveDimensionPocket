@@ -23,9 +23,23 @@ Rails.application.routes.draw do
 
   # 圖表
   get "/charts", to: "charts#index"
+  # get 'api/:user_id/articles', to: 'api/articles#index', as: :api_articles_index, defaults: { s: :json}
+  # # namespace :api do
+  # #   resources :users, only: [:show] do
+  # #     resources :articles, only: [:index, :show]
+  # #   end
+  # # end
+  
+  #探索頁面路徑
+  resources :explores, only: [:index]
+  #追蹤頁面路徑
+  resources :followers, only: [:index]
+  #各使用者的頁面
+
 
   # APIs
   #內部 api 路徑
+  #api
   namespace :api do
     namespace :v1 do
       resources :articles, only: [] do
@@ -47,4 +61,11 @@ Rails.application.routes.draw do
     end
   end
 
+  #api2
+  namespace :api do
+    namespace :v1 do
+      post 'login' => 'authentication#login'
+      post 'logout' => 'authentication#logout'
+    end
+  end
 end

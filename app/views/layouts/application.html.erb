@@ -16,11 +16,11 @@
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
 
-  <body style="font-family: Open Sans;">
-    <%= render "shared/navbar" %>
-      <p class="notice"> <%= notice %> </p>
-      <p class="alert"> <%= alert %> </p>
-    <%= yield %>
-    <%= render "shared/footer" %>
+  <body>
+    <%#= render "shared/navbar" %>
+      <%# span class="notice"> <%= notice </span>%>
+      <%# span class="alert"> <%= alert </span> %>
+        <%= yield %>
+      <%= render "shared/footer" %>
   </body>
 </html>
