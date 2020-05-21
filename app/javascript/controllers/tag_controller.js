@@ -1,5 +1,6 @@
 import { Controller } from "stimulus"
 import Rails from "@rails/ujs"
+import Swal from 'sweetalert2'
 
 // URLSearchParams轉成網址上參數，可以再開一個fun先整理成object
 // let data = new URLSearchParams({list_tag: JSON.stringify(optionData)})

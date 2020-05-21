@@ -18,13 +18,10 @@ import 'select2'
 import 'select2/dist/css/select2.css'
 
 import 'sweetalert2'
-import Swal from 'sweetalert2'
-window.Swal = Swal
 
 import 'chart.js'
 import 'chart.js/dist/Chart.css'
-import Chart from 'chart.js'
-window.Chart = Chart
+
 
 import "controllers"
 $(document).on('turbolinks:load', function(){

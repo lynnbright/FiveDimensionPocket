@@ -1,5 +1,6 @@
 import { Controller } from "stimulus"
 import Rails from "@rails/ujs"
+import Chart from 'chart.js'
 
 export default class extends Controller {  
   connect(){
