@@ -13,24 +13,9 @@ class ArticlesController < ApplicationController
     service = ArticleSendApiService.new(url_params[:link])
     result = service.perform
 
-  def create_article
-    response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=e3e6d4d35cbf7ecc564ed3d42fca87a75cc242dc&url=#{url_params[:link]}&fields=domain,title,author,date_published,images,videos,clean_html")
-    response_hash = JSON.parse(response.body)
-    short_description = response_hash['text'].split('').first(50).join('')
-    
-    #萃取出 og:image 圖片位址
-    # byebug
-    # meta_ogimage = response_hash['html'].gsub(/\"/, '\'').match(/<meta.*property='og:image'.*content='(.*)'.*/).to_s
-    meta_ogimage = response_hash['html'].gsub(/\"/, '\'').match(/<meta(?: [^>]+)? property='og:image'[^>]*>/).to_s
-    ogimage_address = meta_ogimage.match(/(?<=content=').*(\.png|\.jpg)/).to_s  #"https://xxxx... .jpg"
-   
-    #萃取出 clean_html 的 <p>內文</p> 區塊
-    clean_html = response_hash['clean_html'].gsub!(/\"/, '\'') || 'null'
-    clean_content = clean_html.match(/<p[^>]*>[\w|\W]*<\/i>/).to_s
-    short_description = response_hash['text'].split('').first(50).join('')
+    if result[:success]
+      response_hash = result[:data]
 
-    
-    if response.code == 200
       @article.assign_attributes({
         user_id: current_user.id,
         link: url_params[:link],
