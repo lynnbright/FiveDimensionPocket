@@ -180,4 +180,7 @@ form {
   .title {
     display: none;
   }
+  .content {
+    padding: 63px 0px;
+  }
 }
