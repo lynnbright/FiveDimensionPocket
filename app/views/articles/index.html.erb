@@ -6,7 +6,7 @@
       <div class="col-12 col-md-4 mt-2 mb-2">
         <div class="card for-article h-100 " data-title="<%= article.title %>">
           <div>
-            <%= link_to (image_tag(article.last,  size:'300x200', class:"card-img-top") if article.article_images.attached?), article_path(article.id) %>
+            <%= link_to (image_tag(article.images.last,  size:'300x200', class:"card-img-top") if article.article_images.attached?), article_path(article.id) %>
           </div>
           <div class="card-body">
             <h5>
@@ -28,9 +28,9 @@
 
               <a class="card-btn" data-action="read#check">
                 <% if article.read == true %>
-                <i class="fas fa-book-open" data-target="read.icon"></i>
+                <i class="fas fa-check-square" data-target="read.icon"></i>
                 <% else %>
-                <i class="far fa-book-open" data-target="read.icon"></i>
+                <i class="far fa-check-square" data-target="read.icon"></i>
                 <% end %>
               </a>
 
@@ -99,13 +99,11 @@
             </div> 
         </div>
       </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
-</div>
-</div>
-</div>
+
 
 <template id="tagSelect">
   <select name="article[tag_list][]" multiple="multiple" class="form-control">

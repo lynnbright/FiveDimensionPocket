@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @articles = current_user.articles.order(id: :desc).with_attached_article_images
+    @articles = current_user.articles.order(id: :desc).with_attached_article_images.limit(5)
   end
 
   def show
@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
       @article.save
       redirect_to articles_path
     else
-      flash[:notice] = '請輸入正確網址'
+      redirect_to articles_path, alert: '請重新再試一次'
     end
   end
 

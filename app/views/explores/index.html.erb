@@ -31,7 +31,7 @@
           <div class="col-12 col-md-4 mt-2">
             <div class="card for-article h-100">
               <a href="#">
-                <%= image_tag(record.article.images[2], size:'300x200',class: "card-img-top") if record.article.article_images.attached?  %>
+                <%= image_tag(record.article.images.last, size:'300x200',class: "card-img-top") if record.article.article_images.attached?  %>
               </a>
               <div class="card-body">
                 <a href="#">
