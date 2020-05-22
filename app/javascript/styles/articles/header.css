@@ -3,7 +3,7 @@
 }
 .nav-bar {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   background-color: #0B032D;
   width: 100%;
 }
@@ -136,21 +136,28 @@ form {
   width: 24px !important;
   height: 24px;
 }
-.home {
+.root-home {
   display: flex;
   height: 65px;
   margin: 20px 20px 0px 20px;
   padding: 0px 20px;
   align-items: center;
 }
-.favorite {
+.root-favorite {
   display: flex;
   height: 65px;
   margin: 0px 20px;
   padding: 0px 20px;
   align-items: center;
 }
-.tags {
+.root-tags {
+  display: flex;
+  height: 65px;
+  margin: 0px 20px;
+  padding: 0px 20px;
+  align-items: center;
+}
+.root-open-list {
   display: flex;
   height: 65px;
   margin: 0px 20px;

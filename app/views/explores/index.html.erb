@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content switch">
   <div class="container">
     <div class="row mt-3">
       <label class="rocker rocker-small">
@@ -27,49 +27,9 @@
       </div>
       <div class="container">
         <div class="row">
-<<<<<<< HEAD
           <% user.user_last_articles.each do |record| %>
           <div class="col-12 col-md-4 mt-2">
             <div class="card for-article h-100">
-=======
-          <div class="card col-12 col-md-4">
-            <a href="#">
-              <img src="https://picsum.photos/id/101/212/136" class="card-img-top" alt="">
-            </a>
-            <div class="card-body">
-              <a href="#">
-                <div>
-                  <h5 class="card-title">文章標題</h5>
-                </div>
-              </a>
-              <a href="#" target="_blank" class="card-text">連結名字</a>
-              <p class="card-text">description</p>
-              <a href="#" class="btn btn-primary"><i class="fas fa-save"></i></a>
-            </div>
-            <div class="bottom-line"></div>
-          </div>
-          <div class="card col-12 col-md-4">
-            <a href="#">
-              <img src="https://picsum.photos/id/101/212/136" class="card-img-top" alt="">
-            </a>
-            <div class="card-body">
-              <a href="#">
-                <div>
-                  <h5 class="card-title">文章標題</h5>
-                </div>
-              </a>
-              <a href="#" target="_blank" class="card-text">連結名字</a>
-              <p class="card-text">description</p>
-              <a href="#" class="btn btn-primary"><i class="fas fa-save"></i></a>
-            </div>
-            <div class="BottomLine"></div>
-          </div>
-          <div class="card col-12 col-md-4">
-            <a href="#">
-              <img src="https://picsum.photos/id/101/212/136" class="card-img-top" alt="">
-            </a>
-            <div class="card-body">
->>>>>>> 修改大小寫以及搬運檔案
               <a href="#">
                 <%= image_tag(record.article.images[2], size:'300x200',class: "card-img-top") if record.article.article_images.attached?  %>
               </a>

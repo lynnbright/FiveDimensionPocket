@@ -1,0 +1,63 @@
+@media (max-width: 767px) {
+  .side-bar {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .switch {
+    margin-left: 193px;
+  }
+  .explore-block {
+    margin-left: 193px;
+  }
+  .follower-block {
+    margin-left: 193px
+  }
+  .footer {
+    margin-left: 200px;
+  }
+}
+.side-bar {
+  position: relative;
+}
+.side-bar-block {
+  width: 193px;
+  position: fixed;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+.side-bar-flex {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #0B032D;
+}
+.home {
+  display: flex;
+  height: 65px;
+  margin: 0px 20px;
+  padding: 0px 20px;
+  align-items: center;
+}
+.favorite {
+  display: flex;
+  height: 65px;
+  margin: 0px 20px;
+  padding: 0px 20px;
+  align-items: center;
+}
+.tags {
+  display: flex;
+  height: 65px;
+  margin: 0px 20px;
+  padding: 0px 20px;
+  align-items: center;
+}
+.open-list {
+  display: flex;
+  height: 65px;
+  margin: 0px 20px;
+  padding: 0px 20px;
+  align-items: center;
+}
