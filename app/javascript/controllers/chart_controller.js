@@ -1,5 +1,6 @@
 import { Controller } from "stimulus"
 import Rails from "@rails/ujs"
+import Chart from 'chart.js'
 
 export default class extends Controller {  
   connect(){
@@ -37,19 +38,19 @@ export default class extends Controller {
       } 
     }) 
     Rails.ajax({
-      url: `api/v1/charts/readed`, 
+      url: `api/v1/charts/read`, 
       type: 'GET', 
       success: resp => {
-        let readedLabels = Object.keys(resp.readed);  
-        let readedData = Object.values(resp.readed); 
-        let ctxReaded = document.getElementById('readedChart').getContext('2d');        
-        let readedChart = new Chart(ctxReaded, {
+        let readLabels = Object.keys(resp.read);  
+        let readData = Object.values(resp.read); 
+        let ctxRead = document.getElementById('readChart').getContext('2d');        
+        let readChart = new Chart(ctxRead, {
           type: 'line',
           data: {
-            labels: readedLabels,
+            labels: readLabels,
             datasets: [{
               label: '篇數',
-              data: readedData,
+              data: readData,
               fill: false,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.9)',
@@ -78,7 +79,7 @@ export default class extends Controller {
                 ticks: {
                   beginAtZero:true,
                   stepSize: 1,
-                  max: Math.max(...readedData) + 2
+                  max: Math.max(...readData) + 2
                 }
               }]
             }

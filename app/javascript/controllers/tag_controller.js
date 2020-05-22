@@ -1,5 +1,6 @@
 import { Controller } from "stimulus"
 import Rails from "@rails/ujs"
+import Swal from 'sweetalert2'
 
 // URLSearchParams轉成網址上參數，可以再開一個fun先整理成object
 // let data = new URLSearchParams({list_tag: JSON.stringify(optionData)})
@@ -17,9 +18,6 @@ export default class extends Controller {
 
   editTag(e) {
     let id = this.articleIdTarget.value
-  
-    
-  
     Swal.fire({
       title: "新增標籤",
       html: $(document).find('#tagSelect').html(),
@@ -30,7 +28,6 @@ export default class extends Controller {
           url: `/api/v1/articles/${id}/tags`, 
           type: 'GET', 
           success: resp => {
-            console.log(resp.tags);   
             let tags = resp.tags;
             tags.forEach( (tagName) => {
               let option = document.createElement("option");
@@ -58,7 +55,6 @@ export default class extends Controller {
         type: 'POST', 
         data: data,
         success: resp => {
-          console.log(resp);
         }, 
         error: err => {
           console.log(err);

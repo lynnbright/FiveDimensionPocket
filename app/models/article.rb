@@ -61,4 +61,5 @@ class Article < ApplicationRecord
   def tag_list
     self.tags.map {|tag| tag[:name]}
   end
+
 end

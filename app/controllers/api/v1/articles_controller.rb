@@ -1,7 +1,7 @@
 require 'json'
 
 class Api::V1::ArticlesController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:favorite, :readed]
+  skip_before_action :verify_authenticity_token, only: [:favorite, :read]
 
   def favorite
     article = Article.find(params[:id])
@@ -17,19 +17,49 @@ class Api::V1::ArticlesController < ApplicationController
     end
   end
 
-  def readed
+  def read
     article = Article.find(params[:id])
     
-    if article.changed_by(current_user) && article.readed == false
-      article.readed = true
-      article.readed_at = Time.now
+    if article.changed_by(current_user) && article.read == false
+      article.read = true
+      article.read_at = Time.now
       article.save
-      render json: { status: 'readed'}
+      render json: { status: 'read'}
     else
-      article.readed = false
-      article.readed_at = nil
+      article.read = false
+      article.read_at = nil
       article.save
       render json: { status: 'unread'}
+    end
+  end
+
+  def publish
+    article = Article.find(params[:id])
+    
+    if article.publish == false
+      article.publish = true
+      article.published_at = Time.now
+      article.save
+      if current_user.user_last_articles.count >= 3       
+        current_user.user_last_articles.order(:created_at).first.destroy      
+      end
+      UserLastArticle.create(user_id: article.user_id, article_id: article.id)
+      render json: { status: 'published'}
+
+    else
+      article.publish = false
+      article.published_at = nil
+      article.save
+      in_last_articles = current_user.user_last_articles.find_by(article_id: article.id)
+      if in_last_articles 
+        current_user.user_last_articles.destroy_all
+        last_articles = current_user.articles.where(publish: true).order(published_at: :desc).limit(3)
+        last_articles.each do | last_article |
+          UserLastArticle.create(user_id: current_user.id, article_id: last_article.id)
+        end
+      end
+      
+      render json: { status: 'private'}
     end
   end
 
@@ -38,8 +68,6 @@ class Api::V1::ArticlesController < ApplicationController
     selected_tags = JSON.parse(tags_params[:list_tag])
     article = Article.find(tags_params[:id])     
     article.tag_list= selected_tags
-    
-    render json: {msg: msg}
   end
 
   def get_tags

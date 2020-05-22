@@ -1,78 +1,62 @@
-<body>
-  <%= render "shared/articles/header"%>
-  <%= render "shared/articles/sidebar"%>
-  <div class="content">
-    <div class="container">
-      <div class="row">
-        <label class="rocker rocker-small">
-          <input type="checkbox">
-          <span class="switch-left">追蹤</span>
-          <span class="switch-right">探索</span>
-        </label>
-      </div>
-    </div>
-    <div class="explore-block">
-      <div class="container">
-        <div class="row">
-            <img src="https://picsum.photos/id/25/50" alt="" class="rounded-circle">
-          <div class="user-name">
-            <a href="#">林小明</a>
-          </div>
-            <button class="btn btn-outline-primary">follow</button>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="card col-12 col-md-4">
-            <a href="#">
-              <img src="https://picsum.photos/id/101/212/136" class="card-img-top" alt="">
-            </a>
-            <div class="card-body">
-              <a href="#">
-                <div>
-                  <h5 class="card-title">文章標題</h5>
-                </div>
-              </a>
-              <a href="#" target="_blank" class="card-text">連結名字</a>
-              <p class="card-text">description</p>
-              <a href="#" class="btn btn-primary"><i class="fas fa-save"></i></a>
-            </div>
-            <div class="bottom-line"></div>
-          </div>
-          <div class="card col-12 col-md-4">
-            <a href="#">
-              <img src="https://picsum.photos/id/101/212/136" class="card-img-top" alt="">
-            </a>
-            <div class="card-body">
-              <a href="#">
-                <div>
-                  <h5 class="card-title">文章標題</h5>
-                </div>
-              </a>
-              <a href="#" target="_blank" class="card-text">連結名字</a>
-              <p class="card-text">description</p>
-              <a href="#" class="btn btn-primary"><i class="fas fa-save"></i></a>
-            </div>
-            <div class="bottom-line"></div>
-          </div>
-          <div class="card col-12 col-md-4">
-            <a href="#">
-              <img src="https://picsum.photos/id/101/212/136" class="card-img-top" alt="">
-            </a>
-            <div class="card-body">
-              <a href="#">
-                <div>
-                  <h5 class="card-title">文章標題</h5>
-                </div>
-              </a>
-              <a href="#" target="_blank" class="card-text">連結名字</a>
-              <p class="card-text">description</p>
-              <a href="#" class="btn btn-primary"><i class="fas fa-save"></i></a>
-            </div>
-            <div class="bottom-line"></div>
-          </div>
-        </div>
-      </div>
+<div class="content">
+  <div class="container">
+    <div class="row mt-3">
+      <label class="rocker rocker-small">
+        <input type="checkbox">
+        <span class="switch-left">追蹤</span>
+        <span class="switch-right">探索</span>
+      </label>
     </div>
   </div>
-</body>
+  <div class="explore-block">
+    <% @Users.each do |user| %>
+    <div class="container">
+      <div class="row mt-4" data-controller="follow">
+        <%= image_tag((user.avatar_thumbnail), class: 'rounded-circle')%>
+        <div class="user-name">
+          <a href="#"><%= user.name %></a>
+          <input type="hidden" data-target="follow.userId" value="<%= user.id %>">
+          <% if current_user.follow_lists.find_by(following_id: user.id) %>
+          <button class="btn btn-outline-primary" data-target="follow.followBtn" data-action="follow#check">追蹤中</button>
+          <% elsif current_user.id == user.id %>
+          <i class="fas fa-crown"></i>
+          <% else %>
+          <button class="btn btn-outline-primary" data-target="follow.followBtn" data-action="follow#check">追蹤</button>
+          <% end %>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <% user.user_last_articles.each do |record| %>
+          <div class="col-12 col-md-4 mt-2">
+            <div class="card for-article h-100">
+              <a href="#">
+                <%= image_tag(record.article.images[2], size:'300x200',class: "card-img-top") if record.article.article_images.attached?  %>
+              </a>
+              <div class="card-body">
+                <a href="#">
+                  <div>
+                    <a href="<%= record.article.link %>" target="_blank">
+                      <h5 class="card-title"><%= record.article.title %></h5>
+                    </a>
+                  </div>
+                </a>
+                <a href="<%= record.article.link %>" target="_blank" class="card-text"><%= record.article.domain %></a>
+                <p class="card-text"><%= record.article.short_description %></p>
+
+              </div>
+              <div class="card-footer d-flex justify-content-around" data-controller="explore">
+                <input type="hidden" data-target="explore.articleId" value="<%= record.article.id %>">
+                <a class="card-btn"><i class="fas fa-save" data-action="explore#saveArticle"></i></a>
+                <a class="card-btn" data-action="explore#saveArticle">分享文章</a>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+</div>

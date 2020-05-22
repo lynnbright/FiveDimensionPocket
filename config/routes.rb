@@ -37,6 +37,12 @@ Rails.application.routes.draw do
   #各使用者的頁面
 
 
+  # 探索
+  get "/explores", to: "explores#index"
+
+  # 探索
+  get "/explores", to: "explores#index"
+
   # APIs
   #內部 api 路徑
   #api
@@ -45,8 +51,8 @@ Rails.application.routes.draw do
       resources :articles, only: [] do
         member do
           post :favorite
-          post :readed 
-          post :public
+          post :read 
+          post :publish
           post :tags, to: 'articles#tags'
           get  :tags, to: 'articles#get_tags'
           post :create_speech
@@ -55,7 +61,12 @@ Rails.application.routes.draw do
       resource :charts, only: [] do
         member do                  
           get :tag
-          get :readed
+          get :read
+        end  
+      end 
+      resources :users, only: [] do
+        member do                  
+          post :follow
         end  
       end     
     end

@@ -3,16 +3,16 @@ require 'open-uri'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-    devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, 
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   has_many :tags
   has_many :articles
   has_many :follow_lists
+  has_many :user_last_articles
   has_one_attached :avatar
   # 產生亂數的token
   has_secure_token :auth_token
-
 
   after_commit :add_default_avatar, on: [:create, :update]
 
@@ -24,21 +24,21 @@ class User < ApplicationRecord
     end
   end
 
-
   def tag_chart
-    all_tag = self.tags.select("name","counter")
+    all_tag = self.tags.select("name","counter").where("counter > 0")
   end
 
-  def readed_chart
+  def read_chart
     read_record = self.articles
-                      .where(readed: true)
-                      .where("readed_at >= :beginning_of_week and 
-                              readed_at <= :end_of_week ",
+                      .where(read: true)
+                      .where("read_at >= :beginning_of_week and 
+                              read_at <= :end_of_week ",
                               beginning_of_week: Time.current.beginning_of_week, 
                               end_of_week: Time.current.end_of_week)
-                      .group("DATE(readed_at)").count            
+                      .group("DATE(read_at)").count            
   end
 
+  
   private
 
   def self.from_omniauth(access_token)    
