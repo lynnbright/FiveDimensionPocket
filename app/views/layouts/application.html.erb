@@ -15,11 +15,13 @@
   </head>
 
   <body>
-      <%# span class="notice"> <%= notice </span>%>
-      <%# span class="alert"> <%= alert </span> %>
-      <%= render "shared/articles/header"%>
-      <div class="content">
-        <%= render "shared/articles/sidebar"%>
+  <%= render "shared/articles/header"%>
+  <%= render "shared/articles/sidebar"%>
+      <span class="notice"> <%= notice %> </span>
+      <div class="modal" id="flash-alert">
+        <div class="modal-body"><%= alert %></div>
+      </div>
+      <span class="flash alert"> <%= alert %> </span>
         <%= yield %>
       </div>
       <%= render "shared/footer" %>
