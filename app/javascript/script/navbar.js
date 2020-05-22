@@ -1,4 +1,4 @@
-$('document').ready( () => {
+$(document).on('turbolinks:load', function () {
   $('.plus').click( () => {
       $('.plus-block').removeClass('displaynone')
   })
@@ -22,8 +22,10 @@ $('document').ready( () => {
   $('.user-list-block').click( e => {
     e.stopPropagation();
   })
-  $('.root-side-bar-close').click( () => {
-    $('.root-side-bar').addClass('displaynone')
+  $('.root-side-bar-close').click((e) => {
+    e.preventDefault()
+    $(e.currentTarget).parents('.root-side-bar').addClass('displaynone')
   })
 })
+
 
