@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @articles = current_user.articles.order(id: :desc).with_attached_article_images.limit(5)
+    @articles = current_user.articles.order(id: :desc).with_attached_article_images
   end
 
   def show
