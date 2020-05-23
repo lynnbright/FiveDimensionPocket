@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @articles = current_user.articles.order(id: :desc).with_attached_article_images
+    @articles = current_user.articles.order(created_at: :desc).with_attached_article_images
   end
 
   def show
@@ -10,29 +10,34 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    service = ArticleSendApiService.new(url_params[:link])
-    result = service.perform
+    check_article_exist = current_user.articles.where("link LIKE '#{url_params[:link]}'")
 
-    if result[:success]
-      response_hash = result[:data]
+    if check_article_exist.blank?  
+      service = ArticleSendApiService.new(url_params[:link])
+      result = service.perform
 
-      @article.assign_attributes({
-        user_id: current_user.id,
-        link: url_params[:link],
-        title: response_hash['title'],
-        content: response_hash['text'],
-        domain: response_hash['domain'],
-        images: response_hash['images'] << result[:extract_data][:ogimage_address],
-        clean_html: result[:extract_data][:clean_html],
-        clean_content: result[:extract_data][:clean_content],
-        short_description: result[:extract_data][:short_description],
-      })
-      # @article.images = response_hash['images']
-      @article.save
-      redirect_to articles_path
+      if result[:success]
+        response_hash = result[:data]
+
+        @article.assign_attributes({
+          user_id: current_user.id,
+          link: url_params[:link],
+          title: response_hash['title'],
+          content: response_hash['text'],
+          domain: response_hash['domain'],
+          images: response_hash['images'] << result[:extract_data][:ogimage_address],
+          clean_html: result[:extract_data][:clean_html],
+          clean_content: result[:extract_data][:clean_content],
+          short_description: result[:extract_data][:short_description],
+        })
+        @article.save
+      else
+        flash[:alert] = '請重新再試一次'
+      end
     else
-      redirect_to articles_path, alert: '請重新再試一次'
+      check_article_exist.update(created_at: Time.now)
     end
+    redirect_to articles_path
   end
 
   def favorites
@@ -44,5 +49,4 @@ class ArticlesController < ApplicationController
   def url_params
     params.require(:article).permit(:link, :og_image, article_images: []) 
   end
-
 end
