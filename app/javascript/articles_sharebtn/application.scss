@@ -1,9 +1,9 @@
 .share-btn-collapse {
   position: absolute;
-  left: -1000px;
+  left: -10000px;
   opacity: 0;
   bottom: 10%;
-  // transition: opacity 0.5s;
+  transition: opacity 0.2s;
 
   &.show {
     left: unset;

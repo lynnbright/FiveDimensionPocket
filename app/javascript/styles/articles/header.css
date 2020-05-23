@@ -158,3 +158,9 @@ form {
   align-items: center;
 }
 
+.alert-warning{
+  position: relative;
+  top: 60px;
+  transform: scaleY(1);
+  transition: transform 1s;
+}

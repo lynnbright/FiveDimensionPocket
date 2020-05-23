@@ -24,28 +24,4 @@ import 'chart.js/dist/Chart.css'
 
 
 import "controllers"
-$(document).on('turbolinks:load', function(){
-
-  //text-to-speech player 顯示
-  $('#js-create-speech').click(function() {
-    let $this = $(this);
-    $this.removeClass('d-flex').addClass('d-none');
-    $this.siblings('.loading').removeClass('d-none').addClass('d-inline-block')
-  });
-  let $alert = $('#flash-alert')
-  let text = $alert.find('.modal-body:eq(0)').text().trim()
-  if (text.length > 0) {
-    $alert.addClass('d-block')
-    // $alert.css({
-    //   background: 'rgba(255, 255, 255, 0.7)',
-    //   display: 'block',
-    //   width: '100%',
-    //   transform: 'scaleY(3)',
-    //   transition: 'transform 1s',
-    //   'z-index': '99999999',
-    //   'text-align': 'center'
-    // })
-  }
-});
-
 import "script/navbar.js"
