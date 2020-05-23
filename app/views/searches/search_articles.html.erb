@@ -43,58 +43,23 @@
                     <i class="fas fa-lock" data-target="publish.icon"></i>
                     <% end %>
                   </a>
-                <span class="shared-btn-wrap">
-                  <button class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></button>
-                  <div class="shared-bar share-btn-collapse" style="background-color: pink;">
-
-                    <!-- 複製連結 -->
-                      <button class="shared-conect-btn">複製連結</button>
+                  <span class="shared-btn-wrap">
+                    <button class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></button>
+                    <div class="shared-bar share-btn-collapse row p-1" style="background-color: pink;">
+                      <!-- 複製連結 -->
+                      <a class="shared-conect-btn" href="#"><i class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
                       <input type="hidden" class="copylink" value="<%= article.link %>">
-
-                    <!-- Facebook share button code -->
-                      <div class="fb-share-button" 
-                          data-href="<%= article.link %>" 
-                          data-layout="button">
-                      </div>
-
-                    <!-- Twitter share button code -->
-                      <a class="twitter-share-button" href="https://twitter.com/intent/tweet?url=<%= article.link %>">
-                          Tweet</a>
-
-                    <!-- Line share button code -->
-                      <div class="line-it-button" data-lang="zh_Hant" data-type="share-a" data-ver="3" data-url="<%= article.link %>" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
-                        
+    
+                      <!-- Facebook share button code -->
+                      <a href="https://www.facebook.com/sharer/sharer.php?u=<%= article.link%>" target="_blank"><i class="fab fa-facebook-square d-inline-block"></i>&nbsp Facebook</a>
+        
+                      <!-- Twitter share button code -->
+                      <a href="https://twitter.com/intent/tweet?text=<%= article.title %>&url=<%= article.link %>" target="_blank"><i class="fab fa-twitter-square d-inline-block"></i>&nbsp Twitter</a>  
+        
+                      <!-- Line share button code -->
+                      <a href="https://social-plugins.line.me/lineit/share?url=<%= article.link %>" target="_blank"><i class="fab fa-line d-inline-block"></i>&nbsp Line</a>        
                     </div>
-
-                    <!-- Load Twitter SDK for JavaScript -->
-                    <script>window.twttr = (function (d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0],
-                          t = window.twttr || {};
-                        if (d.getElementById(id)) return t;
-                        js = d.createElement(s);
-                        js.id = id;
-                        js.src = "https://platform.twitter.com/widgets.js";
-                        fjs.parentNode.insertBefore(js, fjs);
-
-                        t._e = [];
-                        t.ready = function (f) {
-                          t._e.push(f);
-                        };
-
-                        return t;
-                      }(document, "script", "twitter-wjs"));</script>
-
-                    <!-- Your share button code -->
-                    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?url=<%= article.link %>">
-                      Tweet</a>
-
-                    <!-- Load LINE SDK for JavaScript -->
-                    <div class="line-it-button" data-lang="zh_Hant" data-type="share-a" data-ver="3"
-                      data-url="<%= article.link %>" data-color="default" data-size="small" data-count="false"
-                      style="display: none;"></div>
-                    <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async"
-                      defer="defer"></script>
-                </span>              
+                  </span>            
                 </div> 
               </div>
             </div>

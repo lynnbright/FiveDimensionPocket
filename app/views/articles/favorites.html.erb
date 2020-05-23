@@ -45,21 +45,21 @@
 
               <span class="shared-btn-wrap">
                 <button class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></button>
-                <div class="shared-bar share-btn-collapse" style="background-color: pink;">
+                <div class="shared-bar share-btn-collapse row p-1" style="background-color: pink;">
                   <!-- 複製連結 -->
-                  <button class="shared-conect-btn">複製連結</button>
+                  <a class="shared-conect-btn" href="#"><i class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
                   <input type="hidden" class="copylink" value="<%= article.link %>">
 
                   <!-- Facebook share button code -->
-                  <a href="https://www.facebook.com/sharer/sharer.php?u=<%= article.link%>" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=<%= article.link%>" target="_blank"><i class="fab fa-facebook-square d-inline-block"></i>&nbsp Facebook</a>
     
                   <!-- Twitter share button code -->
-                  <a href="https://twitter.com/intent/tweet?text=<%= article.title %>&url=<%= article.link %>" target="_blank"><i class="fab fa-twitter-square"></i></i></a>  
+                  <a href="https://twitter.com/intent/tweet?text=<%= article.title %>&url=<%= article.link %>" target="_blank"><i class="fab fa-twitter-square d-inline-block"></i>&nbsp Twitter</a>  
     
                   <!-- Line share button code -->
-                  <a href="https://social-plugins.line.me/lineit/share?url=<%= article.link %>" target="_blank"><i class="fab fa-line"></i></a>        
+                  <a href="https://social-plugins.line.me/lineit/share?url=<%= article.link %>" target="_blank"><i class="fab fa-line d-inline-block"></i>&nbsp Line</a>        
                 </div>
-              </span>            
+              </span>          
             </div> 
         </div>
       </div>
