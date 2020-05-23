@@ -34,7 +34,7 @@
       <button class="explore"><%= link_to "探索", explores_path%></button>
       <button class="success"><%= link_to "成就", charts_path %></button>
       <div class="user">
-          <img src="https://picsum.photos/id/50/24" alt="" class="avatar">
+          <%= image_tag((current_user.avatar_thumbnail), class: 'avatar')%>
         <div class="user-list displaynone">
           <div class="user-list-block">
               <img src="https://picsum.photos/id/50/40" class="avatar-list">

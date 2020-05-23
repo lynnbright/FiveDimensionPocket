@@ -2,6 +2,9 @@
   <div class="container">
     <h1>我的清單</h1>
     <div class="row" id="card-wrap">
+      <div class="col-12">
+        <%= render "shared/menu" %>
+      </div>
       <% @articles.each do |article| %>
       <div class="col-12 col-md-4 mt-2 mb-2">
         <div class="card for-article h-100 " data-title="<%= article.title %>">

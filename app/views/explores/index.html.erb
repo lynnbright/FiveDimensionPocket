@@ -14,14 +14,14 @@
       <div class="row mt-4" data-controller="follow">
         <%= image_tag((user.avatar_thumbnail), class: 'rounded-circle')%>
         <div class="user-name">
-          <a href="#"><%= user.name %></a>
+          <a href="#"><%= user.name %> &emsp; </a>
           <input type="hidden" data-target="follow.userId" value="<%= user.id %>">
           <% if current_user.follow_lists.find_by(following_id: user.id) %>
-          <button class="btn btn-outline-primary" data-target="follow.followBtn" data-action="follow#check">追蹤中</button>
+          <button class="btn btn-info" data-target="follow.followBtn" data-action="follow#check">追蹤中</button>
           <% elsif current_user.id == user.id %>
           <i class="fas fa-crown"></i>
           <% else %>
-          <button class="btn btn-outline-primary" data-target="follow.followBtn" data-action="follow#check">追蹤</button>
+          <button class="btn btn-outline-info" data-target="follow.followBtn" data-action="follow#check">追蹤</button>
           <% end %>
         </div>
       </div>
