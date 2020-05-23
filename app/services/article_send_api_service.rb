@@ -5,7 +5,7 @@ class ArticleSendApiService
   end
 
   def perform(retry_times = 0)
-    response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=e3e6d4d35cbf7ecc564ed3d42fca87a75cc242dc&url=#{@article_url}&fields=domain,title,date_published,images,videos,clean_html,html")
+    response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=#{ENV['extractor_key']}&url=#{@article_url}&fields=domain,title,date_published,images,videos,clean_html,html")
     response_hash = JSON.parse(response.body)
 
     # raise 'No Text!' if response_hash['text'].blank?
