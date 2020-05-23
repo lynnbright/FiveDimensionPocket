@@ -183,4 +183,11 @@ form {
   .content {
     padding: 63px 0px;
   }
+
+.alert-warning{
+  position: relative;
+  top: 60px;
+  transform: scaleY(1);
+  transition: transform 1s;
+ }
 }
