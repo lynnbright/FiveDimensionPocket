@@ -49,5 +49,4 @@ class ArticlesController < ApplicationController
   def url_params
     params.require(:article).permit(:link, :og_image, article_images: []) 
   end
-
 end
