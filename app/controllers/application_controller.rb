@@ -1,11 +1,15 @@
 class ApplicationController < ActionController::Base
   layout :layout_by_resource
-  before_action :article_new, :article_all
+  before_action :article_new, :article_all, :create_tags_menu
 
   def layout_by_resource
     if devise_controller? && resource_name == :user && action_name == 'new'
       "devise"
     end
+  end
+
+  def create_tags_menu
+    @user_tags = current_user.tags.all
   end
   
 
@@ -17,5 +21,5 @@ class ApplicationController < ActionController::Base
   def article_all
     @articles = Article.all
   end
-
+ 
 end
