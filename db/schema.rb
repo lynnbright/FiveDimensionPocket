@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_05_21_050327) do
-=======
-ActiveRecord::Schema.define(version: 2020_05_18_170940) do
->>>>>>> issue #30 標題搜尋- 從後端比對並撈取資料 WIP
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
