@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  rescue_from ActiveRecord::RecordNotFound, 
+              with: :record_not_found
+
   layout :layout_by_resource
   before_action :article_new, :article_all
 
@@ -6,6 +9,12 @@ class ApplicationController < ActionController::Base
     if devise_controller? && resource_name == :user && action_name == 'new'
       "devise"
     end
+  end
+
+  def record_not_found
+    render file: 'public/404.html', 
+           status: 404, 
+           layout: false
   end
 
   private
