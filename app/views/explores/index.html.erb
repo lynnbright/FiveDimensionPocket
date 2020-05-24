@@ -55,11 +55,15 @@
               <a href="<%= record.article.link %>" target="_blank" class="card-text"><%= record.article.domain %></a>
               <p class="card-text"><%= record.article.short_description %></p>
 
-            </div>
-            <div class="card-footer d-flex justify-content-around" data-controller="explore">
-              <input type="hidden" data-target="explore.articleId" value="<%= record.article.id %>">
-              <a class="card-btn"><i class="fas fa-save" data-action="explore#saveArticle"></i></a>
-              <a class="card-btn" data-action="explore#saveArticle">分享文章</a>
+              </div>
+              <div class="card-footer d-flex justify-content-around" data-controller="explore">
+                <input type="hidden" data-target="explore.articleId" value="<%= record.article.id %>">
+                <%= form_for @article, url: articles_path, method:'post' do |f| %>
+                  <%= f.text_field :link, value: record.article.link, type: 'hidden' %>
+                  <button type="submit" class="btn btn-outline-warning"><i class="fas fa-save" data-action="explore#saveArticle"></i>儲存</button>
+                <% end %>   
+                <a class="card-btn" data-action="explore#saveArticle">分享</a>
+              </div>
             </div>
           </div>
         </div>
