@@ -44,6 +44,17 @@ class ArticlesController < ApplicationController
     @favorite_articles = current_user.articles.where(favorite: true)
   end
 
+  def all_collection 
+    @all_collection = current_user.articles.order(created_at: :desc).with_attached_article_images
+  end
+
+  def read_collection 
+    @read_collection = current_user.articles.where(read: true).order(created_at: :desc).with_attached_article_images
+  end
+
+  def unread_collection 
+    @unread_collection = current_user.articles.where(read: false).order(created_at: :desc).with_attached_article_images
+  end
 
   private
   def url_params

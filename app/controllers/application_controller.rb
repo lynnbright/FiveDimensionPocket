@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
       "devise"
     end
   end
-  
 
   private
   def article_new

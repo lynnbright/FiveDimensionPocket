@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   resources :articles do
     collection do 
       get :favorites
+      get :all_collection
+      get :read_collection
+      get :unread_collection
     end
   end
 
