@@ -16,3 +16,12 @@
   margin: 0 80px;
   vertical-align: center;
 }
+
+
+.post-main-content h2, .post-main-content h3, .post-main-content h4, .post-main-content h5{
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+.post-main-content img{
+  width: 100%;
+}
