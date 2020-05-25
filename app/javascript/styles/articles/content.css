@@ -27,3 +27,19 @@
 .single_article_website a{
   color:#1eabf9;
 }
+
+.badge{
+  font-size: 90%;
+}
+
+.badge-secondary{
+  opacity: 0.5;
+}
+
+.post-main-content h2, .post-main-content h3, .post-main-content h4, .post-main-content h5{
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+.post-main-content img{
+  width: 100%;
+}
