@@ -1,15 +1,15 @@
 <div class="side-bar">
   <div class="side-bar-block">
     <div class="side-bar-flex">
-      <div class="home">
-        <a href="#">
+      <div class="root-home">
+        <%= link_to articles_path do %>
           <i class="fas fa-home"></i>我的清單
-        </a>
+        <% end %>
       </div>
-      <div class="favorite">
-        <a href="#">
+      <div class="root-favorite">
+        <%= link_to favorites_articles_path do %>
           <i class="fas fa-star"></i>我的最愛
-        </a>
+        <% end %>
       </div>
       <div class="tags">
         <a href="#">
