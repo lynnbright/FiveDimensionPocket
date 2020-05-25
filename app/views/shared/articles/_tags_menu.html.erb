@@ -1,0 +1,3 @@
+<% @user_tags.each do |tag| %>
+  <a href="/tags/<%= tag.id %>"><li> <%= tag.name %> (<%= tag.counter %>)</li></a>
+<% end %> 
