@@ -15,15 +15,12 @@
   </head>
 
   <body>
-      <%= render "shared/articles/header"%>  
-      <%= render "shared/articles/sidebar"%>
-      <span class="notice"> <%= notice %> </span>
-      <div class="alert alert-warning alert-dismissible fade" role="alert" id="flash-alert">
-        <span class="flash alert modal-body"> <%= alert %> </span>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+      <%# span class="notice"> <%= notice </span>%>
+      <%# span class="alert"> <%= alert </span> %>
+      <%= render "shared/articles/header"%>
+      <div class="row">
+        
+        <%= render "shared/articles/sidebar"%>
         <%= yield %>
       </div>
       <%= render "shared/footer" %>

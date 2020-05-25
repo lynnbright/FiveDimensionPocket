@@ -20,9 +20,6 @@ body {
   align-items: center;
   margin: 0 10px;
 }
-a{
-  color: white;
-}
 .bottom-line {
   padding-top: 14px;
   display: block;
@@ -30,9 +27,6 @@ a{
 }
 .card-title:hover {
   color:white;
-}
-a:hover {
-  text-decoration:none;
 }
 .content{
   padding: 63px 20px 0px;

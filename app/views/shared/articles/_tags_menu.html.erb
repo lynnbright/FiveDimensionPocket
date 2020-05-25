@@ -1,3 +1,7 @@
 <% @user_tags.each do |tag| %>
-  <a href="/tags/<%= tag.id %>"><li> <%= tag.name %> (<%= tag.counter %>)</li></a>
-<% end %> 
+<li class="nav-item">
+  <a class="nav-link" href="/tags/<%= tag.id %>">
+    <%= tag.name %> (<%= tag.counter %>)
+  </a>
+</li>
+<% end %>
