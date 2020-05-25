@@ -23,14 +23,17 @@
             <p class="px-3">文章來源：<%= @article.domain %> </p>
             <a href="<%= @article.link %>" target="_blank">查看原始文章</a>
           </div>
-          <div class="single_article_tags">
+          <div class="single_article_tags  row justify-content-center mb-3">
+            <% @article.tags.each do |tag| %>
+              <span class="badge badge-secondary mx-2"><%= tag.name %></span>
+            <% end %>
           </div>
         </div>
       </div>
       <div class="single_article_cover w-100">
-        <img src="<%= @article.images[2] %>" alt="" width="100%">
+        <img src="<%= @article.images.last %>" alt="" width="100%">
       </div>
-      <article class="my-5">
+      <article class="my-5 w-100">
         <%= @article.clean_content.html_safe %>
       </article>
     </div>

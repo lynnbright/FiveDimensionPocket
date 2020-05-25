@@ -24,14 +24,4 @@ import 'chart.js/dist/Chart.css'
 
 
 import "controllers"
-$(document).on('turbolinks:load', function(){
-
-  //text-to-speech player 顯示
-  $('#js-create-speech').click(function() {
-    let $this = $(this);
-    $this.removeClass('d-flex').addClass('d-none');
-    $this.siblings('.loading').removeClass('d-none').addClass('d-inline-block')
-  });
-});
-
 import "script/navbar.js"

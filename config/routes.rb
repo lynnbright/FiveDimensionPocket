@@ -15,37 +15,29 @@ Rails.application.routes.draw do
     unauthenticated do
       root to: 'devise/sessions#new', as: 'unauthenticated_root'
     end
-  end 
- 
+  end  
 
-  #新增文章的路徑
-  resources :articles
+   #新增文章、我的最愛頁面路徑
+  resources :articles do
+    collection do 
+      get :favorites
+    end
+  end
 
   # 圖表
   get "/charts", to: "charts#index"
-  # get 'api/:user_id/articles', to: 'api/articles#index', as: :api_articles_index, defaults: { s: :json}
-  # # namespace :api do
-  # #   resources :users, only: [:show] do
-  # #     resources :articles, only: [:index, :show]
-  # #   end
-  # # end
   
-  #探索頁面路徑
+  #探索頁面
   resources :explores, only: [:index]
-  #追蹤頁面路徑
+
+  #追蹤頁面
   resources :followers, only: [:index]
-  #各使用者的頁面
+
+  # 搜尋
+  get "/search", to: "searches#search_articles"
 
 
-  # 探索
-  get "/explores", to: "explores#index"
-
-  # 探索
-  get "/explores", to: "explores#index"
-
-  # APIs
   #內部 api 路徑
-  #api
   namespace :api do
     namespace :v1 do
       resources :articles, only: [] do
@@ -72,7 +64,7 @@ Rails.application.routes.draw do
     end
   end
 
-  #api2
+  #Extension api 路徑
   namespace :api do
     namespace :v1 do
       post 'login' => 'authentication#login'

@@ -2,13 +2,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <html>
   <head>
     <title>FiveDimensionPocket</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-      <style class="title-search-style"></style>
       <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,11 +15,15 @@
   </head>
 
   <body>
-      <%# span class="notice"> <%= notice </span>%>
-      <%# span class="alert"> <%= alert </span> %>
-      <%= render "shared/articles/header"%>
-      <div class="content">
-        <%= render "shared/articles/sidebar"%>
+      <%= render "shared/articles/header"%>  
+      <%= render "shared/articles/sidebar"%>
+      <span class="notice"> <%= notice %> </span>
+      <div class="alert alert-warning alert-dismissible fade" role="alert" id="flash-alert">
+        <span class="flash alert modal-body"> <%= alert %> </span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
         <%= yield %>
       </div>
       <%= render "shared/footer" %>

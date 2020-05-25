@@ -1,8 +1,8 @@
 <div class="content">
   <div class="container">
-    <h1>我的清單</h1>
+    <h1>我的最愛</h1>
     <div class="row" id="card-wrap">
-      <% @articles.each do |article| %>
+      <% @favorite_articles.each do |article| %>
       <div class="col-12 col-md-4 mt-2 mb-2">
         <div class="card for-article h-100 " data-title="<%= article.title %>">
           <div>
@@ -59,7 +59,7 @@
                   <!-- Line share button code -->
                   <a href="https://social-plugins.line.me/lineit/share?url=<%= article.link %>" target="_blank"><i class="fab fa-line d-inline-block"></i>&nbsp Line</a>        
                 </div>
-              </span>              
+              </span>          
             </div> 
         </div>
       </div>

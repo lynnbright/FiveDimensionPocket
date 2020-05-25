@@ -77,12 +77,6 @@ class Api::V1::ArticlesController < ApplicationController
     render json: {tags: tags}
   end
 
-  private
-  def tags_params
-    params.permit(:id, :list_tag )
-  end
-  
-
   def create_speech
     @article = Article.find(params[:id])
     response = HTTParty.post("https://texttospeech.googleapis.com/v1/text:synthesize",
@@ -91,30 +85,29 @@ class Api::V1::ArticlesController < ApplicationController
           "content-type" => "application/json; charset=utf-8",
         },
         :body => {
-          "input" => {
-            "text" => "#{@article.content}"
+          "input":{
+            "text": "#{@article.content}"
           },
-          "voice" => {
-            "languageCode" => "cmn-TW",
-            "name" => "cmn-TW-Wavenet-A-Alpha",
-            "ssmlGender" => "FEMALE"
+          "voice":{
+            "languageCode":"cmn-CN",
+            "name":"cmn-CN-Wavenet-A",
+            "ssmlGender":"FEMALE"
           },
-          "audioConfig" => {
-            "audioEncoding" => "MP3"
+          "audioConfig":{
+            "audioEncoding":"MP3"
           }
         }.to_json
     )
-
     if response.code == 200
-      response_hash = JSON.parse(response.body)   #{ "audioContent": "....}
+      response_hash = JSON.parse(response.body)   #{ "audioContent": "...."}      
       @response_encode = response_hash["audioContent"]
       @article.encode_string = @response_encode
       @article.save
-      # @response_decode = Base64.decode64(response_encode)
-      # @article.record_save = response_encode
-      # @article.save
     end
-
   end
 
+  private
+  def tags_params
+    params.permit(:id, :list_tag )
+  end
 end

@@ -13,10 +13,10 @@
       <div class="search"><i class="fas fa-search"></i>
         <div class="search-block displaynone">
           <div class="input-flex">     
-            <form action="">
-              <input type="text" placeholder="搜尋關鍵字" class="text-search">
-              <input type="submit" value="搜尋" class="submit-search">
-            </form>
+            <%= form_for :search, url: search_path, method: 'get' do |f| %>
+              <%= f.text_field :search_input, placeholder: '搜尋文章', class:'text-search' %>
+              <%= f.submit "搜尋", class: 'submit-search' %>
+            <% end %>
             <button class="search-close"><i class="fas fa-times"></i></button>
           </div>
         </div>
@@ -35,10 +35,9 @@
       <button class="explore"><%= link_to "探索", explores_path%></button>
       <button class="success"><%= link_to "成就", charts_path %></button>
       <div class="user">
-          <img src="https://picsum.photos/id/50/24" alt="" class="avatar">
+          <%= image_tag((current_user.avatar_thumbnail), class: 'avatar')%>
         <div class="user-list displaynone">
           <div class="user-list-block">
-              <img src="https://picsum.photos/id/50/40" class="avatar-list">
             <div class="log-out">
               <%= link_to "登出", destroy_user_session_path, method: :delete, class: 'sign-out' %>
             </div>
@@ -54,14 +53,14 @@
   </div>
   <div class="root-body">
     <div class="root-home">
-     <a href="#">
-         <i class="fas fa-home"></i>我的清單
-      </a>
+        <%= link_to articles_path do %>
+        <i class="fas fa-home"></i>我的清單
+        <% end %>
     </div>
     <div class="root-favorite">
-      <a href="#">
+        <%= link_to favorites_articles_path do %>
         <i class="fas fa-star"></i>我的最愛
-      </a>
+        <% end %>
     </div>
     <div class="root-tags">
       <a href="#">
