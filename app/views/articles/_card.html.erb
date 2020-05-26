@@ -11,13 +11,13 @@
     <div class="row" id="card-wrap">
       <% articles.each do |article| %>
       <div class="col-12 col-md-4 mt-2 mb-2">
-        <div class="card for-article h-100 " data-title="<%= article.title %>">
+        <div class="card for-article h-100 ">
           <div>
             <%= link_to (image_tag(article.images.last,  size:'300x200', class:"card-img-top") if article.article_images.attached?), article_path(article.id) %>
           </div>
           <div class="card-body">
             <h5>
-              <%= link_to article.title, article_path(article.id), class:"card-title card-title-search", data:{title: article.title} %>
+              <%= link_to article.title, article_path(article.id), class:"card-title" %>
             </h5>
             <p class="card-text"><%= article.short_description %></p>
                         
