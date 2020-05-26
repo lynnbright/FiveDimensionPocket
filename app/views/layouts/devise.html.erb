@@ -7,12 +7,12 @@
   <head>
     <title>FiveDimensionPocket</title>
     <%= csrf_meta_tags %>
-      <%= csp_meta_tag %>
-        <%= javascript_pack_tag 'application_user', 'data-turbolinks-track': 'reload' %>
+    <%= csp_meta_tag %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render "shared/devise/navbar" %>
+    <!-- <%= render "shared/devise/navbar" %> -->
     <span class="notice"> <%= notice %> </span>
     <span class="alert"> <%= alert %> </span>
     <%= yield %>
