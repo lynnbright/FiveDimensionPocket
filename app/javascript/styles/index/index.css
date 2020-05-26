@@ -1,13 +1,13 @@
 *, ::after, ::before {
   background-repeat: no-repeat;
 }
-body {
+/* body {
   font-family: Arial, sans-serif;
   color: white;
   background-color: #0B032D;
   display: block;
   margin: 0;
-}
+} */
 .card.for-article {
   background-color: transparent;
   border: 1px solid rgb(255, 185, 151);
