@@ -3,7 +3,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("styles")
-require("scripts")
 require("articles_sharebtn")
 
 import $ from 'jquery'
@@ -11,7 +10,7 @@ window.$ = window.jquery = $
 
 import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import "../scripts/sb-admin-2.min.js"
 
 import "@fortawesome/fontawesome-free/js/all"
 
