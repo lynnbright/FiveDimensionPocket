@@ -34,14 +34,14 @@ class Api::V1::ExtensionController < ApplicationController
           clean_content: result[:extract_data][:clean_content],
           short_description: result[:extract_data][:short_description],
         })
-        render json: {message: '儲存成功!'}, status: 200
         @article.save
+        render json: {message: '儲存成功!'}, status: 200
       else
         render json: {message: '此網站無法存取'}, status: 401
       end
     else
-      render json: {message: '此網站儲存過'}, status: 200
       check_article_exist.update(created_at: Time.now)
+      render json: {message: '此網站儲存過'}, status: 200
     end
   end
 end

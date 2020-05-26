@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_05_31_070926) do
     t.index ["user_id"], name: "index_follow_lists_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -95,6 +96,8 @@ ActiveRecord::Schema.define(version: 2020_05_31_070926) do
     t.index ["article_id"], name: "index_highlights_on_article_id"
   end
 
+=======
+>>>>>>> 刪除不必要的migrate
   create_table "searches", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -145,7 +148,10 @@ ActiveRecord::Schema.define(version: 2020_05_31_070926) do
   add_foreign_key "article_tags", "tags"
   add_foreign_key "follow_lists", "users"
   add_foreign_key "follow_lists", "users", column: "following_id"
+<<<<<<< HEAD
   add_foreign_key "highlights", "articles"
+=======
+>>>>>>> 刪除不必要的migrate
   add_foreign_key "searches", "users"
   add_foreign_key "tags", "users"
   add_foreign_key "user_last_articles", "articles"
