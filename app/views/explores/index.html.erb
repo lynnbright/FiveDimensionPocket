@@ -39,7 +39,6 @@
                     <h5 class="card-title"><%= record.article.title %></h5>
                   </a>
                 </div>
-                <%= image_tag(record.article.images.last, size:'300x200',class: "card-img-top") if record.article.article_images.attached?  %>
               </a>
               <a href="<%= record.article.link %>" target="_blank" class="card-text"><%= record.article.domain %></a>
               <p class="card-text"><%= record.article.short_description %></p>
