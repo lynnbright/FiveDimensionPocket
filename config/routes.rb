@@ -83,4 +83,11 @@ Rails.application.routes.draw do
       post 'logout' => 'authentication#logout'
     end
   end
+
+  #Extension save 路徑
+  namespace :api do
+    namespace :v1 do
+      post 'save' => 'extension#save'
+    end
+  end
 end
