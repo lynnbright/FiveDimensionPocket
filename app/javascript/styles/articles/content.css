@@ -1,0 +1,29 @@
+.article-content-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.article-content {
+  width: 100%;
+  max-width: 798px;
+  height: 900px;
+  background-color: #aff;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 40px;
+  margin: 0 80px;
+  vertical-align: center;
+}
+
+.msgoogle p{
+  margin: 0;
+  color: #0B032D
+}
+.msgoogle a:hover{
+  text-decoration: none;
+}
+.single_article_website a{
+  color:#1eabf9;
+}

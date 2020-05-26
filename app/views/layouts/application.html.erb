@@ -14,15 +14,30 @@
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
 
-  <body>
-      <%# span class="notice"> <%= notice </span>%>
-      <%# span class="alert"> <%= alert </span> %>
-      <%= render "shared/articles/header"%>
-      <div class="row">
-        
-        <%= render "shared/articles/sidebar"%>
+<head>
+  <title>FiveDimensionPocket</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <style class="title-search-style"></style>
+  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body id="page-top">
+  <%# span class="notice"> <%= notice </span>%>
+  <%# span class="alert"> <%= alert </span> %>
+  <div id="wrapper">
+    <%= render "shared/sidebar"%>
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <%= render "shared/navbar"%>   
+        <div class="container-fluid">   
         <%= yield %>
+      </div>  
       </div>
-      <%= render "shared/footer" %>
-  </body>
+    </div>
+  </div>
+  <%= render "shared/footer" %>
+</body>
+
 </html>
