@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def create_tags_menu
-    @user_tags = current_user.tags.all
+    @user_tags = current_user.tags
   end
   
 
