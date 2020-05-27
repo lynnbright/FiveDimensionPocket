@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end  
 
-   #新增文章、我的最愛頁面路徑
+  #新增文章、我的最愛頁面路徑
   resources :articles do
     collection do 
       get :favorites
@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       get :unread_collection
     end
   end
+
+  # landing page
+  get '/home', to: "welcome#index"
 
   # 圖表
   get "/charts", to: "charts#index"
