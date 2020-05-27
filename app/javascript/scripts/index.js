@@ -1,2 +1,2 @@
-import './sb-admin-2.min.js';
+import './sb-admin-2.js';
 import './article.js'

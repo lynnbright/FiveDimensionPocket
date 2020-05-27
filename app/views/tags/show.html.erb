@@ -1,8 +1,1 @@
-# 請再幫忙填到card~
-<div class="content">
-  <div class="container">
-    <% @tag_articles.each do |article| %>
-      <p><%= article.title %> </p>
-    <% end %>
-  </div>
-</div>
+<%= render 'articles/card', articles: @tag.articles, title: @tag.name %>
