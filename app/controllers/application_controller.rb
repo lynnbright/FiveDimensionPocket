@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   before_action :article_new, :article_all, :create_tags_menu
 
+  def record_not_found
+    render file: 'public/404.html', 
+           status: 404, 
+           layout: false
+  end
+
 
   private
   def article_new
