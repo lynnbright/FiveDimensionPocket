@@ -1,9 +1,9 @@
 <div class="content" id="card-item">
   <div class="container col-10">
     <div class="page-bar row justify-content-between w-100 py-4">
-      <h1 class="h3 mb-1 text-gray-800"><%= title %></h1>
+      <h1 class="h3 mb-1"><%= title %></h1>
       <div class="btn-group row align-items-center" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           篩選
         </button>
         <div class="dropdown-menu">
@@ -22,7 +22,7 @@
 
     <div class="row" id="card-wrap">
       <% articles.each do |article| %>
-      <div class="col-12 col-md-4 mt-2 mb-2">
+      <div class="col-12 col-md-4 mt-2 mb-4">
         <div class="card for-article h-100 ">
           <div>
             <%= link_to (image_tag(article.images.last,  size:'300x200', class:"card-img-top") if article.article_images.attached?), article_path(article.id) %>
@@ -63,7 +63,8 @@
               </a>
 
               <span class="shared-btn-wrap">
-                <button class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></button>
+                <a href="###" class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></a>
+                <!-- <button class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></button> -->
                 <div class="shared-bar share-btn-collapse row p-1" style="background-color: pink;">
                   <!-- 複製連結 -->
                   <a class="shared-conect-btn" href="#"><i class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
