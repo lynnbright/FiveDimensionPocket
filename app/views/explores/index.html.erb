@@ -1,11 +1,14 @@
 <h1 class="h3 mb-1 text-gray-800">探索</h1>
 <div class="row mt-3" id="card-wrap">
-  <label class="rocker rocker-small">
+  <!-- <label class="rocker rocker-small">
     <input type="checkbox">
     <span class="switch-left">追蹤</span>
     <span class="switch-right">探索</span>
-  </label>
-
+  </label> -->
+  <div class="btn-group row align-items-center" role="group" aria-label="Basic example">
+    <%= link_to '探索', explores_path, class:'btn btn-info' %>
+    <%= link_to '追蹤', following_path, class:'btn btn-info' %>
+  </div>
 
   <div class="explore-block">
     <% @Users.each do |user| %>
@@ -13,7 +16,7 @@
       <div class="row mt-4" data-controller="follow">
         <%= image_tag((user.avatar_thumbnail), class: 'rounded-circle')%>
         <div class="user-name">
-          <a href="#"><%= user.name %> &emsp; </a>
+          <%= link_to "#{user.name}", profile_path(id: user.id) %>
           <input type="hidden" data-target="follow.userId" value="<%= user.id %>">
           <% if current_user.follow_lists.find_by(following_id: user.id) %>
           <button class="btn btn-info" data-target="follow.followBtn" data-action="follow#check">追蹤中</button>
