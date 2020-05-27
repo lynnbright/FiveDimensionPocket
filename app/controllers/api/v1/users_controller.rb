@@ -11,4 +11,13 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def tags
+    all_tags = current_user.tags.select("name","counter").where("counter > 0")
+    if all_tags.any?
+      render json: { tags: all_tags }
+    else 
+      render json: { tags: false }
+    end
+  end
+
 end

@@ -1,39 +1,11 @@
-
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
-@import './index/index.css';
-@import './toggle/toggle.css';
-@import './articles/header.css';
-@import './articles/sidebar.css';
 
-a {
-  text-decoration: none;
-  color: inherit;
-  outline: 0;
-}
 
-//single_page_article CSS
-//msgoogle player
-.msgoogle p{
-  margin: 0;
-  color: #0B032D
-}
-.msgoogle a:hover{
-  text-decoration: none;
-}
+// @import './shared/footer.css';
+// @import './articles/content.css';
+// @import './articles/articles-nav.css';
 
-//查看原始文章
-.single_article_website a{
-  color:#1eabf9;
-}
 
-//標籤
-.badge{
-  font-size: 90%;
-}
-
-.badge-secondary{
-  opacity: 0.5;
-}

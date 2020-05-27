@@ -43,7 +43,14 @@ export default class extends Controller {
         }) 
         $('[name="article[tag_list][]"]').select2({
             tags: true,
-            tokenSeparators: [',', ' ']
+            createTag: function(params) {
+              if (/[, ]/.test(params.term)) {
+                  var str = params.term.trim().replace(/[, ]*$/, '');
+                  return { id: str, text: str }
+              } else {
+                  return null;
+              }
+            }    
         });   
       },
     }).then((result) => {
@@ -63,5 +70,4 @@ export default class extends Controller {
       }
     })    
   }
-
 }

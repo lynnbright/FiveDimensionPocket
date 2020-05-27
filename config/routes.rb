@@ -3,17 +3,16 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     omniauth_callbacks: "users/omniauth_callbacks"
-
   }
   devise_scope :user do
-    get 'users/sign_out' => "devise/sessions#destroy"
+    get 'users/sign_out' => "users/sessions#destroy"
 
     authenticated  do
       root to: 'articles#index'
     end
 
     unauthenticated do
-      root to: 'devise/sessions#new', as: 'unauthenticated_root'
+      root to: 'users/sessions#new', as: 'unauthenticated_root'
     end
   end  
 
@@ -35,11 +34,14 @@ Rails.application.routes.draw do
 
   # 搜尋
   get "/search", to: "searches#search_articles"
+  resources :tags, only: [:show]
 
 
   #內部 api 路徑
   namespace :api do
     namespace :v1 do
+      resources :tags, only: [:index] do
+      end     
       resources :articles, only: [] do
         member do
           post :favorite
@@ -55,10 +57,10 @@ Rails.application.routes.draw do
           get :tag
           get :read
         end  
-      end 
+      end       
       resources :users, only: [] do
         member do                  
-          post :follow
+          post :follow          
         end  
       end     
     end

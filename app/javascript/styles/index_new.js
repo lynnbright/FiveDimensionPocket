@@ -1,3 +1,4 @@
-import './body/body.css'
-//import './user_application.scss'
+import './devise/index.css'
+import './application_user.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
+
