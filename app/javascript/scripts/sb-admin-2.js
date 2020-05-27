@@ -2,12 +2,22 @@ $(document).on('turbolinks:load', function(){
   "use strict"; // Start of use strict
 
   // Toggle the side navigation
-  $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
+  $("#sidebarToggleTop").on('click', function(e) {
+    e.stopPropagation();
     $("body").toggleClass("sidebar-toggled");
     $(".sidebar").toggleClass("toggled");
     if ($(".sidebar").hasClass("toggled")) {
       $('.sidebar .collapse').collapse('hide');
     };
+  });
+
+  $('body').on('click', function(e){
+    let isSidebarShow = !$('.sidebar').hasClass('toggled');
+    let $target = $(e.target);
+    let $parents = $target.parents('.sidebar:eq(0)')
+    if (isSidebarShow && !$target.hasClass('sidebar') && $parents.length === 0) {
+      $('.sidebar').toggleClass('toggled')
+    }
   });
 
   // Close any open menu accordions when window is resized below 768px
