@@ -2,30 +2,37 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <%= link_to articles_path, class: 'sidebar-brand d-flex align-items-center justify-content-center' do %>
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fab fa-get-pocket"></i>
     </div>
     <div class="sidebar-brand-text mx-3">5D Pocket</div>
-  </a>
+  <% end %>
 
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
 
-  <li class="nav-item">
+  <li class="nav-item active">
     <%= link_to articles_path, class: "nav-link" do %>
-    <i class="fas fa-home"></i>
+    <i class="fas fa-fw fa-home"></i>
     <span>我的清單</span>
     <% end %>
   </li>
 
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    篩選條件
+  </div>
+  
+  <!-- Nav Item - 我的最愛 -->
   <li class="nav-item">
     <%= link_to favorites_articles_path, class: "nav-link" do %>
-    <i class="fas fa-star"></i>
-    <span>我的最愛</span>
+      <i class="fas fa-fw fa-heart"></i>
+      <span>我的最愛</span>
     <% end %>
   </li>
-  <!-- Nav Item - Pages Collapse Menu -->
+
+  <!-- Nav Item - 我的標籤 -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
       aria-controls="collapseTwo">
@@ -39,5 +46,16 @@
     </div>
   </li>
 
+  <!-- Nav Item - 公開清單 -->
+  <li class="nav-item">
+    <a class="nav-link" href="charts.html">
+      <i class="fas fa-fw fa-unlock-alt"></i>
+      <span>公開清單</span></a>
+  </li>
+
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
 </ul>
-<!-- End of Sidebar -->
+

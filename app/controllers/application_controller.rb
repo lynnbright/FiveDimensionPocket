@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  rescue_from ActiveRecord::RecordNotFound, 
+              with: :record_not_found
+
   layout :layout_by_resource
   before_action :article_new, :article_all, :create_tags_menu
 
@@ -12,6 +15,11 @@ class ApplicationController < ActionController::Base
     @user_tags = current_user.tags
   end
   
+  def record_not_found
+    render file: 'public/404.html', 
+           status: 404, 
+           layout: false
+  end
 
   private
   def article_new

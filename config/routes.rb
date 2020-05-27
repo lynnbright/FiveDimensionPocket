@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :articles do
     collection do 
       get :favorites
+      get :read_collection
+      get :unread_collection
     end
   end
 
@@ -37,6 +39,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:show]
 
 
+  # APIs
   #內部 api 路徑
   namespace :api do
     namespace :v1 do

@@ -6,54 +6,70 @@
     <i class="fa fa-bars"></i>
   </button>
 
-  <!-- Topbar Search -->
-  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+  <!-- Topbar Add Article -->
+  <%= form_for @article, url: articles_path, method:'post', :html => {class: 'd-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search'} do |f| %>
     <div class="input-group">
-      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search"
-        aria-describedby="basic-addon2">
+      <%= f.text_field :link, class: 'form-control bg-light border-0 small', placeholder: '新增文章連結 https://...' %>
       <div class="input-group-append">
-        <button class="btn btn-primary" type="button">
-          <i class="fas fa-search fa-sm"></i>
-        </button>
+        <%= f.submit '儲存', class: 'btn btn-primary' %>
       </div>
     </div>
-  </form>
-
+  <% end %>
 
   <!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">
-    <!-- Nav Item - Alerts -->
-    <li class="nav-item no-arrow mx-1">
-      <!-- 感覺可加個icon -->
-      <%= link_to "探索", explores_path, class: "nav-link text-info" %>
-    </li>
-    <li class="nav-item no-arrow mx-1">
-      <%= link_to "成就", charts_path, class: "nav-link text-info" %>
-    </li>
-    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+  
+    <!-- Nav Item - AddArticle Dropdown (Visible Only XS) -->
     <li class="nav-item dropdown no-arrow d-sm-none">
-      <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
+      <a class="nav-link dropdown-toggle" href="#" id="searchDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-plus fa-fw"></i>
+      </a>
+      <!-- Article Dropdown - Messages -->
+      <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown1">
+        <%= form_for @article, url: articles_path, method:'post', :html => {class: 'form-inline mr-auto w-100 navbar-search'} do |f| %>
+          <div class="input-group"> 
+            <%= f.text_field :link, class: 'form-control bg-light border-0 small', placeholder: '新增文章連結 https://...' %>
+            <div class="input-group-append">
+              <%= f.submit '儲存', class: 'btn btn-primary' %>
+            </div>    
+          </div>
+        <% end %>
+      </div>
+    </li>
+
+    <!-- Nav Item - Search Dropdown (Visible Only XS 改成桌機也看得到) -->
+    <li class="nav-item dropdown no-arrow ">
+      <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-search fa-fw"></i>
       </a>
       <!-- Dropdown - Messages -->
-      <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-        <form class="form-inline mr-auto w-100 navbar-search">
+      <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">        
+        <%= form_for :search, url: search_path, :html => { class: 'form-inline mr-auto w-100 navbar-search'}, method: 'get' do |f| %>
           <div class="input-group">
-            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-              aria-label="Search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-primary" type="button">
-                <i class="fas fa-search fa-sm"></i>
-              </button>
+            <%= f.text_field :search_input, class: 'form-control bg-light border-0 small', placeholder: '搜尋文章' %>
+          <div class="input-group-append">
+            <%= f.submit "搜尋", class: 'btn btn-primary' %>
             </div>
           </div>
-        </form>
+        <% end %>
       </div>
+    </li>
+
+    <!-- Nav Item - 探索與追蹤 -->
+    <li class="nav-item no-arrow"> 
+      <%= link_to explores_path, class: "nav-link" do %>
+      <i class="far fa-compass"></i><span style="font-size: 15px;">&nbsp&nbsp探索新知</span>
+      <% end %>
+    </li>
+    <li class="nav-item no-arrow">
+      <%= link_to charts_path, class: "nav-link" do %>
+        <i class="fas fa-chart-line"></i><span style="font-size: 15px;">&nbsp&nbsp我的成就</span>
+      <% end %>
     </li>
 
     <div class="topbar-divider d-none d-sm-block"></div>
 
+    <!-- Nav Item - User Information -->
     <li class="nav-item dropdown no-arrow">
       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.name %></span>
@@ -62,87 +78,11 @@
       <!-- Dropdown - User Information -->
       <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
         <%= link_to destroy_user_session_path, method: :delete, data: {toggle: "modal", target: "#logoutModal"},class: "dropdown-item" do %>
-        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
         登出
         <% end %>
       </div>
     </li>
 
   </ul>
-
 </nav>
-<!-- End of Topbar -->
-
-<!-- <body>
-  <div class="nav-behide-space"></div>
-  <nav id="nav" class="nav">
-    <div class="burger" @click="showAside = !showAside">
-      <i class="fas fa-bars"></i>
-    </div>
-    <div v-if="showAside" class="aside-behide" @click="showAside = !showAside">
-      <div class="aside" @click.stop>
-        <a class="aside-link" href="#"><i class="fas fa-heart"></i> 我的最愛</a>
-        <a class="aside-link" href="#"><i class="fas fa-list-ul"></i> 我的清單</a>
-        <a class="aside-link" href="#"><i class="fas fa-tags"></i> 標籤</a>
-        <a class="aside-link" href="#"><i class="fas fa-book-open"></i> 已公開清單</a>
-      </div>
-    </div>
-
-    <div class="nav-logo">
-      <a class="nav-logo-icon" href="#"><i class="fas fa-envelope-open"></i></a>
-    </div>
-    <div class="spacer"></div>
-    <button class="nav-btn" @click="showAddBar = true"><i class="fas fa-plus"></i></button>
-    <div v-if="showAddBar" class="nav-add">
-      <%= form_for @article, url: articles_path, method:'post' do |f| %>
-      <%= f.text_field :link, placeholder: '新增連結 url https://...' %>
-      <%= f.submit "儲存", class: 'nav-btn submit-btn' %>
-      <% end %>
-      <button class="nav-btn close-btn" @click="showAddBar = false"><i class="fas fa-times"></i></button>
-    </div>
-    <button class="nav-btn" @click="showSearchBar = true"><i class="fas fa-search"></i></button>
-
-      <%= form_for :search, url: search_path, method: 'get' do |f| %>
-        <%= f.text_field :search_input, placeholder: '搜尋文章' %>
-        <%= f.submit "搜尋", class: 'nav-btn submit-btn' %>
-      <% end %>-->
-<!-- <input id="search-input" type="text" placeholder="本頁文章搜尋">
-      <button class="nav-btn submit-btn">送出</button>        -->
-<!-- <button class="nav-btn close-btn" @click="showSearchBar = false"><i class="fas fa-times"></i></button> -->
-<!-- </div> -->
-<!--<a class="nav-link" href="/">探索</a>
-    <a class="nav-link" href="/">成就</a>
-    <div class="user" @click="showUserBar = !showUserBar">
-      <a class="user-link" href="/" @click.prevent>
-        <%= image_tag((current_user.avatar_thumbnail), class: 'user-link-img')%>
-      </a>
-      <div v-if="showUserBar" class="user-bar" @click.stop>
-        <div class="user-img-wrap">
-          <%= image_tag((current_user.avatar_thumbnail), class: 'user-img')%>
-        </div>
-        <div class="user-name">
-
-          <a class="user-profile-link" href="#"><%= current_user.name %></a>
-        </div>
-      </div>
-      <hr>
-      <div class="user-bar-bottom">
-        <%= link_to "登出", destroy_user_session_path, method: :delete, class: 'sign-out' %>
-      </div>
-    </div>
-    </div>
-  </nav>
-  <script>
-    var navbar = new Vue({
-      el: '#nav',
-      data: {
-        msg: 'hello vue',
-        showSearchBar: false,
-        showAddBar: false,
-        showAside: false,
-        showUserBar: false
-      }
-    })
-  </script>
-</body> -->
-
