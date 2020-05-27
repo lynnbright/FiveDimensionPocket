@@ -1,13 +1,25 @@
-<div class="content">
-  <div class="container">
+<div class="content" id="card-item">
+  <div class="container col-10">
     <div class="page-bar row justify-content-between w-100 py-4">
-      <h1><%= title %></h1>
+      <h1 class="h3 mb-1 text-gray-800"><%= title %></h1>
       <div class="btn-group row align-items-center" role="group" aria-label="Basic example">
-        <%= link_to '全部', articles_path, class:'btn btn-info' %>
-        <%= link_to '已讀', read_collection_articles_path, class:'btn btn-info' %>
-        <%= link_to '未讀', unread_collection_articles_path, class:'btn btn-info' %>
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          篩選
+        </button>
+        <div class="dropdown-menu">
+          <%= link_to articles_path, class:'dropdown-item' do %>
+            <i class="fas fa-list-ul"></i><span>&nbsp&nbsp全部</span>
+          <% end %>
+          <%= link_to unread_collection_articles_path, class:'dropdown-item' do %>
+            <i class="far fa-check-square"></i><span>&nbsp&nbsp未讀</span>
+          <% end %>
+          <%= link_to read_collection_articles_path, class:'dropdown-item' do %>
+            <i class="fas fa-check-square"></i><span>&nbsp&nbsp已讀</span>
+          <% end %>
+        </div>
       </div>
     </div>
+
     <div class="row" id="card-wrap">
       <% articles.each do |article| %>
       <div class="col-12 col-md-4 mt-2 mb-2">

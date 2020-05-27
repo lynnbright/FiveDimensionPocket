@@ -18,16 +18,16 @@
       <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
         <%= render "shared/sidebar"%>
-          <div class="container-fluid">
+          <!-- <div class="container-fluid"> -->
             <span class="notice"> <% notice %> </span>
-            <div class="alert alert-warning alert-dismissible fade" role="alert" id="flash-alert">
+            <div class="alert alert-warning alert-dismissible fade d-none" role="alert" id="flash-alert">
               <span class="flash alert modal-body"> <%= alert %> </span>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <%= yield %>
-          </div>
+          <!-- </div> -->
           <%= render "shared/footer" %>
         </div>
       </div>
