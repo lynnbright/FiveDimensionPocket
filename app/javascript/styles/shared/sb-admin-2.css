@@ -3958,7 +3958,7 @@ input[type="button"].btn-block {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
 }
 
 .navbar > .container,
@@ -9930,8 +9930,8 @@ a:focus {
 
 .sidebar .nav-item .nav-link .img-profile,
 .topbar .nav-item .nav-link .img-profile {
-  height: 2rem;
-  width: 2rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 .topbar {
@@ -9971,7 +9971,7 @@ a:focus {
   height: 4.375rem;
   display: flex;
   align-items: center;
-  padding: 0 0.75rem;
+  padding: 0 0.6rem;
 }
 
 .topbar .nav-item .nav-link:focus {
