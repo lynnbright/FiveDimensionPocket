@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion d-sm-block fixed-top toggled" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
   <%= link_to articles_path, class: 'sidebar-brand d-flex align-items-center justify-content-center' do %>
@@ -37,7 +37,7 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
       aria-controls="collapseTwo">
       <i class="fas fa-tag"></i>
-      <span>我的標籤</span>
+      <span>&nbsp我的標籤</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
@@ -53,9 +53,5 @@
       <span>公開清單</span></a>
   </li>
 
-  <!-- Sidebar Toggler (Sidebar) -->
-  <div class="text-center d-none d-md-inline">
-    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-  </div>
 </ul>
 

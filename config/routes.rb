@@ -12,11 +12,11 @@ Rails.application.routes.draw do
     end
 
     unauthenticated do
-      root to: 'users/sessions#new', as: 'unauthenticated_root'
+      root to: 'welcome#index', as: 'unauthenticated_root'
     end
   end  
 
-   #新增文章、我的最愛頁面路徑
+  #新增文章、我的最愛頁面路徑
   resources :articles do
     collection do 
       get :favorites
