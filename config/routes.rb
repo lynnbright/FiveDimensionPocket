@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     end
 
     unauthenticated do
-      # root to: 'users/sessions#new', as: 'unauthenticated_root'
       root to: 'welcome#index', as: 'unauthenticated_root'
     end
   end  
