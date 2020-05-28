@@ -4,7 +4,6 @@ class Api::V1::ExtensionController < ApplicationController
   def save
     if valid_user?
       create_article()
-      save_tags()
     end
   end
 
@@ -24,7 +23,6 @@ class Api::V1::ExtensionController < ApplicationController
 
       if result[:success]
         response_hash = result[:data]
-
         @article.assign_attributes({
           user_id: @user.id,
           link: params[:url],
@@ -45,9 +43,5 @@ class Api::V1::ExtensionController < ApplicationController
       check_article_exist.update(created_at: Time.now)
       render json: {message: '此網站儲存過'}, status: 200
     end
-  end
-
-  def save_tags
-    byebug
   end
 end
