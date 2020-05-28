@@ -13,6 +13,10 @@ class ExploresController < ApplicationController
     render :index 
   end
 
+  def profile
+    @user = User.includes(:articles).find_by(id: params[:id], articles: {publish: true})
+  end
+
   private
 
   def user_has_three_public_articles  

@@ -28,12 +28,12 @@ Rails.application.routes.draw do
   # 圖表
   get "/charts", to: "charts#index"
   
-  #探索頁面
+  # 探索頁面
   resources :explores, only: [:index]
-  #追蹤頁面
+  # 追蹤頁面
   get "/following", to: "explores#following"
-  # 個人頁面
-  get "/profile", to: 'users#show'
+  # 他人公開頁面
+  get "/profile", to: 'explores#profile'
 
   # 搜尋
   get "/search", to: "searches#search_articles"
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:show]
 
   # APIs
-  #內部 api 路徑
+  # 內部 api 路徑
   namespace :api do
     namespace :v1 do
       resources :tags, only: [:index] do
@@ -71,7 +71,7 @@ Rails.application.routes.draw do
     end
   end
 
-  #Extension api 路徑
+  # Extension api 路徑
   namespace :api do
     namespace :v1 do
       post 'login' => 'authentication#login'
