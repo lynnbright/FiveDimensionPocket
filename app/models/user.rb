@@ -40,6 +40,7 @@ class User < ApplicationRecord
   end
 
   
+  
   private
 
   def self.from_omniauth(access_token)    
