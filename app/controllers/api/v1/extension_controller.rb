@@ -4,6 +4,7 @@ class Api::V1::ExtensionController < ApplicationController
   def save
     if valid_user?
       create_article()
+      # save_tags()
     end
   end
 
@@ -43,5 +44,12 @@ class Api::V1::ExtensionController < ApplicationController
       check_article_exist.update(created_at: Time.now)
       render json: {message: '此網站儲存過'}, status: 200
     end
+  end
+
+  def save_tags
+    # user_id = @user.id
+    # url_id = params[:url].id
+    # byebug
+    # selected_tags = params[:tags]
   end
 end
