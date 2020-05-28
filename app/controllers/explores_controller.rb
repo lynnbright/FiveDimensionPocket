@@ -1,6 +1,6 @@
 class ExploresController < ApplicationController
-  before_action :authenticate_user!, :user_has_three_public_articles
-  
+  before_action :authenticate_user! 
+  before_action :user_has_three_public_articles, except: :profile
   def index  
     @users = User.includes(:user_last_articles, :articles, :follow_lists).where(id: @explore_user_id)
   end
