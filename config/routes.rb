@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     end
 
     unauthenticated do
-      root to: 'users/sessions#new', as: 'unauthenticated_root'
+      # root to: 'users/sessions#new', as: 'unauthenticated_root'
+      root to: 'welcome#index', as: 'unauthenticated_root'
     end
   end  
 
@@ -24,9 +25,6 @@ Rails.application.routes.draw do
       get :unread_collection
     end
   end
-
-  # landing page
-  get '/home', to: "welcome#index"
 
   # 圖表
   get "/charts", to: "charts#index"

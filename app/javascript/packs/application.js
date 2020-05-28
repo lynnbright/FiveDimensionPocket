@@ -25,15 +25,3 @@ import 'chart.js/dist/Chart.css'
 
 
 import "controllers"
-
-
-// $(document).on('turbolinks:load', function(){
-//   $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
-//     console.log('hihi');
-//     $("body").toggleClass("sidebar-toggled");
-//     $(".sidebar").toggleClass("toggled");
-//     if ($(".sidebar").hasClass("toggled")) {
-//       $('.sidebar .collapse').collapse('hide');
-//     };
-//   });
-// })
