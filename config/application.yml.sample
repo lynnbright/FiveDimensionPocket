@@ -1,0 +1,8 @@
+google_client_id: ""
+google_client_secret: ""
+
+facebook_client_id: ""
+facebook_client_secret: ""
+
+extractor_key: ""
+x-goog-api-key: ""

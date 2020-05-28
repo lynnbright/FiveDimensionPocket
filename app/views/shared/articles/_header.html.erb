@@ -1,0 +1,76 @@
+<nav class="nav-bar">
+  <div class="block">
+    <div class="logo-and-burger">
+      <div class="burger">
+        <div class="burger-bar"></div>
+      </div>
+      <div class="logo">
+        <a href=""><img src="https://picsum.photos/id/50/24" alt=""></a>
+        <%= link_to "5DPocket", articles_path ,class: "title"%>
+      </div>
+    </div>
+    <div class="menu">
+      <div class="search"><i class="fas fa-search"></i>
+        <div class="search-block displaynone">
+          <div class="input-flex">     
+            <%= form_for :search, url: search_path, method: 'get' do |f| %>
+              <%= f.text_field :search_input, placeholder: '搜尋文章', class:'text-search' %>
+              <%= f.submit "搜尋", class: 'submit-search' %>
+            <% end %>
+            <button class="search-close"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="plus"><i class="fas fa-plus"></i>
+        <div class="plus-block displaynone">
+          <div class="input-flex">
+            <%= form_for @article, url: articles_path, method:'post' do |f| %>
+              <%= f.text_field :link, placeholder: '新增連結 url https://...' %>
+              <%= f.submit "儲存", class: 'nav-btn submit-btn' %>
+            <% end %>   
+            <button class="plus-close"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+      </div>
+      <button class="explore"><%= link_to "探索", explores_path%></button>
+      <button class="success"><%= link_to "成就", charts_path %></button>
+      <div class="user">
+          <%= image_tag((current_user.avatar_thumbnail), class: 'avatar')%>
+        <div class="user-list displaynone">
+          <div class="user-list-block">
+            <div class="log-out">
+              <%= link_to "登出", destroy_user_session_path, method: :delete, class: 'sign-out' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="root-side-bar displaynone">
+  <div class="root-nav-bar">
+    <a href="###" class="root-side-bar-close"><svg class="fas fa-arrow-left"></svg></a>
+  </div>
+  <div class="root-body">
+    <div class="root-home">
+        <%= link_to articles_path do %>
+        <i class="fas fa-home"></i>我的清單
+        <% end %>
+    </div>
+    <div class="root-favorite">
+        <%= link_to favorites_articles_path do %>
+        <i class="fas fa-star"></i>我的最愛
+        <% end %>
+    </div>
+    <div class="root-tags">
+      <a href="#">
+        <i class="fas fa-tag"></i>標籤
+      </a>
+    </div>
+    <div class="root-open-list">
+      <a href="#">
+        <i class="fas fa-list"></i>公開清單
+      </a>
+    </div>
+  </div>
+</div>

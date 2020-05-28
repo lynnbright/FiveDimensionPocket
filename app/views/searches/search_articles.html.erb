@@ -1,0 +1,17 @@
+<%= form_for :search do |s| %>
+  <% if @search_results.any? %>
+    <% @search_results.each do |article| %>
+      <%= render 'articles/card', articles: @search_results, title: '搜尋結果' %>
+    <% end %>
+  <% else %>
+    <div class="content" id="card-item">
+      <div class="container col-10">
+        <div>
+          <h3 class="mb-1 py-4">搜尋結果</h3>
+          <p> 查無相關文章，再試試其他關鍵字：）</p>
+          <img src="https://i.imgur.com/WTMr8Oz.png" alt="not found" class="w-100">
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

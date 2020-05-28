@@ -1,15 +1,36 @@
 <!DOCTYPE html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <html>
   <head>
     <title>FiveDimensionPocket</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body id="page-top">
+    <div id="wrapper">
+    <%= render "shared/navbar"%>
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+        <%= render "shared/sidebar"%>
+          <!-- <div class="container-fluid"> -->
+            <span class="notice"> <% notice %> </span>
+            <div class="alert alert-warning alert-dismissible fade d-none" role="alert" id="flash-alert">
+              <span class="flash alert modal-body"> <%= alert %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <%= yield %>
+          <!-- </div> -->
+          <%= render "shared/footer" %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

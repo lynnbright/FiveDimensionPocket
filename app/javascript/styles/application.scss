@@ -1,0 +1,11 @@
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import './index/index.css';
+@import './toggle/toggle.css';
+@import './articles/header.css';
+@import './articles/sidebar.css';
+@import './articles/content.css';
+@import './shared/sb-admin-2.css';
+

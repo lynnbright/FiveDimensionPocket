@@ -1,0 +1,5 @@
+<% @user_tags.each do |tag| %>
+  <a class="collapse-item" href="/tags/<%= tag.id %>">
+    <%= tag.name %> (<%= tag.counter %>)
+  </a>
+<% end %>

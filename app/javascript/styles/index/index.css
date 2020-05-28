@@ -1,0 +1,28 @@
+*, ::after, ::before {
+  background-repeat: no-repeat;
+}
+/* body {
+  font-family: Arial, sans-serif;
+  color: white;
+  background-color: #0B032D;
+  display: block;
+  margin: 0;
+} */
+
+.user-name {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+.bottom-line {
+  padding-top: 14px;
+  display: block;
+  border-bottom: 1px solid rgb(0, 0, 0)
+}
+/* .card-title:hover {
+  color:white;
+} */
+.content{
+  padding: 63px 20px 0px;
+  display: grid;
+}
