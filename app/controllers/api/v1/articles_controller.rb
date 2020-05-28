@@ -75,7 +75,7 @@ class Api::V1::ArticlesController < ApplicationController
     tags =  article.tag_list
 
     render json: {tags: tags}
-  end
+  end 
 
   def create_speech
     @article = Article.find(params[:id])
