@@ -1,8 +1,10 @@
 class Api::V1::ExtensionController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :save
+  skip_before_action :create_tags_menu
   def save
     if valid_user?
       create_article()
+      save_tags()
     end
   end
 
@@ -43,5 +45,9 @@ class Api::V1::ExtensionController < ApplicationController
       check_article_exist.update(created_at: Time.now)
       render json: {message: '此網站儲存過'}, status: 200
     end
+  end
+
+  def save_tags
+    byebug
   end
 end
