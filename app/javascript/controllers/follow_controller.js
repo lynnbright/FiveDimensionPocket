@@ -17,8 +17,8 @@ export default class extends Controller {
           this.followBtnTarget.classList.add('btn-info');
           this.followBtnTarget.innerText = "追蹤中";
         } else{
-          this.followBtnTarget.classList.remove('btn-outline-info');
-          this.followBtnTarget.classList.add('btn-pink');
+          this.followBtnTarget.classList.remove('btn-info');
+          this.followBtnTarget.classList.add('btn-outline-info');
           this.followBtnTarget.innerText = "追蹤";
         }          
       },

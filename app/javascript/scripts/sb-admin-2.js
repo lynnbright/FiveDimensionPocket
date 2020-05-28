@@ -1,4 +1,4 @@
-(function($) {
+$(document).on('turbolinks:load', function(){
   "use strict"; // Start of use strict
 
   // Toggle the side navigation
@@ -46,4 +46,4 @@
     e.preventDefault();
   });
 
-})(jQuery); // End of use strict
+})

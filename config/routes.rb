@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   devise_scope :user do
-    get 'users/sign_out' => "users/sessions#destroy"
+    get 'users/sign_out', to:  "users/sessions#destroy"
 
     authenticated  do
       root to: 'articles#index'
@@ -28,19 +28,21 @@ Rails.application.routes.draw do
   # 圖表
   get "/charts", to: "charts#index"
   
-  #探索頁面
+  # 探索頁面
   resources :explores, only: [:index]
-
-  #追蹤頁面
-  resources :followers, only: [:index]
+  # 追蹤頁面
+  get "/following", to: "explores#following"
+  # 他人公開頁面
+  get "/profile", to: 'explores#profile'
 
   # 搜尋
   get "/search", to: "searches#search_articles"
+  
+  # 標籤個別頁
   resources :tags, only: [:show]
 
-
   # APIs
-  #內部 api 路徑
+  # 內部 api 路徑
   namespace :api do
     namespace :v1 do
       resources :tags, only: [:index] do
@@ -69,7 +71,7 @@ Rails.application.routes.draw do
     end
   end
 
-  #Extension api 路徑
+  # Extension api 路徑
   namespace :api do
     namespace :v1 do
       post 'login' => 'authentication#login'
