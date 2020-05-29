@@ -43,3 +43,23 @@
 .post-main-content img{
   width: 100%;
 }
+
+/* 標記功能用 */
+.highlight {
+  background-color: yellow;
+}
+
+#tooltip {
+  background-color: #13534C;
+  color: blanchedalmond;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.highlight-a {
+  color: blanchedalmond;
+}
+
+.notDisplayed {
+  display: none;
+}

@@ -1,40 +1,122 @@
-<a href="#"><h2 class="ml-5"><i class="fas fa-arrow-left" onclick="history.back()"></i></h2></a>  
+<a href="#">
+  <h2 class="ml-5"><i class="fas fa-arrow-left" onclick="history.back()"></i></h2>
+</a>
 
 <div class="container">
-    <div class="row col-12 justify-content-center mx-auto">
-      <div class="single_article_info">
-        <div class="single_article_title">
-          <h1><%= @article.title %></h1>
+  <div class="row col-12 justify-content-center mx-auto">
+    <div class="single_article_info">
+      <div class="single_article_title">
+        <h1><%= @article.title %></h1>
+      </div>
+      <div class="single_article_detail">
+        <div class="msgoogle row mt-5 mb-3 justify-content-center align-items-center">
+          <div class="loading d-none">讀取中...</div>
+
+          <% if @article.encode_string != nil %>
+          <audio id="js-speech-player" src="data:audio/mpeg;base64,<%= @article.encode_string %>" controls></audio>
+          <% else %>
+          <%= link_to create_speech_api_v1_article_path(@article.id), method: 'post', remote: true, class:'px-2 d-flex justify-content-center align-content-center', id: 'js-create-speech' do %>
+          <i class="fas fa-volume-down" style="font-size: 60px;"></i>唸給你聽
+          <% end %>
+          <audio id="js-speech-player" class="d-none" src="###" controls></audio>
+          <% end %>
         </div>
-        <div class="single_article_detail">
-          <div class="msgoogle row mt-5 mb-3 justify-content-center align-items-center">
-              <div class="loading d-none">讀取中...</div>
-              
-              <% if @article.encode_string != nil %>
-                <audio id="js-speech-player" src="data:audio/mpeg;base64,<%= @article.encode_string %>" controls></audio>
-              <% else %>
-                <%= link_to create_speech_api_v1_article_path(@article.id), method: 'post', remote: true, class:'px-2 d-flex justify-content-center align-content-center', id: 'js-create-speech' do %>
-                  <i class="fas fa-volume-down" style="font-size: 60px;"></i>唸給你聽
-                <% end %>
-                <audio id="js-speech-player" class="d-none" src="###" controls></audio>
-              <% end %>
-          </div>
-          <div class="single_article_website row justify-content-center">
-            <p class="px-3">文章來源：<%= @article.domain %> </p>
-            <a href="<%= @article.link %>" target="_blank">查看原始文章</a>
-          </div>
-          <div class="single_article_tags  row justify-content-center mb-3">
-            <% @article.tags.each do |tag| %>
-              <span class="badge badge-secondary mx-2"><%= tag.name %></span>
-            <% end %>
-          </div>
+        <div class="single_article_website row justify-content-center">
+          <p class="px-3">文章來源：<%= @article.domain %> </p>
+          <a href="<%= @article.link %>" target="_blank">查看原始文章</a>
+        </div>
+        <div class="single_article_tags  row justify-content-center mb-3">
+          <% @article.tags.each do |tag| %>
+          <span class="badge badge-secondary mx-2"><%= tag.name %></span>
+          <% end %>
         </div>
       </div>
-      <div class="single_article_cover w-100">
-        <img src="<%= @article.images.last %>" alt="" width="100%">
-      </div>
-      <article class="my-5 w-100">
-        <%= @article.clean_content.html_safe %>
-      </article>
     </div>
+    <div class="single_article_cover w-100">
+      <img src="<%= @article.images.last %>" alt="" width="100%">
+    </div>
+    <article id="article" class="my-5 w-100">
+      <%= @article.clean_content.html_safe %>
+    </article>
+  </div>
 </div>
+<button id="tooltip" class="btn notDisplayed">
+  HighLight
+</button>
+<script>
+  import Rails from "@rails/ujs"
+
+  var selObj = null;
+  var selRange = null;
+  var rect = null;
+  var x = 0;
+  var y = 0;
+  var oContent = document.getElementById('content');
+  // counter要計算葉面中highlight的個數，沒有就預設0
+  // 寫一個fun去計算當下頁面有幾個標記
+
+  var counter = 0;
+  var article_child = document.getElementById('article').querySelectorAll('p');
+  // 找到對應段落index，把儲存的文字取代成有hightligh的id的
+
+  var content = "We need to give this "
+  var element_id = "highlight3"
+  var paragraph_index = 1
+
+  article_child[paragraph_index].innerHTML = article_child[paragraph_index].innerHTML.replace(new RegExp(content, "g"), `<span class="highlight" id=${element_id}>${content}</span>`);
+
+  oContent.onmouseup = (e) => {
+    selObj = window.getSelection();
+    selRange = selObj.getRangeAt(0);
+    rect = selRange.getBoundingClientRect();
+    x = e.pageX;
+    y = e.pageY + 5;
+    if (rect.width > 1) {
+      placeTooltip(x, y);
+      document.getElementById("tooltip").classList.remove('notDisplayed');
+    }
+    else {
+      document.getElementById("tooltip").classList.add('notDisplayed');
+    }
+  };
+  document.getElementById("tooltip").addEventListener("click", function (event) {
+    // 選三筆之後就不能標記
+    if (counter > 2) {
+      //~~~~~ 換sweetalert ~~~~~~~
+      alert("一般會員只能標記三筆喔");
+    } else {
+      highlightRange(selRange, counter++);
+    }
+    document.getSelection().removeAllRanges()
+    document.getElementById("tooltip").classList.add('notDisplayed');
+  }, false);
+
+  function placeTooltip(x_pos, y_pos) {
+    var d = document.getElementById('tooltip');
+    d.style.position = "absolute";
+    d.style.left = x_pos + 'px';
+    d.style.top = (y_pos - 40) + 'px';
+  }
+  function highlightRange(range) {
+    var newNode = document.createElement("span");
+    newNode.classList.add('highlight');
+    newNode.id = (`highlight${counter}`);
+    range.surroundContents(newNode);
+    var el = document.getElementById(`highlight${counter}`).parentElement;
+    var index = [].indexOf.call(el.parentElement.children, el);
+    console.log(index, el, document.getElementById(`highlight${counter}`).innerText)
+
+    Rails.ajax({
+      url: `/api/v1/articles/${id}/tags`,
+      type: 'POST',
+      data: data,
+      success: resp => {
+      },
+      error: err => {
+        console.log(err);
+      }
+    })
+  }
+  // 參考資料:https://stackoverflow.com/questions/25695212/jquery-how-to-tag-selected-text-using-textbox-as-tooltip
+
+</script>
