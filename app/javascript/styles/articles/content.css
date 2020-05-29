@@ -46,7 +46,7 @@
 
 /* 標記功能用 */
 .highlight {
-  background-color: yellow;
+  background-color: #FFBF69;
 }
 
 #tooltip {
@@ -54,10 +54,6 @@
   color: blanchedalmond;
   padding: 5px;
   border-radius: 10px;
-}
-
-.highlight-a {
-  color: blanchedalmond;
 }
 
 .notDisplayed {
