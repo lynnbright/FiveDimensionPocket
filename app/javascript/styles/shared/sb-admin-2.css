@@ -10035,7 +10035,7 @@ a:focus {
   height: 4.375rem;
   display: flex;
   align-items: center;
-  padding: 0 0.6rem;
+  padding: 0 0.4rem;
 }
 
 .topbar .nav-item .nav-link:focus {
