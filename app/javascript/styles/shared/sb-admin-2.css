@@ -47,6 +47,35 @@
   box-sizing: border-box;
 }
 
+@media (min-width: 576px) {
+  .main-content {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    max-width: 960px;
+    margin-left: 9vw
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main-content {
+    max-width: 1200px;
+    margin-left: 9vw;
+    
+  }
+}
+
 .card-title {
   color: #565248;
   font-weight: 500;
@@ -584,32 +613,24 @@ pre code {
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
-    /* margin-right: auto ; */
-    margin-left: auto;
   }
 }
 
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
-    /* margin-right: auto ; */
-    margin-left: auto;
   }
 }
 
 @media (min-width: 992px) {
   .container {
     max-width: 960px;
-    /* margin-right: 0; */
-    margin-left: 11rem;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
-    /* margin-right: 0; */
-    margin-left: 11rem;
   }
 }
 
