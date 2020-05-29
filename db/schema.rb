@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_050327) do
+ActiveRecord::Schema.define(version: 2020_05_29_062949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 2020_05_21_050327) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "highlights", force: :cascade do |t|
+    t.string "content"
+    t.string "element_id"
+    t.integer "paragraph_index"
+    t.bigint "article_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_highlights_on_article_id"
+  end
+
   create_table "searches", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -136,7 +146,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_050327) do
   add_foreign_key "article_tags", "tags"
   add_foreign_key "follow_lists", "users"
   add_foreign_key "follow_lists", "users", column: "following_id"
-  add_foreign_key "follow_lists", "users", column: "followed_user_id"
+  add_foreign_key "highlights", "articles"
   add_foreign_key "searches", "users"
   add_foreign_key "tags", "users"
   add_foreign_key "user_last_articles", "articles"
