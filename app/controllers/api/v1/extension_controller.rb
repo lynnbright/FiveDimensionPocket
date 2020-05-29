@@ -1,10 +1,10 @@
 class Api::V1::ExtensionController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: :save
+  skip_before_action :verify_authenticity_token, only: :save_article
   skip_before_action :create_tags_menu
-  def save
+  def save_article
     if valid_user?
-      create_article()
-      # save_tags()
+      create_article
+      save_tags
     end
   end
 
@@ -21,9 +21,10 @@ class Api::V1::ExtensionController < ApplicationController
     if check_article_exist.blank?
       service = ArticleSendApiService.new(params[:url])
       result = service.perform
-
+      
       if result[:success]
         response_hash = result[:data]
+
         @article.assign_attributes({
           user_id: @user.id,
           link: params[:url],
@@ -45,11 +46,13 @@ class Api::V1::ExtensionController < ApplicationController
       render json: {message: '此網站儲存過'}, status: 200
     end
   end
-
+  
   def save_tags
-    # user_id = @user.id
-    # url_id = params[:url].id
-    # byebug
-    # selected_tags = params[:tags]
+    user_id = @user.id
+    tags = params[:tags]
+    selected_tags = []
+    selected_tags.push(tags)
+    article = Article.find_by(link: params[:url])
+    article.tag_list = selected_tags
   end
 end

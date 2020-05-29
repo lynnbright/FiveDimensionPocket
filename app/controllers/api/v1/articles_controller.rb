@@ -67,7 +67,7 @@ class Api::V1::ArticlesController < ApplicationController
     user_id = current_user.id
     selected_tags = JSON.parse(tags_params[:list_tag])
     article = Article.find(tags_params[:id])
-    article.tag_list= selected_tags
+    article.tag_list = selected_tags
   end
 
   def get_tags
