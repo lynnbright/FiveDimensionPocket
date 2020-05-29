@@ -47,6 +47,35 @@
   box-sizing: border-box;
 }
 
+@media (min-width: 576px) {
+  .main-content {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    max-width: 960px;
+    margin-left: 9vw
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main-content {
+    max-width: 1200px;
+    margin-left: 9vw;
+    
+  }
+}
+
 .card-title {
   color: #565248;
   font-weight: 500;
@@ -57,7 +86,6 @@
 }
 
 .card.for-article {
-  width: 95%;
   background-color: transparent;
   border: 1px solid #FFBF69;
 }
@@ -585,28 +613,24 @@ pre code {
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
-    margin-right: auto ;
   }
 }
 
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
-    margin-right: auto ;
   }
 }
 
 @media (min-width: 992px) {
   .container {
     max-width: 960px;
-    margin-right: 0;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
-    margin-right: 0;
   }
 }
 
@@ -4459,6 +4483,7 @@ input[type="button"].btn-block {
 
 .card-img-top {
   width: 100%;
+  object-fit: cover;
   border-top-left-radius: calc(0.35rem - 1px);
   border-top-right-radius: calc(0.35rem - 1px);
 }
@@ -10010,7 +10035,7 @@ a:focus {
   height: 4.375rem;
   display: flex;
   align-items: center;
-  padding: 0 0.6rem;
+  padding: 0 0.4rem;
 }
 
 .topbar .nav-item .nav-link:focus {
@@ -11023,7 +11048,7 @@ form.user .btn-user {
 }
 
 footer.sticky-footer {
-  padding: 2rem 0;
+  padding: 1rem 0;
   flex-shrink: 0;
 }
 
