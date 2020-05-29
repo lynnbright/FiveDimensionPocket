@@ -57,7 +57,6 @@
 }
 
 .card.for-article {
-  width: 95%;
   background-color: transparent;
   border: 1px solid #FFBF69;
 }
@@ -585,28 +584,32 @@ pre code {
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
-    margin-right: auto ;
+    /* margin-right: auto ; */
+    margin-left: auto;
   }
 }
 
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
-    margin-right: auto ;
+    /* margin-right: auto ; */
+    margin-left: auto;
   }
 }
 
 @media (min-width: 992px) {
   .container {
     max-width: 960px;
-    margin-right: 0;
+    /* margin-right: 0; */
+    margin-left: 11rem;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
-    margin-right: 0;
+    /* margin-right: 0; */
+    margin-left: 11rem;
   }
 }
 
