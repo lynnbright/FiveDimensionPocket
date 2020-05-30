@@ -107,14 +107,19 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def highlight
-    Article.find_by(id: params[:id]).highlights.create(content: highlight_params[:content],
-                                            element_id: highlight_params[:element_id], 
-                                            paragraph_index: highlight_params[:paragraph_index])
+    highlight = Article.find_by(id: params[:id]).highlights.create(content: highlight_params[:content],
+                                                element_id: highlight_params[:element_id], 
+                                                paragraph_index: highlight_params[:paragraph_index])
+    render json: { id: highlight.id}  
   end
 
   def get_highlights
     highlights = Article.find_by(id: params[:id]).highlights
     render json: { highlights: highlights}    
+  end
+
+  def delete_highlight
+    Article.find(params[:id]).highlights.find(params[:highlight_id]).destroy
   end
 
   private

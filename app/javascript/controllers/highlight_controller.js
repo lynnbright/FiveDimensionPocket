@@ -2,23 +2,22 @@ import { Controller } from "stimulus"
 import Rails from "@rails/ujs"
 import Swal from 'sweetalert2'
 
-function placeTooltip(x_pos, y_pos, type) {
-  // 增加一個後面可以用來判斷的，name或其他
+function placeTooltip(xPos, yPos, type, highlightId) {
   var d = document.getElementById('tooltip');
   if (type === "new") {
-    d.setAttribute("data-action", "highlight#delHighlight");
+    d.setAttribute("my-data-type", "add");
     d.innerHTML = `<i class="fas fa-pen"></i>HighLight`;
   } else {
-    d.setAttribute("data-action", "highlight#delHighlight");
+    d.setAttribute("my-data-type", "delete");
+    d.setAttribute("highlight-id", highlightId);
     d.innerHTML = `<i class="far fa-trash-alt"></i>刪除`;
   }
   d.style.position = "absolute";
-  d.style.left = x_pos + 'px';
-  d.style.top = (y_pos - 40) + 'px';
+  d.style.left = xPos + 'px';
+  d.style.top = (yPos - 40) + 'px';
 }
 
-function highlightRange(range, counter, id) {
-  // 如何把特定的ele的位置抓出來
+function highlightRange(range, counter, articleId, id) {
   let newNode = document.createElement("span");
   newNode.classList.add('highlight');
   newNode.id = (`highlight${counter}`);
@@ -30,12 +29,14 @@ function highlightRange(range, counter, id) {
     element_id: `highlight${counter}`,
     paragraph_index: index
   }
+
   Rails.ajax({
-    url: `/api/v1/articles/${id}/highlight`,
+    url: `/api/v1/articles/${articleId}/highlight`,
     type: 'POST',
     data: new URLSearchParams(myData).toString(),
     success: resp => {
-      // console.log(resp)
+      newNode.setAttribute("highlight-id", resp.id);
+      newNode.setAttribute("data-action", "mouseover->highlight#showTooltip");
     },
     error: err => {
       console.log(err);
@@ -43,10 +44,25 @@ function highlightRange(range, counter, id) {
   })
 }
 
+function deleteHighlight(articleId, highlightId) {
+  let myData = { highlight_id: highlightId }
+  Rails.ajax({
+    url: `/api/v1/articles/${articleId}/highlight`,
+    type: 'DELETE',
+    data: new URLSearchParams(myData).toString(),
+    success: resp => {
+    },
+    error: err => {
+      console.log(err);
+    }
+  })
+  $("p").find("span[highlight-id = " + highlightId + "]").contents().unwrap();
+}
+
 export default class extends Controller {
   static targets = ["articleId"]
-  connect(){
-    let id = this.articleIdTarget.value
+  connect() {
+    let articleId = this.articleIdTarget.value
     var selObj = null;
     var selRange = null;
     var rect = null;
@@ -57,17 +73,16 @@ export default class extends Controller {
     // 載入頁面時先透過ajax要標記資料
     var article_child = document.getElementById('article').querySelectorAll('p');
     Rails.ajax({
-      url: `/api/v1/articles/${id}/highlight`,
+      url: `/api/v1/articles/${articleId}/highlight`,
       type: 'GET',
       success: resp => {
         // 更新本頁標記數量
-        console.log(resp.highlights)
         counter = resp.highlights.length
-        resp.highlights.forEach(function(data, index) {
+        resp.highlights.forEach(function (data, index) {
           let p_index = data.paragraph_index
           let words = data.content
-          let id = data.element_id
-          article_child[p_index].innerHTML = article_child[p_index].innerHTML.replace(new RegExp(words, "g"), `<span class="highlight" data-action="mouseover->highlight#showTooltip" id=${id}>${words}</span>`);
+          let id = data.id
+          article_child[p_index].innerHTML = article_child[p_index].innerHTML.replace(new RegExp(words, "g"), `<span class="highlight" data-action="mouseover->highlight#showTooltip" highlight-id="${id}">${words}</span>`);
         });
       },
       error: err => {
@@ -81,8 +96,8 @@ export default class extends Controller {
       rect = selRange.getBoundingClientRect();
       x = e.pageX;
       y = e.pageY + 5;
-      if (rect.width > 4) {
-        placeTooltip(x, y, "new");
+      if (rect.width > 20) {
+        placeTooltip(x, y, "new", null);
         document.getElementById("tooltip").classList.remove('notDisplayed');
       }
       else {
@@ -91,33 +106,29 @@ export default class extends Controller {
       }
     };
     document.getElementById("tooltip").addEventListener("click", function (event) {
+      let type = document.getElementById("tooltip").getAttribute("my-data-type")
       // 選三筆之後就不能標記
-      if (counter > 3) {
-        Swal.fire('一般會員只能標記三筆喔')
-      } else {
-        highlightRange(selRange, counter++, id);
+      if (type === "add") {
+        if (counter > 3) {
+          Swal.fire('一般會員只能標記三筆喔')
+        } else {
+          highlightRange(selRange, counter++, articleId);
+        }
+      } else if (type === "delete") {
+        let highlightId = event.target.getAttribute("highlight-id")
+        deleteHighlight(articleId, highlightId)
       }
       document.getSelection().removeAllRanges()
       document.getElementById("tooltip").classList.add('notDisplayed');
       document.getElementById("tooltip").style = '';
     }, false);
-
-
     // 參考資料:https://stackoverflow.com/questions/25695212/jquery-how-to-tag-selected-text-using-textbox-as-tooltip
   }
   showTooltip(e) {
-    var x = e.pageX;
-    var y = e.pageY + 5;
-    placeTooltip(x, y, "delete");
-  }
-  hideTooltip() {
-    document.getElementById("tooltip").classList.remove('notDisplayed');
-    document.getElementById("tooltip").style = '';
-  }
-  addHighlight(){
-
-  }
-  delHighlight(){
-    
+    // 觸發的時候把觸發highlight id抓出來
+    let highlightId = e.target.getAttribute("highlight-id")
+    let x = e.pageX;
+    let y = e.pageY + 5;
+    placeTooltip(x, y, "delete", highlightId);
   }
 }
