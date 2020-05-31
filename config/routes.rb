@@ -87,7 +87,8 @@ Rails.application.routes.draw do
   #Extension save 路徑
   namespace :api do
     namespace :v1 do
-      post 'save' => 'extension#save_article'
+      post 'save_article' => 'extension#save_article'
+      post 'save_tags' => 'extension#save_tags'
     end
   end
 end

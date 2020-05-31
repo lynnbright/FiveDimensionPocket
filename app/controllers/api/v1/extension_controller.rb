@@ -1,10 +1,15 @@
 class Api::V1::ExtensionController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: :save_article
+  skip_before_action :verify_authenticity_token
   skip_before_action :create_tags_menu
   def save_article
     if valid_user?
       create_article
-      save_tags
+    end
+  end
+
+  def save_tags
+    if valid_user?
+      article_tags
     end
   end
 
@@ -47,12 +52,13 @@ class Api::V1::ExtensionController < ApplicationController
     end
   end
   
-  def save_tags
+  def article_tags
     user_id = @user.id
     tags = params[:tags]
     selected_tags = []
     selected_tags.push(tags)
     article = Article.find_by(link: params[:url])
     article.tag_list = selected_tags
+    render json: {message: '儲存成功!'}, status: 200
   end
 end
