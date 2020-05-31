@@ -20,6 +20,7 @@ class Article < ApplicationRecord
 
   #把網路上拿到的圖片網址，存到 active_storage 
   def images=(images = []) 
+    
     files = images.map do |url|
       begin
         { io: open(url), filename: 'image.jpg' }
