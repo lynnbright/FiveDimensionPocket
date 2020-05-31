@@ -64,6 +64,7 @@ class ArticleSendApiService
         }
       }
     end
+<<<<<<< HEAD
       rescue
         if retry_times < 1
           retry_times += 1
@@ -71,6 +72,15 @@ class ArticleSendApiService
         else
           { success: false }
         end
+=======
+      # rescue
+      #   if retry_times < 1
+      #     retry_times += 1
+      #     retry
+      #   else
+      #     { success: false }
+      #   end
+>>>>>>> 以陣列判定是否包含目前的 site_name，若有則使用 Nokogiri 解析文章info(此次 commit 以群眾觀點及 Womany 測試)、若無則用 Extractor API 解析文章 info  WIP
       end
  
 end
