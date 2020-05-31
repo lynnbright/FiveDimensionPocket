@@ -47,6 +47,11 @@
   box-sizing: border-box;
 }
 
+.clean_html img{
+  width: 100%;
+  height: auto;
+}
+
 @media (min-width: 576px) {
   .main-content {
     max-width: 540px;
