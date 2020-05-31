@@ -108,7 +108,6 @@ class Api::V1::ArticlesController < ApplicationController
 
   def highlight
     highlight = Article.find_by(id: params[:id]).highlights.create(content: highlight_params[:content],
-                                                element_id: highlight_params[:element_id], 
                                                 paragraph_index: highlight_params[:paragraph_index])
     render json: { id: highlight.id}  
   end
@@ -125,5 +124,9 @@ class Api::V1::ArticlesController < ApplicationController
   private
   def tags_params
     params.permit(:id, :list_tag )
+  end
+
+  def highlight_params
+    params.permit(:content, :paragraph_index)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_062949) do
+ActiveRecord::Schema.define(version: 2020_05_31_070926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 2020_05_29_062949) do
 
   create_table "highlights", force: :cascade do |t|
     t.string "content"
-    t.string "element_id"
     t.integer "paragraph_index"
     t.bigint "article_id", null: false
     t.datetime "created_at", precision: 6, null: false

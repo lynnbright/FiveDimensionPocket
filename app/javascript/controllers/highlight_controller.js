@@ -26,7 +26,6 @@ function highlightRange(range, counter, articleId, id) {
   let index = [].indexOf.call(el.parentElement.children, el);
   let myData = {
     content: document.getElementById(`highlight${counter}`).innerText,
-    element_id: `highlight${counter}`,
     paragraph_index: index
   }
 
