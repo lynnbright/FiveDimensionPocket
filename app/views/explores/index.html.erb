@@ -4,7 +4,7 @@
   </div>
   <div class="btn-group row align-items-center nav col-4" role="group" aria-label="Basic example">
     <%= link_to '探索新知', explores_path, class:'btn btn-info active' %>
-    <%= link_to '追蹤清單', following_path, class:'btn btn-info' %>
+    <%= link_to '追蹤清單', followings_path, class:'btn btn-info' %>
   </div>
 
   <div class="row" id="card-wrap">
@@ -13,7 +13,7 @@
         <div class="row p-2 justify-content-between" data-controller="follow">
           <div class="user-name">
             <%= image_tag((user.avatar_thumbnail), class: 'rounded-circle')%>
-            <%= link_to "#{user.name}", profile_path(id: user.id), class: 'px-2' %>
+            <%= link_to "#{user.name}", profiles_path(id: user.id), class: 'px-2' %>
             <input type="hidden" data-target="follow.userId" value="<%= user.id %>">
           </div>
           <div class="follow-btn">
