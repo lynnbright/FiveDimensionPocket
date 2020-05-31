@@ -15,8 +15,8 @@ class ArticlesController < ApplicationController
     if check_article_exist.blank?
       service = ArticleSendApiService.new(url_params[:link])
       result = service.perform
-
-      if result[:success]
+ 
+      if result[:api_success]
         response_hash = result[:data]
 
         @article.assign_attributes({
@@ -29,6 +29,21 @@ class ArticlesController < ApplicationController
           clean_html: result[:extract_data][:clean_html],
           clean_content: result[:extract_data][:clean_content],
           short_description: result[:extract_data][:short_description],
+        })
+        @article.save
+
+      
+      elsif result[:nokogiri_success] == 'nokogiri_success'
+        @article.assign_attributes({
+          user_id: current_user.id,
+          link: url_params[:link],
+          title: result[:extract_data][:title],
+          content: result[:extract_data][:content],
+          domain: result[:extract_data][:domain],
+          images: [result[:extract_data][:ogimage_address]],
+          clean_html: result[:extract_data][:clean_html],
+          clean_content: result[:extract_data][:clean_html],
+          short_description: result[:extract_data][:short_description]
         })
         @article.save
       else
