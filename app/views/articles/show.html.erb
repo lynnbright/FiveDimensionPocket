@@ -34,7 +34,7 @@
       <div class="single_article_cover w-100">
         <img src="<%= @article.images.last %>" alt="" width="100%">
       </div>
-      <article id="article" data-controller="highlight" class="my-5 w-100">        
+      <article id="content" data-controller="highlight" class="my-5 w-100">        
         <%= @article.clean_content.html_safe %>       
         <input type="hidden" data-target="highlight.articleId" value="<%= @article.id %>"> 
       </article>

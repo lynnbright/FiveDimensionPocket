@@ -28,7 +28,6 @@ function highlightRange(range, counter, articleId, id) {
     content: document.getElementById(`highlight${counter}`).innerText,
     paragraph_index: index
   }
-
   Rails.ajax({
     url: `/api/v1/articles/${articleId}/highlight`,
     type: 'POST',
@@ -70,7 +69,7 @@ export default class extends Controller {
     var oContent = document.getElementById('content');
     var counter = 0
     // 載入頁面時先透過ajax要標記資料
-    var article_child = document.getElementById('article').querySelectorAll('p');
+    var article_child = document.getElementById('content').querySelectorAll('p');
     Rails.ajax({
       url: `/api/v1/articles/${articleId}/highlight`,
       type: 'GET',
@@ -129,5 +128,6 @@ export default class extends Controller {
     let x = e.pageX;
     let y = e.pageY + 5;
     placeTooltip(x, y, "delete", highlightId);
+    document.getElementById("tooltip").classList.remove('notDisplayed');
   }
 }
