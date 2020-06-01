@@ -8,7 +8,6 @@ class Api::V1::ExtensionController < ApplicationController
     article_tags if valid_user?
   end
 
-  
   def create_article
     #成功抓到url並且打出API
     check_article_exist = @user.articles.where("link LIKE '#{params[:url]}'")
