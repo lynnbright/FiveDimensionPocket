@@ -1,14 +1,16 @@
 <div class="container col-12 mt-5 pt-5">
   <div class="page-bar row justify-content-between py-4">
     <h1 class="h3 mb-1 text-gray-800"><%= title %></h1>
-  </div>
-  <div class="btn-group row align-items-center nav col-xl-4 col-md-12" role="group" aria-label="Basic example">
+      <div class="btn-group row align-items-center nav col-xl-4 col-md-12" role="group" aria-label="Basic example">
+
     <%= link_to '探索新知', explores_path, class:'btn btn-info' %>
     <%= link_to '追蹤清單', followings_path, class:'btn btn-info active' %>
   </div>
+  </div>
+
   <div class="row" id="card-wrap">
     <% users.each do |user| %>
-    <div class="container mt-5">
+    <div class="container ">
       <div class="row p-2 justify-content-between" data-controller="follow">
         <div class="user-name">
           <%= image_tag((user.avatar_thumbnail), class: 'rounded-circle')%>
