@@ -10055,7 +10055,7 @@ a:focus {
 
 .topbar .dropdown .dropdown-menu {
   width: calc(100% - 1.5rem);
-  right: 0.75rem;
+  right: 0.75rem;  
 }
 
 .topbar .dropdown-list {
@@ -10119,7 +10119,9 @@ a:focus {
   }
   .topbar .dropdown .dropdown-menu {
     width: auto;
-    right: 0;
+    /* 解決登出按鈕跑板問題 */
+    right: 140px;
+    
   }
   .topbar .dropdown-list {
     width: 20rem !important;
