@@ -2,9 +2,13 @@
   <div class="page-bar row justify-content-between py-4">
     <h1 class="h3 mb-1 text-gray-800"><%= title %></h1>
       <div class="btn-group row align-items-center nav col-xl-4 col-md-12" role="group" aria-label="Basic example">
-
-    <%= link_to '探索新知', explores_path, class:'btn btn-info' %>
-    <%= link_to '追蹤清單', followings_path, class:'btn btn-info active' %>
+        <% if title == "探索新知" %>  
+          <%= link_to '探索新知', explores_path, class:'btn btn-info active' %>
+          <%= link_to '追蹤清單', followings_path, class:'btn btn-info' %>
+        <% else %>
+          <%= link_to '探索新知', explores_path, class:'btn btn-info' %>
+          <%= link_to '追蹤清單', followings_path, class:'btn btn-info active' %>
+        <% end %>
   </div>
   </div>
 
@@ -41,12 +45,11 @@
               <p class="card-text"><%= record.article.short_description %></p>
             </div>
 
-            <div class="card-footer d-flex justify-content-around" data-controller="explore">
-              <input type="hidden" data-target="explore.articleId" value="<%= record.article.id %>">
+            <div class="card-footer d-flex justify-content-around">
               <%= form_for @article, url: articles_path, method:'post' , html: { id: "save_article_#{ record.article.id }" }  do |f| %>
               <%= f.text_field :link, value: record.article.link, type: 'hidden', id: "article_#{ record.article.id }" %>
-              <button type="submit" class="btn btn-outline-warning">
-                <i class="fas fa-save" data-action="explore#saveArticle"></i>儲存
+              <button type="submit" class="btn">
+                <i class="fas fa-save" ></i><span>儲存</span>
               </button>
               <% end %>
               <span class="shared-btn-wrap dropup">
