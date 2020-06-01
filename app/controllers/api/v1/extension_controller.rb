@@ -1,24 +1,14 @@
 class Api::V1::ExtensionController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  skip_before_action :create_tags_menu
+  skip_before_action :verify_authenticity_token, :create_tags_menu
   def save_article
-    if valid_user?
-      create_article
-    end
+    create_article if valid_user? 
   end
 
   def save_tags
-    if valid_user?
-      article_tags
-    end
+    article_tags if valid_user?
   end
 
-  private
   
-  def valid_user?
-    @user = User.find_by(auth_token: params[:key])
-  end
-
   def create_article
     #成功抓到url並且打出API
     check_article_exist = @user.articles.where("link LIKE '#{params[:url]}'")
@@ -51,7 +41,8 @@ class Api::V1::ExtensionController < ApplicationController
       render json: {message: '此網站儲存過'}, status: 200
     end
   end
-  
+
+  #儲存標籤
   def article_tags
     user_id = @user.id
     tags = params[:tags]
@@ -60,4 +51,11 @@ class Api::V1::ExtensionController < ApplicationController
     article.tag_list = selected_tags
     render json: {message: '儲存成功!'}, status: 200
   end
+
+  private
+  
+  def valid_user?
+    @user = User.find_by(auth_token: params[:key])
+  end
+
 end
