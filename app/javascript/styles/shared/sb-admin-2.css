@@ -51,6 +51,7 @@
   .main-content {
     max-width: 540px;
     margin: 0 auto;
+    padding-left: 104px;
   }
 }
 
@@ -58,13 +59,15 @@
   .main-content {
     max-width: 720px;
     margin: 0 auto;
+    padding-left: 104px;
   }
 }
 
 @media (min-width: 992px) {
   .main-content {
     max-width: 960px;
-    margin-left: 9vw
+    margin-left: 9vw;
+    padding-left: 104px;
   }
 }
 
@@ -72,7 +75,7 @@
   .main-content {
     max-width: 1200px;
     margin-left: 9vw;
-    
+    padding-left: 104px;
   }
 }
 
