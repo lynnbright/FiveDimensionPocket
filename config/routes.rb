@@ -25,15 +25,17 @@ Rails.application.routes.draw do
     end
   end
 
-  # 圖表
-  get "/charts", to: "charts#index"
+  # 圖表總表頁
+  resources :charts, only: [:index]
   
   # 探索頁面
   resources :explores, only: [:index]
+
   # 追蹤頁面
-  get "/following", to: "explores#following"
+  resources :followings, only: [:index]
+
   # 他人公開頁面
-  get "/profile", to: 'explores#profile'
+  resources :profiles, only: [:index]
 
   # 搜尋
   get "/search", to: "searches#search_articles"
@@ -55,6 +57,9 @@ Rails.application.routes.draw do
           post :tags, to: 'articles#tags'
           get  :tags, to: 'articles#get_tags'
           post :create_speech
+          post :highlight, to: 'articles#highlight'
+          get  :highlight, to: 'articles#get_highlights'
+          delete :highlight, to: 'articles#delete_highlight'
         end   
       end
       resource :charts, only: [] do

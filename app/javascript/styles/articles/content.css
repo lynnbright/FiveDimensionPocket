@@ -43,3 +43,19 @@
 .post-main-content img{
   width: 100%;
 }
+
+/* 標記功能用 */
+.highlight {
+  background-color: #FFBF69;
+}
+
+#tooltip {
+  background-color: #13534C;
+  color: blanchedalmond;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.notDisplayed {
+  display: none!important;
+}

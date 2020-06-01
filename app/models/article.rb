@@ -3,6 +3,7 @@
 class Article < ApplicationRecord
   has_many :article_tags
   has_many :tags, through: :article_tags
+  has_many :highlights
   belongs_to :user
   belongs_to :search, optional: true
   has_many_attached :article_images
