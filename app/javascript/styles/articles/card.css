@@ -5,3 +5,16 @@
 .light-cyan-bg{
   background-color: #CBF3F0;
 }
+.light-orange-bg{
+  background-color: #FFF6EB;
+}
+
+.icon-btn {
+  padding: 0;
+}
+.card-img-no-radius {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
