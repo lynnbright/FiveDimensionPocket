@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, 
               with: :record_not_found
-
   layout :layout_by_resource
   before_action :article_new, :article_all, :create_tags_menu
 
