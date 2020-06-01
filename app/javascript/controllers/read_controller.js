@@ -5,7 +5,7 @@ import axios from "axios"
 
 
 export default class extends Controller {
-  static targets = [ "icon", "articleId" ]
+  static targets = [ "articleId", "btn" ]
 
   check(e){
     e.preventDefault();
@@ -15,11 +15,11 @@ export default class extends Controller {
          .then((response) => {
           let result = response.data.status
             if (result === 'read'){
-              this.iconTarget.classList.remove('far');
-              this.iconTarget.classList.add('fas');
+              this.btnTarget.classList.add('btn-success');
+              this.btnTarget.classList.remove('bg-gray-500');
             } else{
-              this.iconTarget.classList.remove('fas');
-              this.iconTarget.classList.add('far');
+              this.btnTarget.classList.add('bg-gray-500');
+              this.btnTarget.classList.remove('btn-success');
             }
           },
          )

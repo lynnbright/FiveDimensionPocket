@@ -9,12 +9,34 @@
   background-color: #FFF6EB;
 }
 
-.icon-btn {
+.icon-btn{
   padding: 0;
 }
+
+.heart-btn {
+  margin-top: -1.44rem;
+  margin-bottom: -1.44rem;
+  z-index: 1;
+}
+
+.read-btn {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  z-index: 2;
+}
+
+.icon-white {
+  color: white;
+}
+
 .card-img-no-radius {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
+.hearted {
+  background-color: #FE5D62;
+  color: white;
+}
 

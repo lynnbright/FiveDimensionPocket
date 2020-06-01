@@ -4,7 +4,7 @@ import axios from "axios"
 
 
 export default class extends Controller {
-  static targets = [ "icon", "articleId" ]
+  static targets = [ "articleId", "btn" ]
 
   heart(e){
     e.preventDefault();
@@ -13,12 +13,12 @@ export default class extends Controller {
     axios.post(`/api/v1/articles/${articleId}/favorite`)
          .then((response) => {
           let result = response.data.status
-            if (result === 'favorited'){
-              this.iconTarget.classList.remove('far');
-              this.iconTarget.classList.add('fas');
+            if (result === 'favorited'){   
+              this.btnTarget.classList.add('hearted');
+              this.btnTarget.classList.remove('bg-gray-500');
             } else{
-              this.iconTarget.classList.remove('fas');
-              this.iconTarget.classList.add('far');
+              this.btnTarget.classList.add('bg-gray-500');
+              this.btnTarget.classList.remove('hearted');
             }
           },
          )
