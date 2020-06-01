@@ -43,9 +43,7 @@ class Api::V1::ExtensionController < ApplicationController
 
   #儲存標籤
   def article_tags
-    user_id = @user.id
-    tags = params[:tags]
-    selected_tags = tags
+    selected_tags = params[:tags]
     article = Article.find_by(link: params[:url])
     article.tag_list = selected_tags
     render json: {message: '儲存成功!'}, status: 200
