@@ -3,16 +3,6 @@ require 'open-uri'
 
 class ArticleSendApi
 
-  #調整為 domain name
-  SITE_COLLECTION = [
-    'http://5xruby.tw',
-    'https://crowdwatch.tw',
-    'https://medium.com',
-    'https://womany.net',
-    'https://ithelp.ithome.com.tw',
-    'https://crossing.cw.com.tw'
-  ]
-
   SITE_MAPPING = {
     five_x_ruby: '5xruby.tw',
     crowd_watch: 'crowdwatch.tw',
@@ -63,8 +53,9 @@ class ArticleSendApi
   private
 
   # return: :nokogiri, :extractor
-  def get_channel
-    SITE_COLLECTION.include?(site_domain) ? :nokogiri : :extractor
+  def get_channel  
+    site_mapping_values = SITE_MAPPING.values.map { |domain| @url.match(domain) } #['5xruby.tw', 'crowdwatch.tw'....]
+    site_mapping_values.compact.blank? ? :extractor : :nokogiri
   end
 
   def site_domain
