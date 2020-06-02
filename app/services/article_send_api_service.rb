@@ -8,10 +8,20 @@ class ArticleSendApiService
   end
 
   def perform(retry_times = 0)
+
+    # site_Collection = ["群眾觀點", "為你自己學 Ruby on Rails", "iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天", "Medium", "女人迷 Womany", "CNN", "Stack Overflow"]
+    site_Collection = ["女人迷 Womany", "群眾觀點"]
+    page = Nokogiri::HTML(open(@article_url))
+    site_name = page.xpath('//meta[@property="og:site_name"]/@content').text
     
     #若包含則開始用 Nokogiri 解析出需要的文章info(以群眾觀點及 Womany 測試)
     if site_Collection.include?(site_name)
-      #call sitename 的 service 
+      @title = page.xpath("//title").text
+      @ogimage_address = page.xpath('/html/head/meta[@property="og:image"]/@content').text
+      @short_description = page.xpath('/html/head/meta[@property="og:description"]/@content').text.split('').first(50).join('')
+      @clean_html = page.xpath("//div[@class='inner-post-entry entry-content']").to_s.gsub!("\n","").gsub!("\t","").gsub!("\r","").gsub!(/\"/, '\'')
+      @text = page.xpath("//div[@class='inner-post-entry entry-content']").text.gsub!("\n","").gsub!("\t","").gsub!("\r","")
+      @domain = @article_url.match(/^(?:https?:)?(?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/).to_s
       {
         nokogiri_success: 'nokogiri_success', 
         extract_data: {
@@ -64,6 +74,7 @@ class ArticleSendApiService
         }
       }
     end
+<<<<<<< HEAD
       rescue
         if retry_times < 1
           retry_times += 1
@@ -71,6 +82,15 @@ class ArticleSendApiService
         else
           { success: false }
         end
+=======
+      # rescue
+      #   if retry_times < 1
+      #     retry_times += 1
+      #     retry
+      #   else
+      #     { success: false }
+      #   end
+>>>>>>> b052380848f2f96f5edaf64d12bcc63b69bb7b6b
       end
  
 end
