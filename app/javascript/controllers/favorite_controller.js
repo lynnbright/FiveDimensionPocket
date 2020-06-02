@@ -14,6 +14,11 @@ export default class extends Controller {
          .then((response) => {
           let result = response.data.status
             if (result === 'favorited'){   
+              this.btnTarget.classList.add('shake');
+              let self = this;
+              setTimeout(function () {
+                self.btnTarget.classList.remove('shake');
+              }, 500);
               this.btnTarget.classList.add('hearted');
               this.btnTarget.classList.remove('bg-gray-500');
             } else{

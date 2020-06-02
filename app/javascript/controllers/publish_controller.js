@@ -14,9 +14,14 @@ export default class extends Controller {
       success: resp => { 
         let status = resp.status;
         if (status === 'published'){
+          this.iconTarget.classList.add('shake');
+          let self = this;      
+          setTimeout(function(){
+            self.iconTarget.classList.remove('shake');
+          }, 500);
           this.iconTarget.classList.remove('fa-lock');
           this.iconTarget.classList.add('fa-unlock-alt');
-          this.textTarget.innerText = "公開"
+          this.textTarget.innerText = "公開"        
         } else{
           this.iconTarget.classList.remove('fa-unlock-alt');
           this.iconTarget.classList.add('fa-lock');
