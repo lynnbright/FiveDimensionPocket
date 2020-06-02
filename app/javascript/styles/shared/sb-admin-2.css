@@ -51,7 +51,6 @@
   .main-content {
     max-width: 540px;
     margin: 0 auto;
-    padding-left: 104px;
   }
 }
 
@@ -73,7 +72,8 @@
 
 @media screen and (min-width: 1200px) {
   .main-content {
-    max-width: 1200px;
+    /* max-width: 1200px; */
+    max-width: 90vw;
     margin-left: 9vw;
     padding-left: 104px;
   }
@@ -4481,8 +4481,8 @@ input[type="button"].btn-block {
 
 .card-img-top {
   width: 100%;
-  /* object-fit: cover;
-  border-top-left-radius: calc(0.35rem - 1px);
+  object-fit: cover;
+  /* border-top-left-radius: calc(0.35rem - 1px);
   border-top-right-radius: calc(0.35rem - 1px); */
 }
 

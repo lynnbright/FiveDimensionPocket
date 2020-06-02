@@ -33,7 +33,7 @@
       <div class="row">
         <% user.user_last_articles.each do |record| %>
 
-        <div class="col-12 col-md-4 mt-2 mb-4">
+        <div class="col-12 col-md-6 col-lg-4 mt-2 mb-4">
           <div class="card border-0 shadow h-100">
             <div>
               <%= image_tag(record.article.images.last, size:'300x200',class: "card-img-top card-img-no-radius shadow") if record.article.article_images.attached?  %>
