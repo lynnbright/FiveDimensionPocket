@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
     check_article_exist = current_user.articles.where("link LIKE '#{url_params[:link]}'")
 
     if check_article_exist.blank?
-      service = ArticleSendApiService.new(url_params[:link])
+      service = ArticleSendApi.new(url_params[:link])
       result = service.perform
  
       if result[:api_success]

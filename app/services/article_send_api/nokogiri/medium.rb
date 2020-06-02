@@ -1,7 +1,7 @@
 class ArticleSendApi
   module Nokogiri
-    class FiveXRuby < Base
-      
+    class Medium < Base
+
       def initialize(url)
         @url = url
         @page = ::Nokogiri::HTML(open(@url))  
@@ -9,11 +9,11 @@ class ArticleSendApi
       end
 
       def perform
-        @title = @page.xpath('//title').text
-        @ogimage_address = 'https://i.imgur.com/kKtW46A.jpg'
-        @clean_html = @page.xpath("//div[@class='post-main-content mb-3 mb-md-5']").to_s.gsub!("\n", '').gsub!(/\"/,'\'')
-        @text = @page.xpath("//div[@class='post-main-content mb-3 mb-md-5']").text.gsub!("\n",'').gsub(/\"/, '\'')
-        @short_description = @text.split('').first(50).join('')
+        @title = @page.xpath("//title").text
+        @ogimage_address = @page.xpath('/html/head/meta[@property="og:image"]/@content').text
+        @short_description = @page.xpath('/html/head/meta[@name="description"]/@content').text.split('').first(50).join('')
+        @clean_html = @page.xpath("//article//p").to_s.gsub!("\n","").gsub!(/\"/, '\'')
+        @text = @page.xpath("//article//p").text
         {
           nokogiri_success: 'nokogiri_success', 
           extract_data: {
@@ -26,7 +26,7 @@ class ArticleSendApi
             domain: @site_domain
           }
         }
-      end
+      end 
     end
   end
 end

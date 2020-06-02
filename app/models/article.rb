@@ -22,12 +22,13 @@ class Article < ApplicationRecord
   def images=(images = []) 
     
     files = images.map do |url|
-      begin
+      # begin
         { io: open(url), filename: 'image.jpg' }
-      rescue OpenURI::HTTPError, Errno::ENOENT, URI::InvalidURIError
-        nil
-      end
-    end.compact  
+      # rescue OpenURI::HTTPError, Errno::ENOENT, URI::InvalidURIError
+      #   nil
+      # end
+    end
+    # .compact  
     self.article_images.attach(files)
   end
 

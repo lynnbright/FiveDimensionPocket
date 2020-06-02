@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'open-uri'
+
 class ArticleSendApi
   module Nokogiri
     class Base
@@ -5,10 +8,9 @@ class ArticleSendApi
         @url = url
       end
 
-      def perform
-        p @url
+      def perform   
+       
       end
-      
     end
   end
 end
