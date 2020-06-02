@@ -60,9 +60,9 @@
           <a class="card-btn" data-action="tag#editTag"><i class="fas fa-tag"></i><span class="pl-1">標籤</span></a>
           <a class="card-btn" data-action="publish#check">
             <% if article.publish == true %>
-            <i class="fas fa-unlock-alt" data-target="publish.icon"></i><span class="pl-1">公開</span>
+            <i class="fas fa-unlock-alt" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">公開</span>
             <% else %>
-            <i class="fas fa-lock" data-target="publish.icon"></i><span class="pl-1">私人</span>
+            <i class="fas fa-lock" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">私人</span>
             <% end %>
           </a>
 

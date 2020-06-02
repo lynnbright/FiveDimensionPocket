@@ -3,7 +3,7 @@ import Rails from "@rails/ujs"
 
 
 export default class extends Controller {
-  static targets = [ "icon", "articleId" ]
+  static targets = [ "icon", "articleId", "text" ]
   
   check(e){
     e.preventDefault();    
@@ -16,9 +16,11 @@ export default class extends Controller {
         if (status === 'published'){
           this.iconTarget.classList.remove('fa-lock');
           this.iconTarget.classList.add('fa-unlock-alt');
+          this.textTarget.innerText = "公開"
         } else{
           this.iconTarget.classList.remove('fa-unlock-alt');
           this.iconTarget.classList.add('fa-lock');
+          this.textTarget.innerText = "私人"
         }
       },
       error: err => {
