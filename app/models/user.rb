@@ -32,11 +32,20 @@ class User < ApplicationRecord
   def read_chart
     read_record = self.articles
                       .where(read: true)
-                      .where("read_at >= :beginning_of_week and 
-                              read_at <= :end_of_week ",
-                              beginning_of_week: Time.current.beginning_of_week, 
-                              end_of_week: Time.current.end_of_week)
-                      .group("DATE(read_at)").count            
+                      .where("read_at >= :fourteen_days_before and 
+                              read_at <= :today ",
+                              fourteen_days_before: Time.now - 14.days, 
+                              today: Time.current)
+                      .group("DATE(read_at)").count        
+    date_hash = Hash[(14.days.ago.to_date..Date.today).collect { |date| [date, 0] } ]
+    date_hash.keys.each { |date|
+      read_record.keys.each { |record_date|
+        if date == record_date
+          date_hash[date] = read_record[record_date]
+        end
+      }
+    }
+    date_hash
   end
 
   
