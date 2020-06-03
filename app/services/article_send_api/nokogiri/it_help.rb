@@ -12,8 +12,8 @@ class ArticleSendApi
         @title = @page.xpath("//title").text
         @ogimage_address = 'https://i.imgur.com/e1HtnvV.jpg'
         @short_description = @page.xpath('/html/head/meta[@property="og:description"]/@content').text.split('').first(50).join('')
-        @clean_html = @page.xpath("//div[@class='markdown']").to_s.gsub!("\n","").gsub!(/\"/, '\'')
-        @text = @page.xpath("//div[@class='markdown']").text.gsub!("\n","").gsub(/\"/, '\'')
+        @clean_html = @page.xpath("//div[@class='markdown']").to_s.gsub("\n","").gsub(/\"/, '\'')
+        @text = @page.xpath("//div[@class='markdown']").text.gsub("\n","").gsub(/\"/, '\'')
         {
           nokogiri_success: 'nokogiri_success', 
           extract_data: {

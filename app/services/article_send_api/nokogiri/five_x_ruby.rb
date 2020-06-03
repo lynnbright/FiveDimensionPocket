@@ -11,8 +11,8 @@ class ArticleSendApi
       def perform
         @title = @page.xpath('//title').text
         @ogimage_address = 'https://i.imgur.com/kKtW46A.jpg'
-        @clean_html = @page.xpath("//div[@class='post-main-content mb-3 mb-md-5']").to_s.gsub!("\n", '').gsub!(/\"/,'\'')
-        @text = @page.xpath("//div[@class='post-main-content mb-3 mb-md-5']").text.gsub!("\n",'').gsub(/\"/, '\'')
+        @clean_html = @page.xpath("//div[@class='post-main-content mb-3 mb-md-5']").to_s.gsub("\n", '').gsub(/\"/,'\'')
+        @text = @page.xpath("//div[@class='post-main-content mb-3 mb-md-5']").text.gsub("\n",'').gsub(/\"/, '\'')
         @short_description = @text.split('').first(50).join('')
         {
           nokogiri_success: 'nokogiri_success', 

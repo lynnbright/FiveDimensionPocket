@@ -12,8 +12,8 @@ class ArticleSendApi
         @title = @page.xpath("//title").text
         @ogimage_address = @page.xpath('/html/head/meta[@property="og:image"]/@content').text
         @short_description = @page.xpath('/html/head/meta[@name="description"]/@content').text.split('').first(50).join('')
-        @clean_html = @page.xpath('//section[@class="article-body"]').to_s.gsub!("\n","").gsub!("\r","").gsub!(/\"/, '\'')
-        @text = @page.xpath('//section[@class="article-body"]').text.gsub!("\n","").gsub!("\r","")
+        @clean_html = @page.xpath('//section[@class="article-body"]').to_s.gsub("\n","").gsub("\r","").gsub(/\"/, '\'')
+        @text = @page.xpath('//section[@class="article-body"]').text.gsub("\n","").gsub("\r","")
         {
           nokogiri_success: 'nokogiri_success', 
           extract_data: {
