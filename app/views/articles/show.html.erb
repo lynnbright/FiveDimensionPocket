@@ -32,8 +32,12 @@
     <div class="single_article_cover w-100">
       <img src="<%= @article.images.last %>" alt="" width="100%">
     </div>
-    <article class="my-5 w-100">
+    <article id="content" class="clean_html my-5 w-100" data-controller="highlight">
       <%= @article.clean_content.html_safe %>
+      <input type="hidden" data-target="highlight.articleId" value="<%= @article.id %>">
     </article>
   </div>
 </div>
+
+<button id="tooltip" class="btn notDisplayed">
+</button>

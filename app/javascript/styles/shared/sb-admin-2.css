@@ -58,21 +58,24 @@
   .main-content {
     max-width: 720px;
     margin: 0 auto;
+    padding-left: 104px;
   }
 }
 
 @media (min-width: 992px) {
   .main-content {
     max-width: 960px;
-    margin-left: 9vw
+    margin-left: 9vw;
+    padding-left: 104px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .main-content {
-    max-width: 1200px;
+    /* max-width: 1200px; */
+    max-width: 90vw;
     margin-left: 9vw;
-    
+    padding-left: 104px;
   }
 }
 
@@ -85,10 +88,6 @@
   color: rgba(86, 82, 72, 0.9)
 }
 
-.card.for-article {
-  background-color: transparent;
-  border: 1px solid #FFBF69;
-}
 
 .page-bar.row {
   margin-right: 0;
@@ -4385,8 +4384,8 @@ input[type="button"].btn-block {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid #e3e6f0;
-  border-radius: 0.35rem;
+  /* border: 1px solid #e3e6f0; */
+  /* border-radius: 0.35rem; */
 }
 
 .card > hr {
@@ -4448,11 +4447,10 @@ input[type="button"].btn-block {
 .card-footer {
   padding: 0.75rem 1.25rem;
   background-color: #f8f9fc;
-  border-top: 1px solid #e3e6f0;
 }
 
 .card-footer:last-child {
-  border-radius: 0 0 calc(0.35rem - 1px) calc(0.35rem - 1px);
+  border-radius: 0;
 }
 
 .card-header-tabs {
@@ -4484,8 +4482,8 @@ input[type="button"].btn-block {
 .card-img-top {
   width: 100%;
   object-fit: cover;
-  border-top-left-radius: calc(0.35rem - 1px);
-  border-top-right-radius: calc(0.35rem - 1px);
+  /* border-top-left-radius: calc(0.35rem - 1px);
+  border-top-right-radius: calc(0.35rem - 1px); */
 }
 
 .card-img-bottom {
@@ -10052,7 +10050,7 @@ a:focus {
 
 .topbar .dropdown .dropdown-menu {
   width: calc(100% - 1.5rem);
-  right: 0.75rem;
+  right: 0.75rem;  
 }
 
 .topbar .dropdown-list {
@@ -10116,7 +10114,9 @@ a:focus {
   }
   .topbar .dropdown .dropdown-menu {
     width: auto;
-    right: 0;
+    /* 解決登出按鈕跑板問題 */
+    right: 140px;
+    
   }
   .topbar .dropdown-list {
     width: 20rem !important;
