@@ -45,15 +45,15 @@
 }
 
 /* 標記功能用 */
-.highlight {
+span.highlight {
   background-color: #FFBF69;
 }
 
 #tooltip {
-  background-color: #13534C;
-  color: blanchedalmond;
+  background-color: #1F847A;
+  color: white;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 0.125rem;
 }
 
 .notDisplayed {
