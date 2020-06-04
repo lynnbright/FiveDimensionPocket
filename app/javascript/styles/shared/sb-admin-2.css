@@ -1770,7 +1770,7 @@ pre code {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #d1d3e2;
-  border-radius: 0.35rem;
+  border-radius: 0.125rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -2274,8 +2274,12 @@ textarea.form-control {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: 0.35rem;
+  border-radius: 0.125rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-shadow {
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2673,7 +2677,7 @@ fieldset:disabled a.btn {
 
 .btn-outline-info {
   color: #36b9cc;
-  border-color: #36b9cc;
+  border: solid 2px #36b9cc;
 }
 
 .btn-outline-info:hover {
@@ -2856,14 +2860,14 @@ fieldset:disabled a.btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
-  border-radius: 0.3rem;
+  border-radius: 0.125rem;
 }
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  border-radius: 0.2rem;
+  border-radius: 0.125rem;
 }
 
 .btn-block {
@@ -2958,7 +2962,7 @@ input[type="button"].btn-block {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #e3e6f0;
-  border-radius: 0.35rem;
+  border-radius: 0.125rem;
 }
 
 .dropdown-menu-left {
@@ -3432,7 +3436,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
-  border-radius: 0.3rem;
+  border-radius: 0.125rem;
 }
 
 .input-group-sm > .form-control:not(textarea),
@@ -3449,7 +3453,7 @@ input[type="button"].btn-block {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  border-radius: 0.2rem;
+  border-radius: 0.125rem;
 }
 
 .input-group-lg > .custom-select,
@@ -4914,13 +4918,24 @@ a.badge-dark:focus, a.badge-dark.focus {
 .alert {
   position: fixed;
   padding: 0.75rem 1.25rem;
-  margin-top: 5rem;
-  right: 1rem;
+  margin-top: 4rem;
   border: 1px solid transparent;
   border-radius: 0.125rem;
   z-index: 1050;
-  padding: 12px 20px;
   min-width: 20rem;
+  left: 50%;
+  right: 50%;
+  margin-left: -104px;
+  transition: transform .5s,
+              opacity .5s;
+  transition-timing-function: ease-out;  
+  transform: translateY(-200%);
+  opacity: 0;
+}
+
+.alert.show {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .alert-heading {
@@ -6436,7 +6451,7 @@ button.bg-dark:focus {
 }
 
 .rounded {
-  border-radius: 0.35rem !important;
+  border-radius: 0.125rem !important;
 }
 
 .rounded-top {
