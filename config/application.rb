@@ -17,8 +17,8 @@ module FiveDimensionPocket
     # the framework and any gems in your application.
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :options], credentials: false
+        origins /\Achrome\-extension:\/\/pcbokiekkibbbhkemhonbnfebaejlpjp\z/
+        resource '*', headers: :any, methods: [:get, :post, :options], credentials: true
       end
     end
   end
