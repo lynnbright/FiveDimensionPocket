@@ -2,7 +2,6 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("styles")
 require("scripts")
 require("articles_sharebtn")
 
@@ -11,6 +10,7 @@ window.$ = window.jquery = $
 
 import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
+require("styles")
 
 
 import "@fortawesome/fontawesome-free/js/all"
