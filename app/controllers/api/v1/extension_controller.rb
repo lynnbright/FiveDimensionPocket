@@ -46,6 +46,8 @@ class Api::V1::ExtensionController < ApplicationController
           short_description: result[:extract_data][:short_description]
         })
         @article.save
+        render json: {message: '此網站儲存過'}, status: 200
+
       else
         render json: {message: '此網站無法存取'}, status: 401
       end
