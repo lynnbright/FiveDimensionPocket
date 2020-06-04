@@ -14,12 +14,11 @@
   </head>
 
   <body id="page-top">
-    <div id="wrapper">
-    <%= render "shared/navbar"%>
+    <div class="main-content mx-auto" id="wrapper">
+      <%= render "shared/navbar"%>
+      <%= render "shared/sidebar"%>
       <div id="content-wrapper" class="d-flex flex-column">
-        <div id="content">
-        <%= render "shared/sidebar"%>
-          <!-- <div class="container-fluid"> -->
+          <div class="container-fluid">
             <span class="notice"> <% notice %> </span>
             <div class="alert alert-warning alert-dismissible fade d-none" role="alert" id="flash-alert">
               <span class="flash alert modal-body"> <%= alert %> </span>
@@ -28,10 +27,9 @@
               </button>
             </div>
             <%= yield %>
-          <!-- </div> -->
-          <%= render "shared/footer" %>
         </div>
       </div>
     </div>
+    <%= render "shared/footer" %>
   </body>
 </html>

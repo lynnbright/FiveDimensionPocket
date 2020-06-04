@@ -13,4 +13,9 @@ $(document).on('turbolinks:load', function(){
   if (text.length > 0) {
     $alert.addClass('show')
   }
+
+  //單篇文章上的返回鍵
+  $('.inner-page-back-arrow').click(function(){
+    e.preventDefault();
+  })
 });

@@ -64,18 +64,16 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def tags
-    user_id = current_user.id
     selected_tags = JSON.parse(tags_params[:list_tag])
-    article = Article.find(tags_params[:id])     
-    article.tag_list= selected_tags
+    article = Article.find(params[:id])
+    article.tag_list = selected_tags
   end
 
   def get_tags
-    article = Article.find(tags_params[:id])  
+    article = Article.find(params[:id])  
     tags =  article.tag_list
-
     render json: {tags: tags}
-  end
+  end 
 
   def create_speech
     @article = Article.find(params[:id])
@@ -106,8 +104,27 @@ class Api::V1::ArticlesController < ApplicationController
     end
   end
 
+  def highlight
+    highlight = Article.find_by(id: params[:id]).highlights.create(content: highlight_params[:content],
+                                                paragraph_index: highlight_params[:paragraph_index])
+    render json: { id: highlight.id}  
+  end
+
+  def get_highlights
+    highlights = Article.find_by(id: params[:id]).highlights
+    render json: { highlights: highlights}    
+  end
+
+  def delete_highlight
+    Article.find(params[:id]).highlights.find(params[:highlight_id]).destroy
+  end
+
   private
   def tags_params
-    params.permit(:id, :list_tag )
+    params.permit(:list_tag )
+  end
+
+  def highlight_params
+    params.permit(:content, :paragraph_index)
   end
 end

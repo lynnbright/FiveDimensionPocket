@@ -3,6 +3,7 @@
 class Article < ApplicationRecord
   has_many :article_tags
   has_many :tags, through: :article_tags
+  has_many :highlights
   belongs_to :user
   belongs_to :search, optional: true
   has_many_attached :article_images
@@ -19,6 +20,7 @@ class Article < ApplicationRecord
 
   #把網路上拿到的圖片網址，存到 active_storage 
   def images=(images = []) 
+    
     files = images.map do |url|
       begin
         { io: open(url), filename: 'image.jpg' }

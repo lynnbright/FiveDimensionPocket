@@ -11,7 +11,7 @@
     <li class="nav-item no-arrow row align-content-center mx-3">
       <%= form_for @article, url: articles_path, method:'post', :html => {class: 'd-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search'} do |f| %>
         <div class="input-group">
-          <%= f.text_field :link, class: 'form-control bg-light border-0 small', placeholder: '新增文章連結 https://...' %>
+          <%= f.text_field :link, class: 'form-control bg-light border-0 small', placeholder: '新增文章連結 https://...', value: '' %>
           <div class="input-group-append">
             <%= f.submit '儲存', class: 'btn btn-primary' %>
           </div>
@@ -27,9 +27,9 @@
       <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown1">
         <%= form_for @article, url: articles_path, method:'post', :html => {class: 'form-inline mr-auto w-100 navbar-search'} do |f| %>
           <div class="input-group"> 
-            <%= f.text_field :link, class: 'form-control bg-light border-0 small', placeholder: '新增文章連結 https://...' %>
+            <%= f.text_field :link, class: 'url-input form-control bg-light border-0 small', placeholder: '新增文章連結 https://...', value: '' %>
             <div class="input-group-append">
-              <%= f.submit '儲存', class: 'btn btn-primary' %>
+              <%= f.submit '儲存', class: 'article-save-btn btn btn-primary' %>
             </div>    
           </div>
         <% end %>
@@ -57,12 +57,12 @@
     <!-- Nav Item - 探索與追蹤 -->
     <li class="nav-item no-arrow"> 
       <%= link_to explores_path, class: "nav-link" do %>
-       <i class="far fa-compass"></i><span style="font-size: 1rem;">&nbsp&nbsp探索</span>
+       <i class="far fa-compass"></i><span style="font-size: 1rem;">&nbsp探索</span>
       <% end %>
     </li>
     <li class="nav-item no-arrow">
       <%= link_to charts_path, class: "nav-link" do %>
-        <i class="fas fa-chart-line"></i><span style="font-size: 1rem;">&nbsp&nbsp成就</span>
+        <i class="fas fa-chart-line"></i><span style="font-size: 1rem;">&nbsp成就</span>
       <% end %>
     </li>
 
