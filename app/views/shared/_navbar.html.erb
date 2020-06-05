@@ -11,7 +11,7 @@
     <li class="nav-item no-arrow row align-content-center mx-3">
       <%= form_for @article, url: articles_path, method:'post', :html => {class: 'd-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search'} do |f| %>
         <div class="input-group">
-          <%= f.text_field :link, class: 'form-control bg-light border-0 small', placeholder: '新增文章連結 https://...', value: '' %>
+          <%= f.text_field :link, class: 'form-control bg-light border-0 small', placeholder: '新增文章連結 https://...', value: '', required: true, type: 'url' %>
           <div class="input-group-append">
             <%= f.submit '儲存', class: 'btn btn-primary' %>
           </div>
@@ -27,7 +27,7 @@
       <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown1">
         <%= form_for @article, url: articles_path, method:'post', :html => {class: 'form-inline mr-auto w-100 navbar-search'} do |f| %>
           <div class="input-group"> 
-            <%= f.text_field :link, class: 'url-input form-control bg-light border-0 small', placeholder: '新增文章連結 https://...', value: '' %>
+            <%= f.text_field :link, class: 'url-input form-control bg-light border-0 small', placeholder: '新增文章連結 https://...', value: '', required: true, type: 'url' %>
             <div class="input-group-append">
               <%= f.submit '儲存', class: 'article-save-btn btn btn-primary' %>
             </div>    
@@ -45,7 +45,7 @@
       <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">        
         <%= form_for :search, url: search_path, :html => { class: 'form-inline mr-auto w-100 navbar-search'}, method: 'get' do |f| %>
           <div class="input-group">
-            <%= f.text_field :search_input, class: 'form-control bg-light border-0 small', placeholder: '搜尋文章' %>
+            <%= f.text_field :search_input, class: 'form-control bg-light border-0 small', placeholder: '搜尋文章', required: true %>
           <div class="input-group-append">
             <%= f.submit "搜尋", class: 'btn btn-primary' %>
             </div>
