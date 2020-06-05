@@ -47,11 +47,13 @@
   box-sizing: border-box;
 }
 
+/* 單篇文章內圖片大小 */
 .clean_html img{
   width: 100%;
   height: auto;
 }
 
+/* layout 主要寬度 */
 @media (min-width: 576px) {
   .main-content {
     max-width: 540px;
@@ -113,6 +115,7 @@
   }
 }
 
+/* 卡片標題 */
 .card-title {
   color: #565248;
   font-weight: 500;
@@ -122,7 +125,7 @@
   color: rgba(86, 82, 72, 0.9)
 }
 
-
+/* 每頁標題列 ex. 我的清單 */
 .page-bar.row {
   margin-right: 0;
   margin-left: 0;
@@ -3066,8 +3069,51 @@ input[type="button"].btn-block {
   top: auto;
   bottom: 100%;
   margin-top: 0;
-  margin-bottom: 0.125rem;
+  margin-bottom: 0.5rem;
+  right: 10%;
 }
+
+/* 分享按鈕 start */
+@media (min-width: 576px) {
+  .shared-btn-wrap .share-btn-collapse {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    right: 10%;
+  }
+}
+
+@media (min-width: 768px) {
+  .shared-btn-wrap .share-btn-collapse {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    margin-right: 10%;
+  }
+}
+
+@media (min-width: 992px) {
+  .shared-btn-wrap .share-btn-collapse {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    margin-right: 10%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .shared-btn-wrap .share-btn-collapse {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    margin-right: 10%;
+  }
+}
+/* 分享按鈕 end */
 
 .dropup .dropdown-toggle::after {
   display: inline-block;
