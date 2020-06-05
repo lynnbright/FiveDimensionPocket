@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get :favorites
       get :read_collection
       get :unread_collection
+      get :publish
     end
   end
 
