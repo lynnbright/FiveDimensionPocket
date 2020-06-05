@@ -9649,6 +9649,7 @@ a:focus {
 
 #wrapper {
   display: flex;
+  margin-bottom: 45px;
 }
 
 #wrapper #content-wrapper {
@@ -11072,6 +11073,9 @@ form.user .btn-user {
 footer.sticky-footer {
   padding: 1rem 0;
   flex-shrink: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 footer.sticky-footer .copyright {
