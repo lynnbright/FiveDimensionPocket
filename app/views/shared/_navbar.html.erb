@@ -85,3 +85,11 @@
 
   </ul>
 </nav>
+
+
+<script>
+  var urlInput = document.getElementById('article_link')
+  urlInput.oninvalid = function(event){
+    event.target.setCustomValidity('請輸入正確網址格式。 例如：https://5xruby.tw/posts...');
+  }
+</script>
