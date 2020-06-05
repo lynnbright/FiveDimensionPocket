@@ -56,4 +56,5 @@ $(document).on('turbolinks:load', function(){
     e.preventDefault();
   });
 
+  $('.alert').addClass('show')
 })

@@ -50,3 +50,8 @@
 	animation-name: shake;
 	animation-duration: 0.4s;
 }
+
+/* 修正select2的下拉選項會被sweetalert蓋住問題 */
+.select2-container {
+  z-index: 20000;
+}
