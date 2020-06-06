@@ -13,7 +13,7 @@
               <audio id="js-speech-player" src="data:audio/mpeg;base64,<%= @article.encode_string %>" controls></audio>
             <% else %>
               <%= link_to create_speech_api_v1_article_path(@article.id), method: 'post', remote: true, class:'px-2 d-flex justify-content-center align-content-center', id: 'js-create-speech' do %>
-                <i class="fas fa-volume-down" style="font-size: 60px;"></i>唸給你聽
+                <i class="fas fa-volume-down mx-2" style="font-size: 60px;"></i> <span style="line-height: 60px;">唸給你聽</span>
               <% end %>
               <audio id="js-speech-player" class="d-none" src="###" controls></audio>
             <% end %>
