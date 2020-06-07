@@ -55,3 +55,9 @@
 .select2-container {
   z-index: 20000;
 }
+
+/* 無文章時顯示 */
+.no-article-img{
+  max-width: 800px;
+  width: 90%;
+}

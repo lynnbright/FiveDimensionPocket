@@ -21,78 +21,85 @@
   </div>
 
   <div class="row" id="card-wrap">
-    <% articles.each do |article| %>
-    <div class="col-12 col-md-6 col-lg-4 mt-2 mb-4">
-      <div class="card border-0 shadow h-100" data-controller="tag publish read favorite">
-        <div>
-          <%= link_to (image_tag(article.images.last,  size:'300x200', class:"card-img-top card-img-no-radius shadow") if article.article_images.attached?), article_path(article.id) %>
-        </div>        
-        <% if article.read == true %>
-          <a class="btn btn-circle btn-success read-btn" data-action="read#check" data-target="read.btn">
-            <i class="fas fa-check icon-white"></i>
-          </a>
-        <% else %>
-          <a class="btn btn-circle bg-gray-500 read-btn" data-action="read#check" data-target="read.btn">
-            <i class="fas fa-check icon-white"></i>
-          </a>
-        <% end %>
-        
-        <% if article.favorite == true %>
-          <a class="btn btn-circle hearted heart-btn ml-auto mr-2" data-action="favorite#heart" data-target="favorite.btn">
-            <i class="fas fa-heart icon-white"></i>
-          </a>
-        <% else %>
-          <a class="btn btn-circle bg-gray-500 heart-btn ml-auto mr-2" data-action="favorite#heart" data-target="favorite.btn">
-            <i class="fas fa-heart icon-white"></i>
-          </a>
-        <% end %>
-
-        <div class="card-body">
-          <h5>
-            <%= link_to article.title, article_path(article.id), class:"card-title" %>
-          </h5>
-          <hr>
-          <p class="card-text"><%= article.short_description %></p>
-        </div>
-        <div class="card-footer border-top-0 d-flex justify-content-around light-orange-bg">
-          <input type="hidden" data-target="tag.articleId publish.articleId read.articleId favorite.articleId"
-            value="<%= article.id %>">
-          <a class="card-btn" data-action="tag#editTag"><i class="fas fa-tag"></i><span class="pl-1">標籤</span></a>
-          <a class="card-btn" data-action="publish#check">
-          <% if article.publish == true %>
-            <i class="fas fa-unlock-alt" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">公開</span>
-          <% else %>
-            <i class="fas fa-lock" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">私人</span>
-          <% end %>
-          </a>
-
-          <span class="shared-btn-wrap dropup">
-            <a href="###" class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i><span class="pl-1">分享</span></a>
-            <!-- <button class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></button> -->
-            <div class="shared-bar share-btn-collapse row p-1 dropdown-menu">
-              <!-- 複製連結 -->
-              <a class="shared-conect-btn dropdown-item" href="#"><i
-                  class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
-              <input type="hidden" class="copylink" value="<%= article.link %>">
-
-              <!-- Facebook share button code -->
-              <a href="https://www.facebook.com/sharer/sharer.php?u=<%= article.link%>" target="_blank"
-                class="dropdown-item"><i class="fab fa-facebook-square d-inline-block"></i>&nbsp Facebook</a>
-
-              <!-- Twitter share button code -->
-              <a href="https://twitter.com/intent/tweet?text=<%= article.title %>&url=<%= article.link %>"
-                target="_blank" class="dropdown-item"><i class="fab fa-twitter-square d-inline-block"></i>&nbsp
-                Twitter</a>
-
-              <!-- Line share button code -->
-              <a href="https://social-plugins.line.me/lineit/share?url=<%= article.link %>" target="_blank"
-                class="dropdown-item"><i class="fab fa-line d-inline-block"></i>&nbsp Line</a>
-            </div>
-          </span>
-        </div>
+    <% if articles.blank? %>
+      <div class="col-12 col-md-12 col-lg-12 mt-2 mb-4 text-center">
+        <p>快新增更多文章拓展你的知識百寶袋吧！</p>
+        <%= image_tag "staying-home.png" , class: "no-article-img mx-auto" %>
       </div>
-    </div>
-    <% end %>
+    <% else %>
+      <% articles.each do |article| %>
+        <div class="col-12 col-md-6 col-lg-4 mt-2 mb-4">
+          <div class="card border-0 shadow h-100" data-controller="tag publish read favorite">
+            <div>
+              <%= link_to (image_tag(article.images.last,  size:'300x200', class:"card-img-top card-img-no-radius shadow") if article.article_images.attached?), article_path(article.id) %>
+            </div>        
+            <% if article.read == true %>
+              <a class="btn btn-circle btn-success read-btn" data-action="read#check" data-target="read.btn">
+                <i class="fas fa-check icon-white"></i>
+              </a>
+            <% else %>
+              <a class="btn btn-circle bg-gray-500 read-btn" data-action="read#check" data-target="read.btn">
+                <i class="fas fa-check icon-white"></i>
+              </a>
+            <% end %>
+            
+            <% if article.favorite == true %>
+              <a class="btn btn-circle hearted heart-btn ml-auto mr-2" data-action="favorite#heart" data-target="favorite.btn">
+                <i class="fas fa-heart icon-white"></i>
+              </a>
+            <% else %>
+              <a class="btn btn-circle bg-gray-500 heart-btn ml-auto mr-2" data-action="favorite#heart" data-target="favorite.btn">
+                <i class="fas fa-heart icon-white"></i>
+              </a>
+            <% end %>
+    
+            <div class="card-body">
+              <h5>
+                <%= link_to article.title, article_path(article.id), class:"card-title" %>
+              </h5>
+              <hr>
+              <p class="card-text"><%= article.short_description %></p>
+            </div>
+            <div class="card-footer border-top-0 d-flex justify-content-around light-orange-bg">
+              <input type="hidden" data-target="tag.articleId publish.articleId read.articleId favorite.articleId"
+                value="<%= article.id %>">
+              <a class="card-btn" data-action="tag#editTag"><i class="fas fa-tag"></i><span class="pl-1">標籤</span></a>
+              <a class="card-btn" data-action="publish#check">
+              <% if article.publish == true %>
+                <i class="fas fa-unlock-alt" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">公開</span>
+              <% else %>
+                <i class="fas fa-lock" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">私人</span>
+              <% end %>
+              </a>
+    
+              <span class="shared-btn-wrap dropup">
+                <a href="###" class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i><span class="pl-1">分享</span></a>
+                <!-- <button class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></button> -->
+                <div class="shared-bar share-btn-collapse row p-1 dropdown-menu">
+                  <!-- 複製連結 -->
+                  <a class="shared-conect-btn dropdown-item" href="#"><i
+                      class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
+                  <input type="hidden" class="copylink" value="<%= article.link %>">
+    
+                  <!-- Facebook share button code -->
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=<%= article.link%>" target="_blank"
+                    class="dropdown-item"><i class="fab fa-facebook-square d-inline-block"></i>&nbsp Facebook</a>
+    
+                  <!-- Twitter share button code -->
+                  <a href="https://twitter.com/intent/tweet?text=<%= article.title %>&url=<%= article.link %>"
+                    target="_blank" class="dropdown-item"><i class="fab fa-twitter-square d-inline-block"></i>&nbsp
+                    Twitter</a>
+    
+                  <!-- Line share button code -->
+                  <a href="https://social-plugins.line.me/lineit/share?url=<%= article.link %>" target="_blank"
+                    class="dropdown-item"><i class="fab fa-line d-inline-block"></i>&nbsp Line</a>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>    
   </div>
 </div>
 
