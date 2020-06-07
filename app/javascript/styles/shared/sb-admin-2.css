@@ -131,6 +131,16 @@
   margin-left: 0;
 }
 
+/* explore user name */
+
+.user-name a{
+  color: #565248;
+}
+
+.user-name a:hover {
+  color:rgba(86, 82, 72, 0.9);
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
