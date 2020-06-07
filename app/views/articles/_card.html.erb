@@ -8,15 +8,15 @@
       </button>
       <div class="dropdown-menu">
         <%= link_to articles_path, class:'dropdown-item' do %>
-        <i class="fas fa-list-ul"></i><span>&nbsp&nbsp全部</span>
+          <i class="fas fa-list-ul"></i><span>&nbsp&nbsp全部</span>
         <% end %>
         <%= link_to unread_collection_articles_path, class:'dropdown-item' do %>
-        <i class="far fa-check-square"></i><span>&nbsp&nbsp未讀</span>
+          <i class="far fa-check-square"></i><span>&nbsp&nbsp未讀</span>
         <% end %>
         <%= link_to read_collection_articles_path, class:'dropdown-item' do %>
-        <i class="fas fa-check-square"></i><span>&nbsp&nbsp已讀</span>
+          <i class="fas fa-check-square"></i><span>&nbsp&nbsp已讀</span>
         <% end %>
-      </div>
+      </div>    
     </div>
   </div>
 
@@ -27,24 +27,24 @@
         <div>
           <%= link_to (image_tag(article.images.last,  size:'300x200', class:"card-img-top card-img-no-radius shadow") if article.article_images.attached?), article_path(article.id) %>
         </div>        
-          <% if article.read == true %>
+        <% if article.read == true %>
           <a class="btn btn-circle btn-success read-btn" data-action="read#check" data-target="read.btn">
             <i class="fas fa-check icon-white"></i>
           </a>
-          <% else %>
+        <% else %>
           <a class="btn btn-circle bg-gray-500 read-btn" data-action="read#check" data-target="read.btn">
             <i class="fas fa-check icon-white"></i>
           </a>
-          <% end %>
+        <% end %>
         
         <% if article.favorite == true %>
-        <a class="btn btn-circle hearted heart-btn ml-auto mr-2" data-action="favorite#heart" data-target="favorite.btn">
-          <i class="fas fa-heart icon-white"></i>
-        </a>
+          <a class="btn btn-circle hearted heart-btn ml-auto mr-2" data-action="favorite#heart" data-target="favorite.btn">
+            <i class="fas fa-heart icon-white"></i>
+          </a>
         <% else %>
-        <a class="btn btn-circle bg-gray-500 heart-btn ml-auto mr-2" data-action="favorite#heart" data-target="favorite.btn">
-          <i class="fas fa-heart icon-white"></i>
-        </a>
+          <a class="btn btn-circle bg-gray-500 heart-btn ml-auto mr-2" data-action="favorite#heart" data-target="favorite.btn">
+            <i class="fas fa-heart icon-white"></i>
+          </a>
         <% end %>
 
         <div class="card-body">
@@ -59,11 +59,11 @@
             value="<%= article.id %>">
           <a class="card-btn" data-action="tag#editTag"><i class="fas fa-tag"></i><span class="pl-1">標籤</span></a>
           <a class="card-btn" data-action="publish#check">
-            <% if article.publish == true %>
+          <% if article.publish == true %>
             <i class="fas fa-unlock-alt" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">公開</span>
-            <% else %>
+          <% else %>
             <i class="fas fa-lock" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">私人</span>
-            <% end %>
+          <% end %>
           </a>
 
           <span class="shared-btn-wrap dropup">
