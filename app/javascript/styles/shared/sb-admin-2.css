@@ -3047,7 +3047,7 @@ input[type="button"].btn-block {
     left: auto;
   }
   .dropdown-menu {
-    margin: 0.125rem -8rem 0;
+    margin: 0.125rem -6rem 0;
   }
 }
 
@@ -3061,7 +3061,7 @@ input[type="button"].btn-block {
     left: auto;
   }
   .dropdown-menu {
-    margin: 0.125rem -8rem 0;
+    margin: 0.125rem -6rem 0;
   }
 }
 
@@ -10212,10 +10212,11 @@ a:focus {
   }
   .topbar .dropdown .dropdown-menu {
     width: auto;
-    /* 解決登出按鈕跑板問題 */
-    right: 140px;
+    /* 解決登出按鈕、搜尋框跑板問題 */
+    right: auto;
     
   }
+
   .topbar .dropdown-list {
     width: 20rem !important;
   }
@@ -10223,6 +10224,8 @@ a:focus {
     max-width: 13.375rem;
   }
 }
+
+
 
 .topbar.navbar-light .navbar-nav .nav-item .nav-link {
   color: #858796;
