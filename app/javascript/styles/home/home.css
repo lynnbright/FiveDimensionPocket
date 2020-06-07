@@ -1,0 +1,45 @@
+.home img {
+  width: 2vw;
+  display: block;
+  margin-right:0 ;
+}
+.logo-name, .login-icon {
+  font-family: 'Palanquin', sans-serif;
+  color: #565248;
+}
+.logo-icon.navbar-brand {
+  text-align: left;
+}
+
+.main-slogan h1 {
+  font-size: 6.5vw;
+  font-family: 'Acme', sans-serif;
+}
+
+.main-slogan p {
+  font-size: 1.5vw;
+  font-family: 'Acme', sans-serif;
+}
+.main-slogan h1, .main-slogan p{
+  text-align: center;
+}
+.btn-opacity-success:hover {
+  color: #5ed6b3;
+  background-color: #b7eddd;
+  border: 2px solid transparent;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-opacity-success {
+  color: #5ed6b3;
+  background-color: white;
+  border: 2px solid #5ed6b3;
+}
+
+.call-to-action-btn .form-control {
+  height: calc(2em + 0.75rem + 2px);
+}
+
+.input-group-append .btn {
+  line-height: 30px;
+}

@@ -10,77 +10,45 @@
     <%= favicon_link_tag asset_path('five-dimension-pocket.ico') %>
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Acme&family=DM+Sans&family=Lato&family=Palanquin&display=swap" rel="stylesheet">
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js' %>
   </head>
-  <style>
-    .logo-name {
-      font-family: 'Palanquin', sans-serif;
-      color: #565248;
-    }
-    .main-slogan h1 {
-      font-size: 5.5vw;
-      font-family: 'Acme', sans-serif;
-    }
-    .main-slogan h1, .main-slogan p{
-      text-align: center;
-    }
-    .btn-opacity-success:hover {
-      color: #5ed6b3;
-      background-color: #b7eddd;
-      border: 2px solid transparent;
-      transition: all 0.5s ease-in-out;
-    }
-
-    .btn-opacity-success {
-      color: #5ed6b3;
-      background-color: white;
-      border: 2px solid #5ed6b3;
-    }
-
-    .call-to-action-btn .form-control {
-      height: calc(2em + 0.75rem + 2px);
-    }
-
-    #try-free .btn{
-      line-height: 2;
-    }
-
-  </style>
   <body>
-    <div class="container mx-auto">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <%= button_to unauthenticated_root_path, class: 'btn mr-1 navbar-brand', method: 'get' do %>
-          <span style="color: #565248;"><i class="fab fa-get-pocket"></i><span class="logo-name">&nbsp&nbspFive Dimension Pocket</span></span>
+    <div class="container mx-auto">     
+      <nav class="home navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <img src="https://i.imgur.com/d8BNE4i.jpg" alt="" class="d-none d-sm-inline-block">
+        <%= link_to unauthenticated_root_path, class: 'logo-icon btn navbar-brand pl-0 d-none d-sm-inline-block', method: 'get' do %> 
+          <span class="logo-name">&nbsp&nbspFive Dimension Pocket</span>
         <% end %>
+
         <div class="collapse navbar-collapse justify-content-end my-3" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-                <%= button_to new_user_session_path, class: 'btn mr-1', method: 'get' do %>
-                  <span style="color: #565248;"><i class="fas fa-user"></i>&nbsp登入</span>
-                <% end %>
+              <%= button_to new_user_session_path, class: 'btn mr-1', method: 'get' do %>
+                <span class="login-icon home-login"><i class="fas fa-user"></i>&nbsp登入</span>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= button_to '立即註冊', new_user_registration_path, class: 'btn btn-opacity-success mr-1', method: 'get' %>
+              <%= button_to '立即註冊', new_user_registration_path, class: 'home-registar btn btn-opacity-success mr-1', method: 'get' %>
             </li>
           </ul>
         </div>
       </nav>
       <div class="row flex-column align-items-center">
-
         <div class="main-slogan col-12 mt-5 mb-3">
           <h1>Pocket Your Knowledge</h1>
           <p class="py-2">輸入網址，即可將您的知識打包進 Pocket</p>
         </div>
-
-        <div class="input-group mb-3 call-to-action-btn col-5" id="try-free">
+        <div class="input-group mb-3 call-to-action-btn col-10 col-md-6" id="try-free">
           <input type="text" class="form-control" placeholder="www.myfavorite.com/articles/520" aria-label="Recipient's username" aria-describedby="basic-addon2">
           <div class="input-group-append">
-            <!-- <button class="btn btn-opacity-success" type="button">免費體驗</button> -->
-            <%= button_to '免費體驗', new_user_registration_path, class: 'btn btn-opacity-success', method: 'get' %>
+            <%= link_to '免費體驗', new_user_registration_path, class: 'home-free btn btn-opacity-success input-group-append', method: 'get' %>
           </div>
         </div>
-
         <div class="main-cover">
           <img src="https://i.imgur.com/IH2YUGi.png" alt="" class="w-100">
         </div>
