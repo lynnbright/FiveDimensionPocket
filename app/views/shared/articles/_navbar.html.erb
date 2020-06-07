@@ -7,43 +7,40 @@
   <ul class="navbar-nav mx-auto" data-controller="tag publish read favorite">    
     <input type="hidden" data-target="tag.articleId publish.articleId read.articleId favorite.articleId"
   value="<%= @article.id %>">
-    <li class="nav-item no-arrow"> 
-      <a class="nav-link" data-action="publish#check">
-        <% if @article.publish == true %>
-          <i class="fas fa-unlock-alt" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">公開</span>
-        <% else %>
-          <i class="fas fa-lock" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">私人</span>
-        <% end %>
-      </a>
-    </li>
-    <li class="nav-item no-arrow">
-      <a class="nav-link" data-action="tag#editTag"><i class="fas fa-tag"></i><span class="pl-1">標籤</span></a>
-    </li>
     <li class="nav-item no-arrow">
       <% if @article.read == true %>
-        <a class="btn btn-circle nav-link" data-action="read#check" data-target="read.btn">
-          <i class="fas fa-check"></i> 
+        <a class="btn btn-circle nav-link" data-action="read#navCheck">
+          <i class="article-nav-icon fas fa-check color-success" data-target="read.icon"></i> 
         </a>
       <% else %>
-        <a class="btn btn-circle nav-link" data-action="read#check" data-target="read.btn">
-          <i class="fas fa-check"></i>
+        <a class="btn btn-circle nav-link" data-action="read#navCheck">
+          <i class="article-nav-icon fas fa-check" data-target="read.icon"></i>
         </a>
       <% end %>
     </li>
     <li class="nav-item no-arrow">
       <% if @article.favorite == true %>
-        <a class="nav-link" data-action="favorite#heart" data-target="favorite.btn">
-          <i class="fas fa-heart"></i>
+        <a class="nav-link" data-action="favorite#navHeart">
+          <i class="article-nav-icon pink fas fa-heart" data-target="favorite.icon"></i>
         </a> 
       <% else %>
-        <a class="nav-link" data-action="favorite#heart" data-target="favorite.btn">
-          <i class="fas fa-heart"></i>
+        <a class="nav-link" data-action="favorite#navHeart">
+          <i class="article-nav-icon far fa-heart" data-target="favorite.icon"></i>
         </a>
       <% end %>
     </li>
-    <li class="nav-item no-arrow">
-    
-    </li> 
+    <li class="nav-item no-arrow ml-1"> 
+      <a class="nav-link" data-action="publish#check">
+        <% if @article.publish == true %>
+          <i class="article-nav-icon fas fa-unlock-alt" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">公開</span>
+        <% else %>
+          <i class="article-nav-icon fas fa-lock" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">私人</span>
+        <% end %>
+      </a>
+    </li>
+    <li class="nav-item no-arrow ml-1">
+      <a class="nav-link" data-action="tag#editTag"><i class="fas fa-tag"></i><span class="pl-1">標籤</span></a>
+    </li>
   </ul>
 </nav>
 
