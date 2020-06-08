@@ -48,9 +48,10 @@
 
   <!-- Nav Item - 公開清單 -->
   <li class="nav-item">
-    <a class="nav-link" href="charts.html">
+    <%= link_to publish_articles_path, class: "nav-link" do %>
       <i class="fas fa-fw fa-unlock-alt"></i>
-      <span>公開清單</span></a>
+      <span>&nbsp公開清單</span>
+    <% end %>
   </li>
 
 </ul>

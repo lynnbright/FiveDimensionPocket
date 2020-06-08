@@ -1,6 +1,6 @@
 <div class="container col-12 mt-5 pt-5">
   <div class="page-bar p-2 row justify-content-between py-4">	
-    <h1 class="h3 mb-1 text-gray-800"><%= title %></h1>
+    <h3 class="mb-1"><%= title %></h3>
     <div class="btn-group align-items-center nav mt-1 col-xl-4 col-md-12" role="group" aria-label="Basic example">
       <% if title == "探索新知" %>
         <%= link_to '探索新知', explores_path, class:'btn btn-info btn-shadow active' %>
@@ -30,35 +30,37 @@
             </div>
           </div>
 
-          <div class="row">
-            <% user.user_last_articles.each do |record| %>
-              <div class="col-12 col-md-6 col-lg-4 mt-2 mb-4">
-                <div class="card border-0 shadow h-100">
-                  <div>
-                    <%= image_tag(record.article.images.last, size:'300x200',class: "card-img-top card-img-no-radius shadow") if record.article.article_images.attached?  %>
-                  </div>
-                  <div class="card-body">
-                    <h5>
-                      <%= link_to record.article.title, article_path(record.article.id), class:"card-title" %>
-                    </h5>
-                    <hr>
-                    <p class="card-text"><%= record.article.short_description %></p>
-                  </div>
-                  <div class="card-footer border-top-0 d-flex justify-content-around light-orange-bg">
-                    <%= form_for @article, url: articles_path, method:'post' , html: { id: "save_article_#{ record.article.id }" }  do |f| %>
-                      <%= f.text_field :link, value: record.article.link, type: 'hidden', id: "article_#{ record.article.id }" %>
-                      <button type="submit" class="btn icon-btn">
-                        <i class="fas fa-save"></i><span class="pl-1">儲存</span>
-                      </button>
-                    <% end %>
-                    <span class="shared-btn-wrap dropup">
-                      <button class="btn icon-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i><span
-                          class="pl-1">分享</span></button>
-                      <div class="shared-bar share-btn-collapse row p-1 dropdown-menu">
-                        <!-- 複製連結 -->
-                        <a class="shared-conect-btn dropdown-item" href="#"><i
-                            class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
-                        <input type="hidden" class="copylink" value="<%= record.article.link %>">
+        <div class="row">
+          <% user.user_last_articles.each do |record| %>
+            <div class="col-12 col-md-6 col-lg-4 mt-2 mb-4">
+              <div class="card border-0 shadow h-100">
+                <div>
+                <%= link_to record.article.link, target:'_blank' do %>
+                  <%= image_tag(record.article.images.last, size:'300x200',class: "card-img-top card-img-no-radius shadow") if record.article.article_images.attached?  %>
+                <% end %>
+                </div>
+                <div class="card-body">
+                  <h5>
+                    <%= link_to record.article.title, record.article.link, class:"card-title", target:"_blank" %>
+                  </h5>
+                  <hr>
+                  <p class="card-text"><%= record.article.short_description %></p>
+                </div>
+                <div class="card-footer border-top-0 d-flex justify-content-around light-orange-bg">
+                  <%= form_for @article, url: articles_path, method:'post' , html: { id: "save_article_#{ record.article.id }" }  do |f| %>
+                    <%= f.text_field :link, value: record.article.link, type: 'hidden', id: "article_#{ record.article.id }" %>
+                    <button type="submit" class="btn icon-btn">
+                      <i class="fas fa-save"></i><span class="pl-1">儲存</span>
+                    </button>
+                  <% end %>
+                  <span class="shared-btn-wrap dropup">
+                    <button class="btn icon-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i><span
+                        class="pl-1">分享</span></button>
+                    <div class="shared-bar share-btn-collapse row p-1 dropdown-menu">
+                      <!-- 複製連結 -->
+                      <a class="shared-conect-btn dropdown-item" href="#"><i
+                          class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
+                      <input type="hidden" class="copylink" value="<%= record.article.link %>">
 
                         <!-- Facebook share button code -->
                         <a href="https://www.facebook.com/sharer/sharer.php?u=<%= record.article.link%>" target="_blank"

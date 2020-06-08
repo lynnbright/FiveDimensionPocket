@@ -68,6 +68,10 @@ class ArticlesController < ApplicationController
     @unread_collection = current_user.articles.where(read: false).order(created_at: :desc).with_attached_article_images
   end
 
+  def publish
+    @publish_articles = current_user.articles.where(publish: true)
+  end
+
   private
   def url_params
     params.require(:article).permit(:link, article_images: []) 

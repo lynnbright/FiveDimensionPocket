@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function(){
   }
 
   //單篇文章上的返回鍵
-  $('.inner-page-back-arrow').click(function(){
+  $('.inner-page-back-arrow').click(function(e){
     e.preventDefault();
   })
 });
