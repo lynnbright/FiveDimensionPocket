@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
+  layout "article", only: [:show]
 
   def index
     @articles = current_user.articles.order(created_at: :desc).with_attached_article_images
@@ -65,6 +66,10 @@ class ArticlesController < ApplicationController
 
   def unread_collection 
     @unread_collection = current_user.articles.where(read: false).order(created_at: :desc).with_attached_article_images
+  end
+
+  def publish
+    @publish_articles = current_user.articles.where(publish: true)
   end
 
   private

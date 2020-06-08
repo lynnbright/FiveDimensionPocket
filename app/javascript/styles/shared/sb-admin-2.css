@@ -47,11 +47,13 @@
   box-sizing: border-box;
 }
 
+/* 單篇文章內圖片大小 */
 .clean_html img{
   width: 100%;
   height: auto;
 }
 
+/* layout 主要寬度 */
 @media (min-width: 576px) {
   .main-content {
     max-width: 540px;
@@ -84,6 +86,36 @@
   }
 }
 
+@media (min-width: 576px) {
+  .article-main-content {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .article-main-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .article-main-content {
+    max-width: 960px;
+    margin-left: 9vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .article-main-content {
+    /* max-width: 1200px; */
+    max-width: 90vw;
+    margin-left: 9vw;
+  }
+}
+
+/* 卡片標題 */
 .card-title {
   color: #565248;
   font-weight: 500;
@@ -93,10 +125,20 @@
   color: rgba(86, 82, 72, 0.9)
 }
 
-
+/* 每頁標題列 ex. 我的清單 */
 .page-bar.row {
   margin-right: 0;
   margin-left: 0;
+}
+
+/* explore user name */
+
+.user-name a{
+  color: #565248;
+}
+
+.user-name a:hover {
+  color:rgba(86, 82, 72, 0.9);
 }
 
 html {
@@ -3015,7 +3057,7 @@ input[type="button"].btn-block {
     left: auto;
   }
   .dropdown-menu {
-    margin: 0.125rem -8rem 0;
+    margin: 0.125rem -6rem 0;
   }
 }
 
@@ -3029,7 +3071,7 @@ input[type="button"].btn-block {
     left: auto;
   }
   .dropdown-menu {
-    margin: 0.125rem -8rem 0;
+    margin: 0.125rem -6rem 0;
   }
 }
 
@@ -3037,8 +3079,51 @@ input[type="button"].btn-block {
   top: auto;
   bottom: 100%;
   margin-top: 0;
-  margin-bottom: 0.125rem;
+  margin-bottom: 0.5rem;
+  right: 10%;
 }
+
+/* 分享按鈕 start */
+@media (min-width: 576px) {
+  .shared-btn-wrap .share-btn-collapse {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    right: 10%;
+  }
+}
+
+@media (min-width: 768px) {
+  .shared-btn-wrap .share-btn-collapse {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    margin-right: 10%;
+  }
+}
+
+@media (min-width: 992px) {
+  .shared-btn-wrap .share-btn-collapse {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    margin-right: 10%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .shared-btn-wrap .share-btn-collapse {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    margin-right: 10%;
+  }
+}
+/* 分享按鈕 end */
 
 .dropup .dropdown-toggle::after {
   display: inline-block;
@@ -9649,6 +9734,7 @@ a:focus {
 
 #wrapper {
   display: flex;
+  margin-bottom: 45px;
 }
 
 #wrapper #content-wrapper {
@@ -10136,10 +10222,11 @@ a:focus {
   }
   .topbar .dropdown .dropdown-menu {
     width: auto;
-    /* 解決登出按鈕跑板問題 */
-    right: 140px;
+    /* 解決登出按鈕、搜尋框跑板問題 */
+    right: auto;
     
   }
+
   .topbar .dropdown-list {
     width: 20rem !important;
   }
@@ -10148,8 +10235,10 @@ a:focus {
   }
 }
 
+
+
 .topbar.navbar-light .navbar-nav .nav-item .nav-link {
-  color: #d1d3e2;
+  color: #858796;
 }
 
 .topbar.navbar-light .navbar-nav .nav-item .nav-link:hover {
@@ -10157,7 +10246,7 @@ a:focus {
 }
 
 .topbar.navbar-light .navbar-nav .nav-item .nav-link:active {
-  color: #858796;
+  color: #6e707e;
 }
 
 .sidebar {
@@ -11072,6 +11161,9 @@ form.user .btn-user {
 footer.sticky-footer {
   padding: 1rem 0;
   flex-shrink: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 footer.sticky-footer .copyright {

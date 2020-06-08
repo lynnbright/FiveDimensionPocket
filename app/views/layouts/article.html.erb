@@ -7,17 +7,14 @@
     <title>FiveDimensionPocket</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag asset_path('five-dimension-pocket.ico') %>
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js' %>
   </head>
 
   <body id="page-top">
-    <div class="main-content mx-auto" id="wrapper">
-      <%= render "shared/navbar" %>
-      <%= render "shared/sidebar" %>
+    <div class="article-main-content mx-auto" id="wrapper">
+      <%= render "shared/articles/navbar" %>
       <div id="content-wrapper" class="d-flex flex-column">
           <div class="container-fluid">
             <% if notice %>

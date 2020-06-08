@@ -2,6 +2,11 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   skip_before_action :create_tags_menu
+
+  def create
+    super
+    flash.delete(:notice)
+  end
   
   private
 
