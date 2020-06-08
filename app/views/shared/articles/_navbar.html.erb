@@ -7,29 +7,29 @@
   <ul class="navbar-nav mx-auto" data-controller="tag publish read favorite">    
     <input type="hidden" data-target="tag.articleId publish.articleId read.articleId favorite.articleId"
   value="<%= @article.id %>">
-    <li class="nav-item no-arrow">
-      <% if @article.read == true %>
-        <a class="btn btn-circle nav-link" data-action="read#navCheck">
-          <i class="article-nav-icon fas fa-check color-success" data-target="read.icon"></i> 
-        </a>
-      <% else %>
-        <a class="btn btn-circle nav-link" data-action="read#navCheck">
-          <i class="article-nav-icon fas fa-check" data-target="read.icon"></i>
-        </a>
-      <% end %>
-    </li>
-    <li class="nav-item no-arrow">
+    <li class="nav-item no-arrow mx-1">
       <% if @article.favorite == true %>
         <a class="nav-link" data-action="favorite#navHeart">
-          <i class="article-nav-icon pink fas fa-heart" data-target="favorite.icon"></i>
+          <i class="article-nav-icon pink fas fa-heart" data-target="favorite.icon"></i><span class="pl-1">最愛</span>
         </a> 
       <% else %>
         <a class="nav-link" data-action="favorite#navHeart">
-          <i class="article-nav-icon far fa-heart" data-target="favorite.icon"></i>
+          <i class="article-nav-icon far fa-heart" data-target="favorite.icon"></i><span class="pl-1">最愛</span>
         </a>
       <% end %>
     </li>
-    <li class="nav-item no-arrow ml-1"> 
+    <li class="nav-item no-arrow mx-1">
+      <% if @article.read == true %>
+        <a class="btn nav-link" data-action="read#navCheck">
+          <i class="article-nav-icon fas fa-check color-success" data-target="read.icon"></i><span class="pl-1" data-target="read.text">已讀</span>
+        </a>
+      <% else %>
+        <a class="btn nav-link" data-action="read#navCheck">
+          <i class="article-nav-icon fas fa-check" data-target="read.icon"></i><span class="pl-1" data-target="read.text">未讀</span>
+        </a>
+      <% end %>
+    </li>
+    <li class="nav-item no-arrow mx-1"> 
       <a class="nav-link" data-action="publish#check">
         <% if @article.publish == true %>
           <i class="article-nav-icon fas fa-unlock-alt" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">公開</span>
@@ -38,8 +38,10 @@
         <% end %>
       </a>
     </li>
-    <li class="nav-item no-arrow ml-1">
-      <a class="nav-link" data-action="tag#editTag"><i class="fas fa-tag"></i><span class="pl-1">標籤</span></a>
+    <li class="nav-item no-arrow mx-1">
+      <a class="nav-link" data-action="tag#editTag">
+        <i class="article-nav-icon fas fa-tag"></i><span class="pl-1">標籤</span>
+      </a>
     </li>
   </ul>
 </nav>
