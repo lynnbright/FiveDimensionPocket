@@ -13,4 +13,10 @@ class Api::V1::ChartsController < ApplicationController
     render json: {read: read}
   end
 
+  def read_rate
+    user = User.find_by(id: current_user.id)
+    read_rate = user.read_chart
+    render json: {read_rate: read_rate}
+  end
+
 end
