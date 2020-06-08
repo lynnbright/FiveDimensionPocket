@@ -1,0 +1,50 @@
+<!-- Topbar -->
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow fixed-top">
+  <ul class="navbar-nav ml-2"> 
+    <a href="#" class="inner-page-back-arrow"><h2 class="my-3 d-inline-block"><i class="fas fa-arrow-left" onclick="history.back()"></i></h2></a>
+  </ul>
+
+  <ul class="navbar-nav mx-auto" data-controller="tag publish read favorite">    
+    <input type="hidden" data-target="tag.articleId publish.articleId read.articleId favorite.articleId"
+  value="<%= @article.id %>">
+    <li class="nav-item no-arrow">
+      <% if @article.read == true %>
+        <a class="btn btn-circle nav-link" data-action="read#navCheck">
+          <i class="article-nav-icon fas fa-check color-success" data-target="read.icon"></i> 
+        </a>
+      <% else %>
+        <a class="btn btn-circle nav-link" data-action="read#navCheck">
+          <i class="article-nav-icon fas fa-check" data-target="read.icon"></i>
+        </a>
+      <% end %>
+    </li>
+    <li class="nav-item no-arrow">
+      <% if @article.favorite == true %>
+        <a class="nav-link" data-action="favorite#navHeart">
+          <i class="article-nav-icon pink fas fa-heart" data-target="favorite.icon"></i>
+        </a> 
+      <% else %>
+        <a class="nav-link" data-action="favorite#navHeart">
+          <i class="article-nav-icon far fa-heart" data-target="favorite.icon"></i>
+        </a>
+      <% end %>
+    </li>
+    <li class="nav-item no-arrow ml-1"> 
+      <a class="nav-link" data-action="publish#check">
+        <% if @article.publish == true %>
+          <i class="article-nav-icon fas fa-unlock-alt" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">公開</span>
+        <% else %>
+          <i class="article-nav-icon fas fa-lock" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">私人</span>
+        <% end %>
+      </a>
+    </li>
+    <li class="nav-item no-arrow ml-1">
+      <a class="nav-link" data-action="tag#editTag"><i class="fas fa-tag"></i><span class="pl-1">標籤</span></a>
+    </li>
+  </ul>
+</nav>
+
+<template id="tagSelect">
+  <select name="article[tag_list][]" multiple="multiple" class="form-control">
+  </select>
+</template>

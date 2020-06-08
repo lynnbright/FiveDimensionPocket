@@ -59,3 +59,16 @@ span.highlight {
 .notDisplayed {
   display: none!important;
 }
+
+/* 單篇文章內頁 navbar 用 */
+.article-nav-icon{
+  font-size: 20px;
+}
+
+.pink{
+  color: #FE5D62;
+}
+
+.color-success{
+  color: #1cc88a;
+}

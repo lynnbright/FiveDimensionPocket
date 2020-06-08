@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
+  layout "article", only: [:show]
 
   def index
     @articles = current_user.articles.order(created_at: :desc).with_attached_article_images
