@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
            layout: false
   end
 
+  def extractor_fail
+    render file: 'public/500_extractor_fail.html',
+           status: 500,
+           layout: false
+  end
 
   private
   def article_new

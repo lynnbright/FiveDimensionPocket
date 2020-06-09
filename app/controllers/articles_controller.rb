@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
           short_description: result[:extract_data][:short_description],
         })
         @article.save
-
+        redirect_to articles_path
       
       elsif result[:nokogiri_success] == 'nokogiri_success'
         @article.assign_attributes({
@@ -47,13 +47,18 @@ class ArticlesController < ApplicationController
           short_description: result[:extract_data][:short_description]
         })
         @article.save
+      
+      elsif result[:other_status] == 'extractor_fail'
+        extractor_fail()
+
       else
         flash[:alert] = '請重新再試一次'
+        redirect_to articles_path
       end
     else
       check_article_exist.update(created_at: Time.now)
+      redirect_to articles_path
     end
-    redirect_to articles_path
   end
 
   def favorites
