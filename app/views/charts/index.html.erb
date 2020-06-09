@@ -11,11 +11,11 @@
               <div class="text-sm font-weight-bold text-info text-uppercase mb-1">閱讀率</div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
-                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @statistics_data.read_rate %>%</div>
                 </div>
                 <div class="col">
                   <div class="progress progress-sm mr-2">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" role="progressbar" style="width: <%= @statistics_data.read_rate %>%" aria-valuenow="<%= @statistics_data.read_rate %>" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
@@ -33,7 +33,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-sm font-weight-bold text-info text-uppercase mb-1">文章總數</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @statistics_data.total_articles %></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-newspaper fa-2x text-gray-300"></i>
@@ -48,7 +48,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-sm font-weight-bold text-info text-uppercase mb-1">已讀總數</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @statistics_data.total_read %></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-check fa-2x text-gray-300"></i>
@@ -62,11 +62,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-sm font-weight-bold text-info text-uppercase mb-1">標籤種類數</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+              <div class="text-sm font-weight-bold text-info text-uppercase mb-1">未讀總數</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @statistics_data.total_unread %></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-tags fa-2x text-gray-300"></i>
+              <i class="fas fa-times fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>

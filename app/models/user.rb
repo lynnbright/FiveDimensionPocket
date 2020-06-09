@@ -48,10 +48,6 @@ class User < ApplicationRecord
     date_hash
   end
 
-  def read_rate
-    read_rate = self.articles.where(read: true).count.fdiv(self.articles.count) *100
-    read_rate.floor
-  end
   
   private
 
