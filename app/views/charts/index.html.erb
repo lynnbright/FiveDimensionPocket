@@ -1,10 +1,82 @@
 <div class="container col-12 mt-5 pt-5">
   <div class="row justify-content-between py-4">
-    <h1 class="h3 mb-1 text-gray-800">我的成就</h1>
-    <div class="col-12" data-controller="chart">
-      <div class="card border-0 border-left-warning shadow mt-3">
+    <div class="col-12">
+      <h1 class="h3 mb-1 text-gray-800">我的成就</h1>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4 mt-3">
+      <div class="card border-0  shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-sm font-weight-bold text-info text-uppercase mb-1">閱讀率</div>
+              <div class="row no-gutters align-items-center">
+                <div class="col-auto">
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @statistics_data.read_rate %>%</div>
+                </div>
+                <div class="col">
+                  <div class="progress progress-sm mr-2">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: <%= @statistics_data.read_rate %>%" aria-valuenow="<%= @statistics_data.read_rate %>" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-percent fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4 mt-3">
+      <div class="card border-0  shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-sm font-weight-bold text-info text-uppercase mb-1">文章總數</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @statistics_data.total_articles %></div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-newspaper fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4 mt-3">
+      <div class="card border-0  shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-sm font-weight-bold text-info text-uppercase mb-1">已讀總數</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @statistics_data.total_read %></div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-check fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4 mt-3">
+      <div class="card border-0  shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-sm font-weight-bold text-info text-uppercase mb-1">未讀總數</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @statistics_data.total_unread %></div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-times fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6" data-controller="chart">
+      <div class="card border-0 shadow mb-4 mt-3">
         <div class="card-header light-orange-bg no-border-bottom">
-          本週已讀統計
+          近14天已讀統計
         </div>
         <div class="card-body">
           <div class="chart-card">
@@ -12,7 +84,9 @@
           </div>
         </div>
       </div>
-      <div class="card border-0 border-left-warning shadow  mt-3 mb-5">
+    </div>
+    <div class="col-12 col-lg-6" data-controller="chart">
+      <div class="card border-0 shadow  mb-4 mt-3">
         <div class="card-header light-orange-bg no-border-bottom">
           標籤統計
         </div>

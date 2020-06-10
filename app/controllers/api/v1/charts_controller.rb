@@ -13,4 +13,6 @@ class Api::V1::ChartsController < ApplicationController
     render json: {read: read}
   end
 
+
+
 end
