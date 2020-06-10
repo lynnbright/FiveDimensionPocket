@@ -23,6 +23,8 @@ class ArticleSendApi
     if @site_key.blank? || @channel == :extractor
       response = HTTParty.get("https://extractorapi.com/api/v1/extractor/?apikey=#{ENV['extractor_key']}&url=#{@url}&fields=domain,title,date_published,images,videos,clean_html,html")
       response_hash = JSON.parse(response.body)
+
+      raise 'Response Fail, No Text!' if response_hash['text'].blank?
       @short_description = response_hash['text'].split('').first(50).join('')
       
       #萃取出 og:image 圖片位址
@@ -42,11 +44,14 @@ class ArticleSendApi
           short_description: @short_description 
         }
       }
+    
     else
       klass = "ArticleSendApi::Nokogiri::#{@site_key.to_s.camelize}".constantize
       obj = klass.new(@url)
       obj.perform
     end
+    rescue 
+      { api_status: 'extractor_fail' }
   end
 
 
