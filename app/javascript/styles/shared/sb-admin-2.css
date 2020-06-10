@@ -141,6 +141,11 @@
   color:rgba(86, 82, 72, 0.9);
 }
 
+/* sidebar img */
+.sidebar-brand-icon img{
+  width: 30%;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
