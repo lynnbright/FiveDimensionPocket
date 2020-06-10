@@ -48,8 +48,8 @@ class ArticlesController < ApplicationController
         })
         @article.save
       
-      elsif result[:other_status] == 'extractor_fail'
-        extractor_fail()
+      elsif result[:api_status] == 'extractor_fail'
+        internal_server_error()
 
       else
         flash[:alert] = '請重新再試一次'
