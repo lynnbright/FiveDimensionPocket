@@ -4,8 +4,13 @@ class Chart
   end
 
   def read_rate
-    read_rate = @user.articles.where(read: true).count.fdiv(@user.articles.count) *100
-    read_rate.floor
+    count = @user.articles.where(read: true).count
+    if count > 0
+      read_rate = @user.articles.where(read: true).count.fdiv(@user.articles.count) *100
+      read_rate.floor
+    else
+      read_rate = 0
+    end
   end
   
   def total_articles
