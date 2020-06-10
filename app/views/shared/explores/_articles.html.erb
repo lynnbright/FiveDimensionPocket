@@ -41,11 +41,13 @@
                 <div class="col-12 col-md-6 col-lg-4 mt-2 mb-4">
                   <div class="card border-0 shadow h-100">
                     <div>
-                      <%= image_tag(record.article.images.last, size:'300x200',class: "card-img-top card-img-no-radius shadow") if record.article.article_images.attached?  %>
+                      <%= link_to record.article.link, target:'_blank' do %>
+                        <%= image_tag(record.article.images.last, size:'300x200',class: "card-img-top card-img-no-radius shadow") if record.article.article_images.attached?  %>
+                      <% end %>
                     </div>
                     <div class="card-body">
                       <h5>
-                        <%= link_to record.article.title, article_path(record.article.id), class:"card-title" %>
+                        <%= link_to record.article.title, record.article.link, class:"card-title", target:"_blank" %>
                       </h5>
                       <hr>
                       <p class="card-text"><%= record.article.short_description %></p>
