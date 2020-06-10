@@ -5,7 +5,7 @@ import axios from "axios"
 
 
 export default class extends Controller {
-  static targets = ["articleId", "btn", "icon"]
+  static targets = ["articleId", "btn", "icon", "text"]
 
   check(e) {
     e.preventDefault();
@@ -46,8 +46,14 @@ export default class extends Controller {
             self.iconTarget.classList.remove('shake');
           }, 500);
           this.iconTarget.classList.add('color-success');
+          this.iconTarget.classList.add('fa-check');
+          this.iconTarget.classList.remove('fa-times');
+          this.textTarget.innerText = "已讀"       
         } else {
+          this.iconTarget.classList.add('fa-times');
+          this.iconTarget.classList.remove('fa-check');
           this.iconTarget.classList.remove('color-success');
+          this.textTarget.innerText = "未讀"       
         }
       },
       )

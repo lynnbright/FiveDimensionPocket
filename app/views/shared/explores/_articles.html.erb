@@ -13,75 +13,80 @@
   </div>
 
   <div class="row" id="card-wrap">
-    <% users.each do |user| %>
-      <% if current_user.id == user.id %> 
-      <% else %>
-        <div class="container ">
-          <div class="row p-2 justify-content-between" data-controller="follow">
-            <div class="user-name">
-              <%= image_tag((user.avatar_thumbnail), class: 'rounded-circle')%>
-              <%= link_to "#{user.name}", profiles_path(id: user.id), class: 'px-2' %>
-              <input type="hidden" data-target="follow.userId" value="<%= user.id %>">
-              <% if current_user.follow_lists.find_by(following_id: user.id) %>
-                <button class="btn btn-info" data-target="follow.followBtn" data-action="follow#check">追蹤中</button>
-              <% else %>
-                <button class="btn btn-outline-info" data-target="follow.followBtn" data-action="follow#check">追蹤</button>
+    <% if users.blank? %> 
+    <div class="col-12 col-md-12 col-lg-12 mt-2 mb-4 text-center">
+      <p>快追蹤其他使用者拓展你的知識邊界吧！</p>
+      <%= image_tag "staying-home.png" , class: "no-article-img mx-auto" %>
+    </div>
+    <% else %>
+      <% users.each do |user| %>
+        <% if current_user.id == user.id %> 
+        <% else %>
+          <div class="container ">
+            <div class="row p-2 justify-content-between" data-controller="follow">
+              <div class="user-name">
+                <%= image_tag((user.avatar_thumbnail), class: 'rounded-circle')%>
+                <%= link_to "#{user.name}", profiles_path(id: user.id), class: 'px-2' %>
+                <input type="hidden" data-target="follow.userId" value="<%= user.id %>">
+                <% if current_user.follow_lists.find_by(following_id: user.id) %>
+                  <button class="btn btn-info" data-target="follow.followBtn" data-action="follow#check">追蹤中</button>
+                <% else %>
+                  <button class="btn btn-outline-info" data-target="follow.followBtn" data-action="follow#check">追蹤</button>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="row">
+              <% user.user_last_articles.each do |record| %>
+                <div class="col-12 col-md-6 col-lg-4 mt-2 mb-4">
+                  <div class="card border-0 shadow h-100">
+                    <div>
+                      <%= image_tag(record.article.images.last, size:'300x200',class: "card-img-top card-img-no-radius shadow") if record.article.article_images.attached?  %>
+                    </div>
+                    <div class="card-body">
+                      <h5>
+                        <%= link_to record.article.title, article_path(record.article.id), class:"card-title" %>
+                      </h5>
+                      <hr>
+                      <p class="card-text"><%= record.article.short_description %></p>
+                    </div>
+                    <div class="card-footer border-top-0 d-flex justify-content-around light-orange-bg">
+                      <%= form_for @article, url: articles_path, method:'post' , html: { id: "save_article_#{ record.article.id }" }  do |f| %>
+                        <%= f.text_field :link, value: record.article.link, type: 'hidden', id: "article_#{ record.article.id }" %>
+                        <button type="submit" class="btn icon-btn">
+                          <i class="fas fa-save"></i><span class="pl-1">儲存</span>
+                        </button>
+                      <% end %>
+                      <span class="shared-btn-wrap dropup">
+                        <a class="btn icon-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i><span
+                            class="pl-1">分享</span></a>
+                        <div class="shared-bar share-btn-collapse row p-1 dropdown-menu">
+                          <!-- 複製連結 -->
+                          <a class="shared-conect-btn dropdown-item" href="#"><i
+                              class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
+                          <input type="hidden" class="copylink" value="<%= record.article.link %>">
+
+                          <!-- Facebook share button code -->
+                          <a href="https://www.facebook.com/sharer/sharer.php?u=<%= record.article.link%>" target="_blank"
+                            class="dropdown-item"><i class="fab fa-facebook-square d-inline-block"></i>&nbsp Facebook</a>
+
+                          <!-- Twitter share button code -->
+                          <a href="https://twitter.com/intent/tweet?text=<%= record.article.title %>&url=<%= record.article.link %>"
+                            target="_blank" class="dropdown-item"><i class="fab fa-twitter-square d-inline-block"></i>&nbsp
+                            Twitter</a>
+
+                          <!-- Line share button code -->
+                          <a href="https://social-plugins.line.me/lineit/share?url=<%= record.article.link %>" target="_blank"
+                            class="dropdown-item"><i class="fab fa-line d-inline-block"></i>&nbsp Line</a>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               <% end %>
             </div>
           </div>
-
-        <div class="row">
-          <% user.user_last_articles.each do |record| %>
-            <div class="col-12 col-md-6 col-lg-4 mt-2 mb-4">
-              <div class="card border-0 shadow h-100">
-                <div>
-                <%= link_to record.article.link, target:'_blank' do %>
-                  <%= image_tag(record.article.images.last, size:'300x200',class: "card-img-top card-img-no-radius shadow") if record.article.article_images.attached?  %>
-                <% end %>
-                </div>
-                <div class="card-body">
-                  <h5>
-                    <%= link_to record.article.title, record.article.link, class:"card-title", target:"_blank" %>
-                  </h5>
-                  <hr>
-                  <p class="card-text"><%= record.article.short_description %></p>
-                </div>
-                <div class="card-footer border-top-0 d-flex justify-content-around light-orange-bg">
-                  <%= form_for @article, url: articles_path, method:'post' , html: { id: "save_article_#{ record.article.id }" }  do |f| %>
-                    <%= f.text_field :link, value: record.article.link, type: 'hidden', id: "article_#{ record.article.id }" %>
-                    <button type="submit" class="btn icon-btn">
-                      <i class="fas fa-save"></i><span class="pl-1">儲存</span>
-                    </button>
-                  <% end %>
-                  <span class="shared-btn-wrap dropup">
-                    <button class="btn icon-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i><span
-                        class="pl-1">分享</span></button>
-                    <div class="shared-bar share-btn-collapse row p-1 dropdown-menu">
-                      <!-- 複製連結 -->
-                      <a class="shared-conect-btn dropdown-item" href="#"><i
-                          class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
-                      <input type="hidden" class="copylink" value="<%= record.article.link %>">
-
-                        <!-- Facebook share button code -->
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=<%= record.article.link%>" target="_blank"
-                          class="dropdown-item"><i class="fab fa-facebook-square d-inline-block"></i>&nbsp Facebook</a>
-
-                        <!-- Twitter share button code -->
-                        <a href="https://twitter.com/intent/tweet?text=<%= record.article.title %>&url=<%= record.article.link %>"
-                          target="_blank" class="dropdown-item"><i class="fab fa-twitter-square d-inline-block"></i>&nbsp
-                          Twitter</a>
-
-                        <!-- Line share button code -->
-                        <a href="https://social-plugins.line.me/lineit/share?url=<%= record.article.link %>" target="_blank"
-                          class="dropdown-item"><i class="fab fa-line d-inline-block"></i>&nbsp Line</a>
-                      </div>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>
