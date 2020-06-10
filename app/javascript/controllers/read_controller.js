@@ -5,7 +5,7 @@ import axios from "axios"
 
 
 export default class extends Controller {
-  static targets = ["articleId", "btn", "icon"]
+  static targets = ["articleId", "btn", "icon", "text"]
 
   check(e) {
     e.preventDefault();
@@ -34,7 +34,7 @@ export default class extends Controller {
   }
   navCheck(e) {
     e.preventDefault();
-
+    
     let articleId = this.articleIdTarget.value
     axios.post(`/api/v1/articles/${articleId}/read`)
       .then((response) => {
@@ -53,6 +53,7 @@ export default class extends Controller {
           this.iconTarget.classList.add('fa-times');
           this.iconTarget.classList.remove('fa-check');
           this.iconTarget.classList.remove('color-success');
+          this.textTarget.innerText = "未讀"  
         }
       },
       )
