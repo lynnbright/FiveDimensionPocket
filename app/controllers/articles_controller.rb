@@ -7,12 +7,12 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
-    if @article.user_id == current_user.id
-      render :show
-    else
-      record_not_found() 
-    end
+      @article = Article.find(params[:id])
+      if @article.user_id == current_user.id
+        render :show
+      else
+        record_not_found() 
+      end
   end
 
   def create
