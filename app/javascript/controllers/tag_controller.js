@@ -17,6 +17,7 @@ export default class extends Controller {
   static targets = [ "articleId" ]
 
   editTag(e) {
+    e.preventDefault();
     let id = this.articleIdTarget.value
     Swal.fire({
       title: "新增標籤",

@@ -2,6 +2,17 @@ import { Controller } from "stimulus"
 import Rails from "@rails/ujs"
 import Chart from 'chart.js'
 
+function getColors(length){
+  let pallet = ["#f694c1", "#fec3a6","#FFFFAD","#d3f8e2","#a9def9","#e4c1f9"];
+  let colors = [];
+
+  for(let i = 0; i < length; i++) {
+    colors.push(pallet[i % pallet.length]);
+  }
+
+  return colors;
+}
+
 export default class extends Controller {  
   connect(){
     Rails.ajax({
@@ -17,14 +28,7 @@ export default class extends Controller {
             labels: tagLabels,
             datasets: [{
               data: tagData,
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.8)',
-                'rgba(54, 162, 235, 0.8)',
-                'rgba(255, 206, 86, 0.8)',
-                'rgba(75, 192, 192, 0.8)',
-                'rgba(153, 102, 255, 0.8)',
-                'rgba(255, 159, 64, 0.8)'
-              ],
+              backgroundColor: getColors(tagData.length),
               borderWidth: 1
             }]
           },
@@ -52,22 +56,8 @@ export default class extends Controller {
               label: '篇數',
               data: readData,
               fill: false,
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.9)',
-                  'rgba(54, 162, 235, 0.9)',
-                  'rgba(255, 206, 86, 0.9)',
-                  'rgba(75, 192, 192, 0.9)',
-                  'rgba(153, 102, 255, 0.9)',
-                  'rgba(255, 159, 64, 0.9)'
-              ],
-              borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
+              backgroundColor: getColors(readData.length),
+              borderColor: "#fec3a6",
               borderWidth: 3,
               borderStyle:'dash'
             }]
