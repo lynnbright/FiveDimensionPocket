@@ -9,28 +9,28 @@
   value="<%= @article.id %>">
     <li class="nav-item no-arrow mx-1">
       <% if @article.favorite == true %>
-        <a class="nav-link" data-action="favorite#navHeart">
+        <a href="#" class="nav-link" data-action="favorite#navHeart">
           <i class="article-nav-icon pink fas fa-heart" data-target="favorite.icon"></i><span class="pl-1">最愛</span>
         </a> 
       <% else %>
-        <a class="nav-link" data-action="favorite#navHeart">
+        <a href="#" class="nav-link" data-action="favorite#navHeart">
           <i class="article-nav-icon far fa-heart" data-target="favorite.icon"></i><span class="pl-1">最愛</span>
         </a>
       <% end %>
     </li>
     <li class="nav-item no-arrow mx-1">
       <% if @article.read == true %>
-        <a class="btn nav-link" data-action="read#navCheck">
+        <a href="#" class="btn nav-link" data-action="read#navCheck">
           <i class="article-nav-icon fas fa-check color-success" data-target="read.icon"></i><span class="pl-1" data-target="read.text">已讀</span>
         </a>
       <% else %>
-        <a class="btn nav-link" data-action="read#navCheck">
+        <a href="#" class="btn nav-link" data-action="read#navCheck">
           <i class="article-nav-icon fas fa-times" data-target="read.icon"></i><span class="pl-1" data-target="read.text">未讀</span>
         </a>
       <% end %>
     </li>
     <li class="nav-item no-arrow mx-1"> 
-      <a class="nav-link" data-action="publish#check">
+      <a href="#" class="nav-link" data-action="publish#check">
         <% if @article.publish == true %>
           <i class="article-nav-icon fas fa-unlock-alt" data-target="publish.icon"></i><span class="pl-1" data-target="publish.text">公開</span>
         <% else %>
@@ -39,7 +39,7 @@
       </a>
     </li>
     <li class="nav-item no-arrow mx-1">
-      <a class="nav-link" data-action="tag#editTag">
+      <a href="#" class="nav-link" data-action="tag#editTag">
         <i class="article-nav-icon fas fa-tag"></i><span class="pl-1">標籤</span>
       </a>
     </li>
