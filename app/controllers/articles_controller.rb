@@ -7,7 +7,12 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+      @article = Article.find(params[:id])
+      if @article.user_id == current_user.id
+        render :show
+      else
+        record_not_found() 
+      end
   end
 
   def create
@@ -32,7 +37,7 @@ class ArticlesController < ApplicationController
           short_description: result[:extract_data][:short_description],
         })
         @article.save
-
+        redirect_to articles_path
       
       elsif result[:nokogiri_success] == 'nokogiri_success'
         @article.assign_attributes({
@@ -47,13 +52,18 @@ class ArticlesController < ApplicationController
           short_description: result[:extract_data][:short_description]
         })
         @article.save
+      
+      elsif result[:api_status] == 'extractor_fail'
+        internal_server_error()
+
       else
         flash[:alert] = '請重新再試一次'
+        redirect_to articles_path
       end
     else
       check_article_exist.update(created_at: Time.now)
+      redirect_to articles_path
     end
-    redirect_to articles_path
   end
 
   def favorites
