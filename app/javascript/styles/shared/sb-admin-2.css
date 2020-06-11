@@ -4183,6 +4183,12 @@ input[type="button"].btn-block {
   border-radius: 0.35rem;
 }
 
+.home .navbar-toggler{
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
 .navbar-toggler:hover, .navbar-toggler:focus {
   text-decoration: none;
 }

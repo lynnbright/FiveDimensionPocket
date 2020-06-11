@@ -1,8 +1,38 @@
 .home img {
   width: 2vw;
-  display: block;
+  display: none;
   margin-right:0 ;
 }
+
+.logo-name {
+  display: none;
+}
+
+@media (min-width: 576px){
+  .logo-name, .home img {
+    display: none;
+  }
+}
+
+@media (min-width: 768px){
+  .logo-name, .home img {
+    display: none;
+  }
+}
+
+@media (min-width: 992px){
+  .logo-name, .home img {
+    display: block;
+  }
+}
+
+
+@media (min-width: 1200px){
+  .logo-name, .home img {
+    display: block;
+  }
+}
+
 .logo-name, .login-icon {
   font-family: 'Palanquin', sans-serif;
   color: #565248;
@@ -11,35 +41,104 @@
   text-align: left;
 }
 
+.nav-login {
+  order: 0;
+}
+
+@media (min-width: 576px) {
+  .nav-login {
+    order: 1;
+  }
+}
+
 .main-slogan h1 {
-  font-size: 6.5vw;
+  font-size: 8.5vw;
   font-family: 'Acme', sans-serif;
 }
 
+@media (min-width: 576px) {
+  .main-slogan h1 {
+    font-size: 8.5vw;
+  }
+}
+
+@media (min-width: 768px){
+  .main-slogan h1 {
+    font-size: 5.5vw;
+  }
+}
+
+@media (min-width: 992px){
+  .main-slogan h1 {
+    font-size: 5.5vw;
+  }
+}
+
+
+@media (min-width: 1200px){
+  .main-slogan h1 {
+    font-size: 5.5vw;
+    /* font-family: 'Acme', sans-serif; */
+  }
+}
+
 .main-slogan p {
-  font-size: 1.5vw;
+  font-size: 4vw;
   font-family: 'Acme', sans-serif;
+}
+
+@media (min-width: 576px) {
+  .main-slogan p {
+    font-size: 4.5vw;
+  }
+}
+
+@media (min-width: 768px){
+  .main-slogan p {
+    font-size: 2.5vw;
+  }
+}
+
+@media (min-width: 992px){
+  .main-slogan p {
+    font-size: 1.5vw;
+  }
+}
+
+@media (min-width: 1200px){
+  .main-slogan p {
+    font-size: 1.5vw;
+  }
 }
 .main-slogan h1, .main-slogan p{
   text-align: center;
 }
+
 .btn-opacity-success:hover {
   color: #5ed6b3;
   background-color: #b7eddd;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   transition: all 0.5s ease-in-out;
 }
 
 .btn-opacity-success {
   color: #5ed6b3;
   background-color: white;
-  border: 2px solid #5ed6b3;
+  border: 1px solid #5ed6b3;
 }
 
 .call-to-action-btn .form-control {
-  height: calc(2em + 0.75rem + 2px);
+  height: calc(1.5em + 0.75rem + 2px);
 }
 
 .input-group-append .btn {
-  line-height: 30px;
+  line-height: 1.5rem;
 }
+
+.home .form-control {
+  font-size: 1rem;
+}
+
+/* .home .input-group > .input-group-append > .btn {
+  height: calc(1.1em + 0.75rem + 2px);
+} */
