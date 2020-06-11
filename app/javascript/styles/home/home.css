@@ -1,8 +1,40 @@
+/* header - logo, logo-name */
+
 .home img {
   width: 2vw;
-  display: block;
+  display: none;
   margin-right:0 ;
 }
+
+.logo-name {
+  display: none;
+}
+
+@media (min-width: 576px){
+  .logo-name, .home img {
+    display: none;
+  }
+}
+
+@media (min-width: 768px){
+  .logo-name, .home img {
+    display: none;
+  }
+}
+
+@media (min-width: 992px){
+  .logo-name, .home img {
+    display: block;
+  }
+}
+
+
+@media (min-width: 1200px){
+  .logo-name, .home img {
+    display: block;
+  }
+}
+
 .logo-name, .login-icon {
   font-family: 'Palanquin', sans-serif;
   color: #565248;
@@ -11,35 +43,175 @@
   text-align: left;
 }
 
+/* header - 登入與註冊按鈕位置 */
+.nav-login {
+  order: 1;
+}
+
+@media (min-width: 576px) {
+  .nav-login {
+    order: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-login {
+    order: 1;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav-login {
+    order: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-login {
+    order: 0;
+  }
+}
+
+/* 標題字 */
 .main-slogan h1 {
-  font-size: 6.5vw;
+  font-size: 8.5vw;
   font-family: 'Acme', sans-serif;
 }
 
+@media (min-width: 576px) {
+  .main-slogan h1 {
+    font-size: 8.5vw;
+  }
+}
+
+@media (min-width: 768px){
+  .main-slogan h1 {
+    font-size: 6.5vw;
+  }
+}
+
+@media (min-width: 992px){
+  .main-slogan h1 {
+    font-size: 5.5vw;
+  }
+}
+
+@media (min-width: 1200px){
+  .main-slogan h1 {
+    font-size: 5.5vw;
+    /* font-family: 'Acme', sans-serif; */
+  }
+}
+
+/* 副標題 */
 .main-slogan p {
-  font-size: 1.5vw;
+  font-size: 3.5vw;
   font-family: 'Acme', sans-serif;
+}
+
+@media (min-width: 576px) {
+  .main-slogan p {
+    font-size: 3.5vw;
+  }
+}
+
+@media (min-width: 768px){
+  .main-slogan p {
+    font-size: 2.5vw;
+  }
+}
+
+@media (min-width: 992px){
+  .main-slogan p {
+    font-size: 2vw;
+  }
+}
+
+@media (min-width: 1200px){
+  .main-slogan p {
+    font-size: 1.5vw;
+  }
 }
 .main-slogan h1, .main-slogan p{
   text-align: center;
 }
+
+/* 立即註冊、免費體驗按鈕 CSS */
 .btn-opacity-success:hover {
   color: #5ed6b3;
   background-color: #b7eddd;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   transition: all 0.5s ease-in-out;
 }
 
 .btn-opacity-success {
   color: #5ed6b3;
   background-color: white;
-  border: 2px solid #5ed6b3;
+  border: 1px solid #5ed6b3;
 }
 
 .call-to-action-btn .form-control {
-  height: calc(2em + 0.75rem + 2px);
+  height: calc(1.2em + 0.75rem + 2px);
 }
 
+@media (min-width: 576px){
+  .call-to-action-btn .form-control {
+    height: calc(1.2em + 0.75rem + 2px);
+  }
+}
+
+@media (min-width: 768px){
+  .call-to-action-btn .form-control {
+    height: calc(1.5em + 0.75rem + 2px);
+  }
+}
+
+@media (min-width: 992px){
+  .call-to-action-btn .form-control {
+    height: calc(2em + 0.75rem + 2px);
+  }
+}
+
+@media (min-width: 1200px){
+  .call-to-action-btn .form-control {
+    height: calc(2em + 0.75rem + 2px);
+  }
+}
+
+
 .input-group-append .btn {
-  line-height: 30px;
+  line-height: 1.2rem;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 576px){
+  .input-group-append .btn {
+    line-height: 1.2rem;
+  }
+}
+
+@media (min-width: 768px){
+  .input-group-append .btn {
+    line-height: 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 992px){
+  .input-group-append .btn {
+    line-height: 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1200px){
+  .input-group-append .btn {
+    line-height: 2rem;
+    font-size: 1rem;
+  }
+}
+
+input::-webkit-input-placeholder {
+    font-size: 0.9rem;
+    line-height: 2;
 }
