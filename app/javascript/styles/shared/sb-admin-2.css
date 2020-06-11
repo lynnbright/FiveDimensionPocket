@@ -141,6 +141,11 @@
   color:rgba(86, 82, 72, 0.9);
 }
 
+/* sidebar img */
+.sidebar-brand-icon img{
+  width: 30%;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -4176,6 +4181,12 @@ input[type="button"].btn-block {
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.35rem;
+}
+
+.home .navbar-toggler{
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  margin: 10px 0;
 }
 
 .navbar-toggler:hover, .navbar-toggler:focus {
