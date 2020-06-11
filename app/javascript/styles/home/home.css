@@ -42,12 +42,30 @@
 }
 
 .nav-login {
-  order: 0;
+  order: 1;
 }
 
 @media (min-width: 576px) {
   .nav-login {
     order: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-login {
+    order: 1;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav-login {
+    order: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-login {
+    order: 0;
   }
 }
 
