@@ -9,7 +9,7 @@ class ArticleSendApi
     medium: 'medium.com',
     womany: 'womany.net',
     it_help: 'ithelp.ithome.com.tw',
-    crossing: 'crossing.cw.com.tw'
+    stack_over_flow: 'stackoverflow.com',
   }
 
   def initialize(url)

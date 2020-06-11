@@ -52,6 +52,7 @@ class ArticlesController < ApplicationController
           short_description: result[:extract_data][:short_description]
         })
         @article.save
+        redirect_to articles_path
       
       elsif result[:api_status] == 'extractor_fail'
         internal_server_error()
