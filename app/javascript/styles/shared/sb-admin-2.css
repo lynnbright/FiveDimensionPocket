@@ -5034,6 +5034,15 @@ a.badge-dark:focus, a.badge-dark.focus {
   opacity: 0;
 }
 
+@media (max-width: 576px) {
+  .alert {
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+  }
+}
+
 .alert.show {
   transform: translateY(0);
   opacity: 1;
