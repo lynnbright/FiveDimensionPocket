@@ -33,7 +33,8 @@ export default class extends Controller {
             }]
           },
           options: {
-            responsive: true
+            responsive: true,
+            maintainAspectRatio: false
           }
         });          
       },
@@ -63,7 +64,8 @@ export default class extends Controller {
             }]
           },
           options: {
-            responsive: true,            
+            responsive: true,
+            maintainAspectRatio: false,            
             scales: {
               yAxes: [{
                 ticks: {
