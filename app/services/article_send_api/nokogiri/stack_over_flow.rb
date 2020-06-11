@@ -1,6 +1,6 @@
 class ArticleSendApi
   module Nokogiri
-    class Crossing < Base
+    class StackOverFlow < Base
 
       def initialize(url)
         @url = url
@@ -11,9 +11,9 @@ class ArticleSendApi
       def perform
         @title = @page.xpath('//title').text
         @ogimage_address = @page.xpath('/html/head/meta[@property="og:image"]/@content').text
-        @short_description = @page.xpath('/html/head/meta[@name="description"]/@content').text.split('').first(50).join('')
-        @clean_html = @page.xpath("//article//p").to_s.gsub("\n","").gsub("\r","").gsub(/\"/, '\'')
-        @text = @page.xpath("//article//p").text.gsub("\n","").gsub("\r","").gsub(/\"/, '\'')
+        @short_description = @page.xpath('/html/head/meta[@name="twitter:description"]/@content').text.split('').first(50).join('')
+        @clean_html = @page.xpath("//div[@class='post-text']").to_s.gsub("\n","").gsub("\r","").gsub(/\"/, '\'')
+        @text = @page.xpath("//div[@class='post-text']").text.gsub("\n","").gsub("\r","").gsub(/\"/, '\'')
         {
           nokogiri_success: 'nokogiri_success', 
           extract_data: {
