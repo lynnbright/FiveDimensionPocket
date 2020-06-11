@@ -64,7 +64,7 @@
 
 @media (min-width: 768px){
   .main-slogan h1 {
-    font-size: 5.5vw;
+    font-size: 6.5vw;
   }
 }
 
@@ -83,13 +83,13 @@
 }
 
 .main-slogan p {
-  font-size: 4vw;
+  font-size: 3.5vw;
   font-family: 'Acme', sans-serif;
 }
 
 @media (min-width: 576px) {
   .main-slogan p {
-    font-size: 4.5vw;
+    font-size: 3.5vw;
   }
 }
 
@@ -101,7 +101,7 @@
 
 @media (min-width: 992px){
   .main-slogan p {
-    font-size: 1.5vw;
+    font-size: 2vw;
   }
 }
 
@@ -128,17 +128,67 @@
 }
 
 .call-to-action-btn .form-control {
-  height: calc(1.5em + 0.75rem + 2px);
+  height: calc(1.2em + 0.75rem + 2px);
 }
+
+@media (min-width: 576px){
+  .call-to-action-btn .form-control {
+    height: calc(1.2em + 0.75rem + 2px);
+  }
+}
+
+@media (min-width: 768px){
+  .call-to-action-btn .form-control {
+    height: calc(1.5em + 0.75rem + 2px);
+  }
+}
+
+@media (min-width: 992px){
+  .call-to-action-btn .form-control {
+    height: calc(2em + 0.75rem + 2px);
+  }
+}
+
+@media (min-width: 1200px){
+  .call-to-action-btn .form-control {
+    height: calc(2em + 0.75rem + 2px);
+  }
+}
+
 
 .input-group-append .btn {
-  line-height: 1.5rem;
+  line-height: 1.2rem;
+  font-size: 0.8rem;
 }
 
-.home .form-control {
-  font-size: 1rem;
+@media (min-width: 576px){
+  .input-group-append .btn {
+    line-height: 1.2rem;
+  }
 }
 
-/* .home .input-group > .input-group-append > .btn {
-  height: calc(1.1em + 0.75rem + 2px);
-} */
+@media (min-width: 768px){
+  .input-group-append .btn {
+    line-height: 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 992px){
+  .input-group-append .btn {
+    line-height: 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1200px){
+  .input-group-append .btn {
+    line-height: 2rem;
+    font-size: 1rem;
+  }
+}
+
+input::-webkit-input-placeholder {
+    font-size: 0.9rem;
+    line-height: 2;
+}
