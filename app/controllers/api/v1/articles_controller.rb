@@ -64,7 +64,7 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def tags
-    selected_tags = JSON.parse(tags_params[:list_tag])
+    selected_tags = tags_params[:tag_list].select{ |tag| tag != '' }
     article = Article.find(params[:id])
     article.tag_list = selected_tags
   end
@@ -121,7 +121,7 @@ class Api::V1::ArticlesController < ApplicationController
 
   private
   def tags_params
-    params.permit(:list_tag )
+    params.permit(tag_list:[])
   end
 
   def highlight_params
