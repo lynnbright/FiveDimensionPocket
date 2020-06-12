@@ -56,8 +56,15 @@ export default class extends Controller {
       },
     }).then((result) => {
       if(result.value) {   
-        let optionData = $('[name="article[tag_list][]"] option:selected').toArray().map(item => item.text)  
-        let data = toFormData({list_tag: optionData})
+        let optionData = $('[name="article[tag_list][]"] option:selected').toArray().map(item => item.text)
+        let data = new FormData()
+        if (optionData.length < 1){
+          data.append('tag_list[]', '')          
+        }else {
+          optionData.forEach((v) => {
+            data.append('tag_list[]', v)
+          })
+        }
         Rails.ajax({
         url: `/api/v1/articles/${id}/tags`, 
         type: 'POST', 
