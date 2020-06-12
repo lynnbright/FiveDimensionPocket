@@ -77,8 +77,9 @@
                 <!-- <button class="card-btn shared-btn js-collapse-btn"><i class="fas fa-share-alt"></i></button> -->
                 <div class="shared-bar share-btn-collapse row p-1 dropdown-menu">
                   <!-- 複製連結 -->
-                  <a class="shared-conect-btn dropdown-item" href="#" data-target="#articleId_<%= article.id %>"><i
-                      class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
+                  <a class="shared-conect-btn dropdown-item" href="#" data-target="#articleId_<%= article.id %>">
+                    <i class="fas fa-link d-inline-block"></i><span class="copy_link">&nbspCopy&nbspLink</span>
+                  </a>
                   <input type="text" class="copylink" value="<%= article.link %>" id="articleId_<%= article.id %>">
     
                   <!-- Facebook share button code -->
