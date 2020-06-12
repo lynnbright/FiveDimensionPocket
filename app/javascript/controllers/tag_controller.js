@@ -27,7 +27,7 @@ export default class extends Controller {
       onOpen: () => {
         Rails.ajax({
           url: `/api/v1/articles/${id}/tags`, 
-          type: 'GET', 
+          type: 'GET',
           success: resp => {
             let tags = resp.tags;
             tags.forEach( (tagName) => {
@@ -62,6 +62,7 @@ export default class extends Controller {
         url: `/api/v1/articles/${id}/tags`, 
         type: 'POST', 
         data: data,
+        async: true,
         success: resp => {
         }, 
         error: err => {
