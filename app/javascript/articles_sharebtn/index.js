@@ -15,5 +15,9 @@ $(document).on('turbolinks:load', function() {
     $text.select();
     document.execCommand('copy');
     $text.blur();
+
+    let $link = this.querySelector('.copy_link');
+    $link.innerHTML = "  已複製！";
+
   })
 })
