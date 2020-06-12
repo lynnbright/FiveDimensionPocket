@@ -14,5 +14,6 @@ $(document).on('turbolinks:load', function() {
 
     $text.select();
     document.execCommand('copy');
+    $text.blur();
   })
 })
