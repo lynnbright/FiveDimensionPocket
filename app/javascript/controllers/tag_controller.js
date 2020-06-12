@@ -62,7 +62,11 @@ export default class extends Controller {
         url: `/api/v1/articles/${id}/tags`, 
         type: 'POST', 
         data: data,
+        cache: false,
         async: true,
+        headers: {
+          "cache-control": "no-cache"
+        },
         success: resp => {
         }, 
         error: err => {
