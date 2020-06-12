@@ -64,9 +64,9 @@
                             class="pl-1">分享</span></a>
                         <div class="shared-bar share-btn-collapse row p-1 dropdown-menu">
                           <!-- 複製連結 -->
-                          <a class="shared-conect-btn dropdown-item" href="#"><i
-                              class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
-                          <input type="hidden" class="copylink" value="<%= record.article.link %>">
+                          <a class="shared-conect-btn dropdown-item" href="#" data-target="#articleId_<%= record.article.id %>"><i
+                             class="fas fa-link d-inline-block"></i>&nbspCopy&nbspLink</a>
+                          <input type="text" class="copylink" value="<%= record.article.link %>" id="articleId_<%= record.article.id %>">
 
                           <!-- Facebook share button code -->
                           <a href="https://www.facebook.com/sharer/sharer.php?u=<%= record.article.link%>" target="_blank"
