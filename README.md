@@ -124,7 +124,13 @@ $ rails db:migrate
 
 <br>
 
-## 七、開發者
+## 七、資料庫設計
+
+[ERD](https://drawsql.app/MyTraining/diagrams/5d)
+![](https://i.imgur.com/C6hNHfx.png)
+<br>
+
+## 八、開發者
 
 - 張玲涓
     - GitHub：[lynnbright](https://github.com/lynnbright)
